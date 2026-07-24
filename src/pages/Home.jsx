@@ -1,14 +1,14 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import Navbar from "../components/ui/Navbar";
-import HeroSection from "../components/ui/HeroSection";
+import Navbar from "../components/ui/navbar/Navbar";
+import HeroSection from "../components/ui/hero/HeroSection";
+import SearchBarSection from "../components/ui/search/SearchBarSection";
 
 const Home = () => {
   return (
     <>
       <Navbar />
       <HeroSection />
-      <HeroSection />
+      <SearchBarSection />
     </>
   );
 };

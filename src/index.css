@@ -4,6 +4,7 @@
 @theme {
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-anti: var(--primary-anti);
   --color-secondary: var(--secondary);
   --color-secondary-hover: var(--secondary-hover);
   --color-background: var(--background);
@@ -24,16 +25,13 @@ html {
 }
 
 * {
-  transition: all 0.3s;
+  transition: ease-out 0.2s;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   color: var(--color-grey-700);
 
-  /* transition:
-    color 0.4s,
-    background-color 1s; */
   min-height: 100vh;
   line-height: 1.5;
   font-size: 1.6rem;

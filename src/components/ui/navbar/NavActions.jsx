@@ -14,7 +14,7 @@ const NavActions = () => {
       <ThemeButton />
       <Button
         type="primary"
-        size="medium"
+        size="small"
         style="text-gray-100"
         onClick={handleLogin}
       >
@@ -23,7 +23,7 @@ const NavActions = () => {
 
       <Button
         type="secondary"
-        size="medium"
+        size="small"
         style="text-gray-100"
         onClick={handleSignup}
       >

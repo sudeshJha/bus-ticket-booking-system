@@ -1,15 +1,22 @@
 import React from "react";
 import HeroContent from "./HeroContent";
+import { useDarkMode } from "../../../context/ThemeContext";
 
 const HeroSection = () => {
-  const isDarkMode = true;
+  const { isDarkMode } = useDarkMode();
+
   const lightImageUrl = "src/assets/hero_bg_light.png";
   const darkImageUrl = "src/assets/hero_bg_dark.png";
+
   const imageUrl = isDarkMode ? darkImageUrl : lightImageUrl;
   console.log(imageUrl);
+
   return (
     <div
-      className={`bg-[url(${imageUrl})] h-[88vh] object-fit w-full bg-cover bg-center bg-no-repeat`}
+      className={
+        " h-[88vh] object-fit w-full bg-cover bg-center bg-no-repeat mt-[12vh]"
+      }
+      style={{ backgroundImage: `url(${imageUrl})` }}
     >
       <HeroContent />
     </div>

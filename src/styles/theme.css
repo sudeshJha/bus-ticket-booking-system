@@ -2,11 +2,12 @@
 :root.light {
   --primary: #4f46e5;
   --primary-hover: #4338ca;
+  --primary-anti: rgb(245, 245, 245);
   --secondary: #06b6d4;
   --secondary-hover: #07aac7;
   --background: #f8fafc;
   --surface: #ffffff;
-  --surface-dark: #f1f5f9;
+  --surface-dark: #e4f0fb;
   --border: #e2e8f0;
   --text-primary: #0f172a;
   --text-secondary: #64748b;
@@ -19,6 +20,7 @@
 :root.dark {
   --primary: #6366f1;
   --primary-hover: #4f46e5;
+  --primary-anti: rgb(216, 216, 216);
   --secondary: #09abb6;
   --secondary-hover: #1e93a4;
   --background: #0b1220;
