@@ -1,8 +1,8 @@
 import React from "react";
 
 const sizes = {
-  small: "px-5 py-3 text-3xl",
-  medium: "px-7 py-5 text-4xl",
+  small: "px-5 py-3 text-2xl",
+  medium: "px-7 py-5 text-3xl",
   large: "",
 };
 

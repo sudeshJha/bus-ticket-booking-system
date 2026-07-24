@@ -2,16 +2,17 @@ import React from "react";
 import Button from "../../util/Button";
 import { HiOutlineSearch, HiOutlineSwitchHorizontal } from "react-icons/hi";
 import { useDarkMode } from "../../../context/ThemeContext";
+import { HiMapPin } from "react-icons/hi2";
 
 const SearchBar = () => {
   const { isDarkMode } = useDarkMode();
 
   const inputClass =
-    "px-6 py-5 rounded-xl border-3 border-transparent outline-0 w-[20vw] bg-surface-dark focus:border-3 focus:border-text-primary focus:outline-none text-text-primary";
+    "px-6 py-5 rounded-xl border-3 border-transparent outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary focus:outline-none text-text-primary";
   return (
-    <form className="flex items-center justify-center bg-background gap-10 px-20 py-20 rounded-4xl shadow-2xl/10 ">
+    <form className="flex items-center justify-around bg-background gap-10 px-20 py-20 rounded-4xl shadow-2xl/10 ">
       <input
-        className="px-6 py-5 rounded-xl border-3 border-transparent outline-0 w-[20vw] bg-surface-dark focus:border-3 focus:border-text-primary focus:outline-none text-text-primary"
+        className="px-6 py-5 rounded-xl border-3 border-transparent outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary focus:outline-none text-text-primary"
         placeholder="Enter origin"
         type="search"
       />
@@ -32,7 +33,7 @@ const SearchBar = () => {
         type="date"
       />
 
-      <Button size="medium" type="primary" style="ml-20">
+      <Button size="medium" type="primary" style="ml-40">
         <span className="flex items-center gap-2">
           <HiOutlineSearch />
           Search
