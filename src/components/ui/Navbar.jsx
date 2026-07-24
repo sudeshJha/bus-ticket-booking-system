@@ -1,13 +1,14 @@
 import React from "react";
 import Logo from "./Logo";
 import NavList from "./NavList";
+import NavActions from "./NavActions";
 
 const Navbar = () => {
   return (
-    <nav className="mx-auto px-6 py-6 flex items-center justify-between bg-surface- backdrop-blur-2xl w-100% shadow-md">
+    <nav className="mx-auto px-8 py-6 flex items-center justify-between bg-surface  w-full shadow-xl shadow-text-primary-hover h-[12vh] opacity-90 z-50 fixed">
       <Logo />
       <NavList />
-      <Logo />
+      <NavActions />
     </nav>
   );
 };

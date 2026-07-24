@@ -3,6 +3,7 @@
   --primary: #4f46e5;
   --primary-hover: #4338ca;
   --secondary: #06b6d4;
+  --secondary-hover: #07aac7;
   --background: #f8fafc;
   --surface: #ffffff;
   --surface-dark: #f1f5f9;
@@ -18,7 +19,8 @@
 :root.dark {
   --primary: #6366f1;
   --primary-hover: #4f46e5;
-  --secondary: #22d3ee;
+  --secondary: #09abb6;
+  --secondary-hover: #1e93a4;
   --background: #0b1220;
   --surface: #111827;
   --surface-dark: #1e293b;

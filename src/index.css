@@ -5,6 +5,7 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-dark: var(--surface-dark);
@@ -15,4 +16,25 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
+}
+
+html {
+  font-size: 62.5%;
+  user-select: none;
+}
+
+* {
+  transition: all 0.3s;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--color-grey-700);
+
+  /* transition:
+    color 0.4s,
+    background-color 1s; */
+  min-height: 100vh;
+  line-height: 1.5;
+  font-size: 1.6rem;
 }
