@@ -1,7 +1,8 @@
 import React from "react";
 import ButtonIcon from "../../util/ButtonIcon";
-import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
+import { HiOutlineSun } from "react-icons/hi";
 import { useDarkMode } from "../../../context/ThemeContext";
+import { MdBrightness2 } from "react-icons/md";
 
 const ThemeButton = () => {
   const { isDarkMode, toggleTheme } = useDarkMode();
@@ -13,7 +14,7 @@ const ThemeButton = () => {
   return (
     <ButtonIcon
       onClick={handleClick}
-      icon={isDarkMode ? <HiOutlineMoon /> : <HiOutlineSun />}
+      icon={isDarkMode ? <MdBrightness2 /> : <HiOutlineSun />}
       color={isDarkMode ? "secondary" : "warning"}
     />
   );

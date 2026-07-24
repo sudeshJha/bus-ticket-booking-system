@@ -1,16 +1,17 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import { HiOutlineTruck } from "react-icons/hi";
 import Icon from "../../util/Icon";
 import SectionHeader from "../SectionHeader";
+import { BiBus } from "react-icons/bi";
+import { FcUnlock } from "react-icons/fc";
 
 const SearchBarSection = () => {
   return (
     <div className="bg-surface-dark px-20 py-30 flex flex-col  justify-center gap-15">
-      <SectionHeader heading="SEARCH YOU TRIP">
+      <SectionHeader heading="search your trip">
         <Icon
-          icon={<HiOutlineTruck />}
-          bgColor="bg-primary-anti"
+          icon={<BiBus />}
+          bgColor="bg-surface"
           color="text-primary"
           size="small"
         />
