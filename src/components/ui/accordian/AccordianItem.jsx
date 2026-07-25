@@ -1,0 +1,36 @@
+import React from "react";
+import ButtonIcon from "../../util/ButtonIcon";
+import { CiCirclePlus } from "react-icons/ci";
+import { AiFillMinusCircle } from "react-icons/ai";
+
+const AccordianItem = ({ faq, show, toggleShow }) => {
+  return (
+    <div
+      className={`border-y border-border py-10 px-8 ${show === faq.id && "bg-surface-dark/70"}`}
+    >
+      <div className="flex items-center justify-start gap-10 ">
+        <ButtonIcon
+          icon={show === faq.id ? <AiFillMinusCircle /> : <CiCirclePlus />}
+          onClick={() => toggleShow(faq.id)}
+          color="secondary"
+        />
+
+        <h4
+          className={`${show === faq.id ? "text-primary" : "text-text-primary"} text-3xl font-semibold`}
+        >
+          {faq.question}
+        </h4>
+      </div>
+
+      {show === faq.id && (
+        <div className="ml-26 mt-6">
+          <p className="text-text-primary tracking-wider text-[1.6rem] ">
+            {faq.answer}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AccordianItem;

@@ -7,10 +7,10 @@ const sizes = {
   extraLarge: "w-54 h-54 p-5",
 };
 
-const Icon = ({ icon, size, color, bgColor, custom }) => {
+const Icon = ({ icon, size, color, bgColor, custom, onClick }) => {
   if (custom) {
     return (
-      <div className={custom}>
+      <div className={custom} onClick={onClick}>
         {React.cloneElement(icon, {
           className: custom,
         })}
@@ -22,6 +22,7 @@ const Icon = ({ icon, size, color, bgColor, custom }) => {
   return (
     <div
       className={`text-${color} ${bgColor} ${sizes[size]} max-w-fit rounded-full flex items-center justify-center`}
+      onClick={onClick}
     >
       {React.cloneElement(icon, {
         className: `${sizes[size]} ${color}`,

@@ -4,6 +4,7 @@ import HeroSection from "../components/ui/hero/HeroSection";
 import SearchBarSection from "../components/ui/search/SearchBarSection";
 import AboutSection from "../components/ui/about/AboutSection";
 import ChooseSection from "../components/ui/choose/ChooseSection";
+import AccordianSection from "../components/ui/accordian/AccordianSection";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <SearchBarSection />
       <AboutSection />
       <ChooseSection />
+      <AccordianSection />
     </>
   );
 };
