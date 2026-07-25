@@ -7,7 +7,7 @@ import AboutSection2 from "./AboutSection2";
 
 const AboutSection = () => {
   return (
-    <div className="bg-surface px-20 py-25 -mb-15">
+    <div className="bg-surface px-20 py-30">
       <SectionHeader heading="about us">
         <Icon
           icon={<RiTeamLine />}
@@ -17,7 +17,7 @@ const AboutSection = () => {
         />
       </SectionHeader>
 
-      <div className="grid grid-cols-2 items-center justify-center gap-20 py-15">
+      <div className="grid grid-cols-2 items-center justify-center gap-40 py-15">
         <AboutSection1 />
         <AboutSection2 />
       </div>

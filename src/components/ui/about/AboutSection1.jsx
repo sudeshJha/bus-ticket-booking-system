@@ -15,7 +15,7 @@ const AboutSection1 = () => {
         <span className="text-primary-hover tracking-wide">Your Journey</span>
       </h2>
 
-      <p className="text-text-secondary">
+      <p className="text-text-secondary tracking-wide">
         We are on a mission to make bus travel simple, safe and reliable for
         everyone. Whether you are travelling across the city or across the
         country, we&apos;re here take you there with conform and peace of mind
