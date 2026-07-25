@@ -20,32 +20,11 @@ const ChooseSection = () => {
         />
       </SectionHeader>
       <div className="mt-20 flex">
-        <ChooseItem
-          icon={<MdAirlineSeatReclineExtra />}
-          heading="Confortable Travel"
-          content="Well-maintained buses for a confortable journey"
-        />
-        <ChooseItem
-          icon={<IoWallet />}
-          heading="Secure Payments"
-          content="Well-maintained buses for a confortable journey"
-        />
-        <ChooseItem
-          icon={<RiSecurePaymentFill />}
-          heading="Secure Payments"
-          content="Well-maintained buses for a confortable journey"
-        />
-        <ChooseItem
-          icon={<GoClockFill />}
-          heading="On Time Guarantee"
-          content="Well-maintained buses for a confortable journey"
-        />
-        <ChooseItem
-          icon={<FaMapLocationDot />}
-          heading="Wide Area Network"
-          content="Well-maintained buses for a confortable journey"
-          lastChild={true}
-        />
+        <ChooseItem item={1} />
+        <ChooseItem item={2} />
+        <ChooseItem item={3} />
+        <ChooseItem item={4} />
+        <ChooseItem item={5} lastChild={true} />
       </div>
     </div>
   );
