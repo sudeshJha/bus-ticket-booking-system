@@ -8,11 +8,11 @@ const SearchBar = () => {
   const { isDarkMode } = useDarkMode();
 
   const inputClass =
-    "px-6 py-5 rounded-xl border-3 border-transparent outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary focus:outline-none text-text-primary";
+    "px-6 py-5 rounded-xl border-3 border-border outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary/30 focus:outline-none text-text-primary";
   return (
-    <form className="flex items-center justify-around bg-background gap-10 px-20 py-20 rounded-4xl shadow-2xl/10 ">
+    <form className="flex items-center justify-around bg-background gap-10 px-20 py-20 rounded-4xl shadow-2xl/10 border-t-2 border-border">
       <input
-        className="px-6 py-5 rounded-xl border-3 border-transparent outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary focus:outline-none text-text-primary"
+        className="px-6 py-5 rounded-xl border-3 border-border outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary/40 focus:outline-none text-text-primary"
         placeholder="Enter origin"
         type="search"
       />
@@ -28,7 +28,7 @@ const SearchBar = () => {
       />
 
       <input
-        className={`px-6 py-5 border-2 rounded-xl border-none bg-surface-dark focus:border-2 focus:border-text-primary focus:outline-none text-text-primary [color-scheme:${isDarkMode ? "dark" : "light"}]`}
+        className={`px-6 py-5 border-3 border-border rounded-xl  bg-surface-dark  focus:border-text-primary/40 focus:outline-none text-text-primary [color-scheme:${isDarkMode ? "dark" : "light"}]`}
         placeholder="Enter "
         type="date"
       />
