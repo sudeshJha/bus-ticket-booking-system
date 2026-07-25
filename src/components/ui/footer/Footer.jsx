@@ -39,7 +39,7 @@ const content = [
 
 const Footer = () => {
   return (
-    <div className="border-t border-text-primary/30 py-16 px-20 bg-background grid grid-cols-[1fr_3fr] items-center justify-center gap-10">
+    <div className="border-t border-text-primary/30 py-16 px-20 bg-background grid grid-cols-[2fr_5fr] items-center justify-center gap-20">
       <div className="flex flex-col gap-10">
         <div className="flex  items-center gap-6">
           <Icon
