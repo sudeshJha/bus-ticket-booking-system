@@ -9,7 +9,7 @@ import Footer from "../components/ui/footer/Footer";
 
 const Home = () => {
   return (
-    <>
+    <div id="#">
       <Navbar />
       <HeroSection />
       <SearchBarSection />
@@ -17,7 +17,7 @@ const Home = () => {
       <ChooseSection />
       <AccordianSection />
       <Footer />
-    </>
+    </div>
   );
 };
 

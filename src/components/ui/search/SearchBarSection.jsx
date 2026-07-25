@@ -7,7 +7,10 @@ import { FcUnlock } from "react-icons/fc";
 
 const SearchBarSection = () => {
   return (
-    <div className="bg-surface-dark px-20 py-25 pb-30 flex flex-col  justify-center gap-15">
+    <div
+      className="bg-surface-dark px-20 py-25 pb-30 flex flex-col  justify-center gap-15"
+      id="search-bus"
+    >
       <SectionHeader heading="search your trip">
         <Icon
           icon={<BiBus />}

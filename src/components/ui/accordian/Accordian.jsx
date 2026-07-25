@@ -10,7 +10,7 @@ const Accordian = ({ faqs }) => {
   };
 
   return (
-    <div className="border-y border-border ">
+    <div className="border-y border-border" id="faq">
       {faqs.map((faq) => (
         <AccordianItem
           key={faq.id}

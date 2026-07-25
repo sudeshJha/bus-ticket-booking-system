@@ -46,7 +46,7 @@ const faqs = [
 
 const AccordianSection = () => {
   return (
-    <div className="bg-surface px-20 py-25">
+    <div className="bg-surface px-20 py-25 pb-40">
       <SectionHeader heading="Frequently Asked Questions">
         <Icon
           icon={<RiQuestionAnswerLine />}
