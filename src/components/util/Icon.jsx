@@ -2,8 +2,8 @@ import React from "react";
 
 const sizes = {
   small: "w-16 h-16 p-2",
-  medium: "w-22 h-22 p-3",
-  large: "w-36 h-36 p-4",
+  medium: "w-24 h-24 p-3",
+  large: "w-32 h-32 p-4",
   extraLarge: "w-54 h-54 p-5",
 };
 
