@@ -8,20 +8,10 @@ const sizes = {
 };
 
 const Icon = ({ icon, size, color, bgColor, custom, onClick }) => {
-  if (custom) {
-    return (
-      <div className={custom} onClick={onClick}>
-        {React.cloneElement(icon, {
-          className: custom,
-        })}
-      </div>
-    );
-  }
-
   console.log(bgColor, size);
   return (
     <div
-      className={`text-${color} ${bgColor} ${sizes[size]} max-w-fit rounded-full flex items-center justify-center`}
+      className={`text-${color} ${bgColor} ${sizes[size]}  rounded-full flex items-center justify-center ${custom}`}
       onClick={onClick}
     >
       {React.cloneElement(icon, {

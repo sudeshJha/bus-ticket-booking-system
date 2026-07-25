@@ -10,7 +10,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 
 const ChooseSection = () => {
   return (
-    <div className="bg-surface-dark px-20 py-25 -mb-15">
+    <div className="bg-surface-dark px-20 py-25">
       <SectionHeader heading="why choose nimbus">
         <Icon
           icon={<RiPlantLine />}

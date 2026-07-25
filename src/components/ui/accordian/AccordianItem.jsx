@@ -12,7 +12,7 @@ const AccordianItem = ({ faq, show, toggleShow }) => {
         <ButtonIcon
           icon={show === faq.id ? <AiFillMinusCircle /> : <CiCirclePlus />}
           onClick={() => toggleShow(faq.id)}
-          color="secondary"
+          color="text-secondary"
         />
 
         <h4

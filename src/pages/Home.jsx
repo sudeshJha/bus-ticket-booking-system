@@ -5,6 +5,7 @@ import SearchBarSection from "../components/ui/search/SearchBarSection";
 import AboutSection from "../components/ui/about/AboutSection";
 import ChooseSection from "../components/ui/choose/ChooseSection";
 import AccordianSection from "../components/ui/accordian/AccordianSection";
+import Footer from "../components/ui/footer/Footer";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <AboutSection />
       <ChooseSection />
       <AccordianSection />
+      <Footer />
     </>
   );
 };
