@@ -22,22 +22,9 @@ const AboutSection1 = () => {
       </p>
 
       <div className="mt-12 grid grid-cols-3 items-center justify-evenly bg-surface-dark rounded-3xl py-6">
-        <AboutItem1
-          icon={<MdOutlineFreeCancellation />}
-          heading="100%"
-          content="Free Cancellation"
-        />
-        <AboutItem1
-          icon={<FaRoute />}
-          heading="120+"
-          content="Routes"
-          middleChild={true}
-        />
-        <AboutItem1
-          icon={<MdOutlineFreeCancellation />}
-          heading="100%"
-          content="Free Cancellation"
-        />
+        <AboutItem1 item={1} />
+        <AboutItem1 item={2} middleChild={true} />
+        <AboutItem1 item={3} />
       </div>
     </div>
   );
