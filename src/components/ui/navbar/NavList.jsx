@@ -14,16 +14,11 @@ const NavList = () => {
   const navigate = useNavigate();
 
   const selectTab = (id) => {
-    console.log("----", id, activeTab);
     if (id === activeTab) return;
 
     setActiveTab(id);
     navigate(tabs[id].link);
   };
-
-  useEffect(() => {
-    console.log("activeTab");
-  }, []);
 
   return (
     <ul className="flex gap-16 items-center justify-center">

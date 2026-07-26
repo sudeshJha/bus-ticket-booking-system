@@ -9,7 +9,6 @@ const HeroSection = () => {
   const darkImageUrl = "src/assets/hero_bg_dark.png";
 
   const imageUrl = isDarkMode ? darkImageUrl : lightImageUrl;
-  console.log(imageUrl);
 
   return (
     <div

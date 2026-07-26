@@ -1,42 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../util/Button";
 import { HiOutlineSearch, HiOutlineSwitchHorizontal } from "react-icons/hi";
 import { useDarkMode } from "../../../context/ThemeContext";
-import { HiMapPin } from "react-icons/hi2";
+import { HiMapPin, HiOutlineMapPin } from "react-icons/hi2";
+import Icon from "../../util/Icon";
+import { LuMapPin } from "react-icons/lu";
+import SearchInput from "./SearchInput";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+
+{
+  /*
+  
+  */
+}
 
 const SearchBar = () => {
   const { isDarkMode } = useDarkMode();
+  const [source, setSource] = useState("");
+  const [destination, setDestination] = useState("");
+  const [date, setDate] = useState("");
 
-  const inputClass =
-    "px-6 py-5 rounded-xl border-3 border-border outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary/30 focus:outline-none text-text-primary";
   return (
-    <form className="flex items-center justify-around bg-background gap-10 px-20 py-20 rounded-4xl shadow-2xl/10 border-t-2 border-border">
-      <input
-        className="px-6 py-5 rounded-xl border-3 border-border outline-0 w-[25vw] bg-surface-dark focus:border-3 focus:border-text-primary/40 focus:outline-none text-text-primary"
-        placeholder="Enter origin"
-        type="search"
-      />
+    <form className="flex items-center justify-center bg-background py-5 rounded-4xl shadow-2xl/10 border border-border gap-18">
+      <div className="border-r border-border">
+        <SearchInput
+          heading="from"
+          placeholder="Leaving from"
+          desc="Enter source city"
+          type="search"
+          value={source}
+          setValue={setSource}
+        >
+          <Icon icon={<LuMapPin />} color="text-primary" size="medium" />
+        </SearchInput>
+      </div>
 
-      <Button custom="bg-text-primary text-background rounded-full p-4 dark">
+      <Button custom="bg-text-primary text-background rounded-full p-4 dark -mx-10">
         <HiOutlineSwitchHorizontal />
       </Button>
 
-      <input
-        className={inputClass}
-        placeholder="Enter destination"
-        type="search"
-      />
+      <div className="border-x border-border">
+        <SearchInput
+          heading="To"
+          placeholder="Going to"
+          desc="Enter destination city"
+          type="search"
+          value={destination}
+          setValue={setDestination}
+        >
+          <Icon icon={<LuMapPin />} color="text-primary" size="medium" />
+        </SearchInput>
+      </div>
 
-      <input
-        className={`px-6 py-5 border-3 border-border rounded-xl  bg-surface-dark  focus:border-text-primary/40 focus:outline-none text-text-primary [color-scheme:${isDarkMode ? "dark" : "light"}]`}
-        placeholder="Enter "
+      <SearchInput
+        heading="When"
+        placeholder={new Date().toLocaleDateString("en-GB")}
+        desc="Date of you journey"
         type="date"
-      />
+        value={date}
+        setValue={setDate}
+      >
+        <Icon
+          icon={<MdOutlineCalendarMonth />}
+          color="text-primary"
+          size="medium"
+        />
+      </SearchInput>
 
-      <Button size="medium" type="primary" style="ml-40">
-        <span className="flex items-center gap-2">
+      <Button size="medium" type="primary">
+        <span className="flex items-center gap-2 px-3 py-1">
           <HiOutlineSearch />
-          Search
+          Search Buses
         </span>
       </Button>
     </form>

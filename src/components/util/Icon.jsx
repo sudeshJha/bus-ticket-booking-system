@@ -8,7 +8,6 @@ const sizes = {
 };
 
 const Icon = ({ icon, size, color, bgColor, custom, onClick }) => {
-  console.log(bgColor, size);
   return (
     <div
       className={`text-${color} ${bgColor} ${sizes[size]}  rounded-full flex items-center justify-center ${custom}`}
