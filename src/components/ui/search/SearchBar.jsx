@@ -27,7 +27,7 @@ const SearchBar = () => {
 
   return (
     <form
-      className="flex items-center justify-center bg-background py-5 rounded-4xl shadow-2xl/10 border border-border gap-18"
+      className="flex items-center justify-evenly  py-5 rounded-4xl shadow-2xl/10 border border-border gap-18"
       onSubmit={handleSubmit}
     >
       <div className="border-r border-border">
@@ -75,8 +75,8 @@ const SearchBar = () => {
         />
       </SearchInput>
 
-      <Button size="medium" type="primary">
-        <span className="flex items-center gap-2 px-3 py-1">
+      <Button size="small" type="primary">
+        <span className="flex items-center gap-2 py-1">
           <HiOutlineSearch />
           Search Buses
         </span>
