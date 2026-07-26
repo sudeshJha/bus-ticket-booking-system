@@ -1,6 +1,6 @@
 import React from "react";
 import HeroHeading from "./HeroHeading";
-import Button from "../../util/Button";
+import Button from "../../../util/Button";
 
 const HeroContent = () => {
   return (

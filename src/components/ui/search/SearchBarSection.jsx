@@ -1,9 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import Icon from "../../util/Icon";
-import SectionHeader from "../SectionHeader";
 import { BiBus } from "react-icons/bi";
-import { FcUnlock } from "react-icons/fc";
+import SectionHeader from "../SectionHeader";
+import Icon from "../../util/Icon";
 
 const SearchBarSection = () => {
   return (

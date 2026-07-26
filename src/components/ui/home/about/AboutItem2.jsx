@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../util/Icon";
+import Icon from "../../../util/Icon";
 import { MdOutlineSecurity } from "react-icons/md";
 import { IoTicketOutline } from "react-icons/io5";
 import { RiCustomerServiceLine } from "react-icons/ri";

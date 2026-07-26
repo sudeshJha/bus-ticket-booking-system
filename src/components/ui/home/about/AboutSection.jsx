@@ -1,9 +1,9 @@
 import React from "react";
-import SectionHeader from "../SectionHeader";
-import Icon from "../../util/Icon";
 import { RiTeamLine } from "react-icons/ri";
 import AboutSection1 from "./AboutSection1";
 import AboutSection2 from "./AboutSection2";
+import SectionHeader from "../../SectionHeader";
+import Icon from "../../../util/Icon";
 
 const AboutSection = () => {
   return (

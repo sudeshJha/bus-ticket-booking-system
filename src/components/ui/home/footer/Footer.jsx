@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../util/Icon";
+import Icon from "../../../util/Icon";
 import { IoBus } from "react-icons/io5";
 import FooterList from "./FooterList";
 
@@ -25,7 +25,7 @@ const content = [
     links: [
       { name: "Search Bus", link: "search-bus" },
       { name: "Bookings", link: "#" },
-      { name: "Theme Switch", link: "#" },
+      { name: "Become an Operator", link: "#" },
     ],
   },
   {

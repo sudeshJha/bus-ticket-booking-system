@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../util/Icon";
+import Icon from "../../../util/Icon";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { IoWallet } from "react-icons/io5";
 import { RiSecurePaymentFill } from "react-icons/ri";

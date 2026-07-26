@@ -4,15 +4,20 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { ThemeProvider } from "./context/ThemeContext";
+import AppLayout from "./components/ui/AppLayout";
+import SearchBus from "./pages/SearchBus";
 
 const App = () => {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="home" element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route path="/" element={<AppLayout />}>
+            <Route path="home" element={<Home />} />
+            <Route path="search_bus" element={<SearchBus />} />
+          </Route>
           <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

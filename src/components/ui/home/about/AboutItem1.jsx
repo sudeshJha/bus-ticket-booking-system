@@ -1,8 +1,8 @@
 import React from "react";
-import Icon from "../../util/Icon";
 import { MdOutlineFreeCancellation } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { FaRoute } from "react-icons/fa";
+import Icon from "../../../util/Icon";
 
 const items = [
   {

@@ -1,8 +1,6 @@
 import React from "react";
-import Icon from "../../util/Icon";
-import { MdOutlineFreeCancellation } from "react-icons/md";
 import AboutItem1 from "./AboutItem1";
-import { FaRoute } from "react-icons/fa";
+import Icon from "../../../util/Icon";
 
 const AboutSection1 = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import SectionHeader from "../SectionHeader";
-import Icon from "../../util/Icon";
+import SectionHeader from "../../SectionHeader";
+import Icon from "../../../util/Icon";
 import { RiPlantLine, RiSecurePaymentFill } from "react-icons/ri";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import ChooseItem from "./ChooseItem";

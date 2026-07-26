@@ -1,6 +1,6 @@
 import React from "react";
-import SectionHeader from "../SectionHeader";
-import Icon from "../../util/Icon";
+import SectionHeader from "../../SectionHeader";
+import Icon from "../../../util/Icon";
 import { RiQuestionAnswerLine } from "react-icons/ri";
 import Accordian from "./Accordian";
 
