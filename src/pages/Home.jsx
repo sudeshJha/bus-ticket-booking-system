@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div id="#">
       <HeroSection />
-      <SearchBarSection />
+      <SearchBarSection key={1} />
       <AboutSection />
       <ChooseSection />
       <AccordianSection />

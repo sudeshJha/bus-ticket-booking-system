@@ -2,29 +2,27 @@ import React, { useState } from "react";
 import Button from "../../util/Button";
 import { HiOutlineSearch, HiOutlineSwitchHorizontal } from "react-icons/hi";
 import { useDarkMode } from "../../../context/ThemeContext";
-import { HiMapPin, HiOutlineMapPin } from "react-icons/hi2";
 import Icon from "../../util/Icon";
 import { LuMapPin } from "react-icons/lu";
 import SearchInput from "./SearchInput";
 import { MdOutlineCalendarMonth } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-
-{
-  /*
-  
-  */
-}
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const SearchBar = () => {
   const { isDarkMode } = useDarkMode();
+  const [searchParams] = useSearchParams();
+  console.log(searchParams);
   const navigate = useNavigate();
-  const [source, setSource] = useState("");
-  const [destination, setDestination] = useState("");
-  const [date, setDate] = useState("");
+  const [source, setSource] = useState(searchParams.get("from") || "");
+  const [destination, setDestination] = useState(searchParams.get("to") || "");
+  const [date, setDate] = useState(searchParams.get("date") || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/search_bus");
+    navigate({
+      pathname: "/search_bus",
+      search: `?from=${source}&to=${destination}&date=${date}`,
+    });
   };
 
   return (

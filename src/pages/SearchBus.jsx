@@ -1,7 +1,12 @@
 import React from "react";
+import SearchBar from "../components/ui/search/SearchBar";
 
 const SearchBus = () => {
-  return <div></div>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 };
 
 export default SearchBus;
