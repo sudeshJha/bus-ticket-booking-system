@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import NavItem from "./NavItem";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const tabs = [
   { id: 0, name: "Home", link: "/home" },
   { id: 1, name: "Search Bus", link: "/search_bus" },
-  { id: 2, name: "My Bookings", link: "/home" },
-  { id: 3, name: "Routes", link: "/search_bus" },
+  { id: 2, name: "My Bookings", link: "/bookings" },
+  { id: 3, name: "Routes", link: "/routes" },
 ];
 
 const NavList = () => {
   const [activeTab, setActiveTab] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const section = "/" + location.pathname.split("/")[1];
+    tabs.map((tab) => {
+      tab.link === section && setActiveTab(tab.id);
+    });
+  }, [location]);
 
   const selectTab = (id) => {
     if (id === activeTab) return;

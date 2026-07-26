@@ -1,7 +1,7 @@
 import React from "react";
 
 const SearchBus = () => {
-  return <div>SearchBus</div>;
+  return <div></div>;
 };
 
 export default SearchBus;
