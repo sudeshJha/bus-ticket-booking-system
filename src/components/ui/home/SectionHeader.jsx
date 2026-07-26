@@ -1,6 +1,4 @@
 import React from "react";
-import { HiOutlineTruck } from "react-icons/hi";
-import Icon from "../util/Icon";
 
 const SectionHeader = ({ children, heading }) => {
   return (

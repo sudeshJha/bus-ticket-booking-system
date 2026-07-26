@@ -12,7 +12,7 @@ const App = () => {
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout />}>
+          <Route element={<AppLayout />}>
             <Route path="home" element={<Home />} />
             <Route path="search_bus" element={<SearchBus />} />
           </Route>

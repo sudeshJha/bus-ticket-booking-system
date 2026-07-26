@@ -7,6 +7,7 @@ import Icon from "../../util/Icon";
 import { LuMapPin } from "react-icons/lu";
 import SearchInput from "./SearchInput";
 import { MdOutlineCalendarMonth } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 {
   /*
@@ -16,12 +17,21 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 
 const SearchBar = () => {
   const { isDarkMode } = useDarkMode();
+  const navigate = useNavigate();
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/search_bus");
+  };
+
   return (
-    <form className="flex items-center justify-center bg-background py-5 rounded-4xl shadow-2xl/10 border border-border gap-18">
+    <form
+      className="flex items-center justify-center bg-background py-5 rounded-4xl shadow-2xl/10 border border-border gap-18"
+      onSubmit={handleSubmit}
+    >
       <div className="border-r border-border">
         <SearchInput
           heading="from"

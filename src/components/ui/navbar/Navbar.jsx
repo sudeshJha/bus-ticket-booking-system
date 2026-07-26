@@ -4,6 +4,7 @@ import NavList from "./NavList";
 import NavActions from "./NavActions";
 
 const Navbar = () => {
+  console.log("-------------");
   return (
     <nav className="mx-auto px-8 py-6 flex items-center justify-between bg-background/80  w-full shadow-xl backdrop-blur-md shadow-text-primary-hover h-[12vh]  z-50 fixed top-0">
       <Logo />
