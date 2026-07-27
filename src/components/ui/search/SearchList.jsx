@@ -24,14 +24,7 @@ const buses = [
       sleeper: 14,
       seater: 20,
     },
-    amenities: [
-      "WiFi",
-      "Charging",
-      "Blanket",
-      "Water Bottle",
-      "Reading Light",
-      "Son of Odin",
-    ],
+    amenities: ["WiFi", "Charging", "Blanket", "Water Bottle"],
   },
   {
     id: 2,
