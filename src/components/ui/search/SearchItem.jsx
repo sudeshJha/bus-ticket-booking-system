@@ -3,28 +3,34 @@ import Button from "../../util/Button";
 
 const SearchItem = ({ bus }) => {
   return (
-    <div className=" bg-secondary grid grid-cols-[2fr_5fr_1.5fr]  gap-10 p-8">
-      {/* IMAGE */}
-      <div className=" bg-amber-50 flex flex-col items-center justify-center">
-        <img src="src\assets\hero_bg_dark.png" alt="dark bus" />
-      </div>
-
+    <div className=" bg-surface shadow-md hover:shadow-xl  grid grid-cols-[2fr_3fr_1fr] gap-10 p-8 rounded-2xl">
       {/* INFORMATION */}
-      <div className="flex flex-col gap-6 border-r border-border">
+      <div className="flex flex-col items-start justify-start gap-8">
         {/* NAME */}
-        <div>
-          <h2>{bus.operator}</h2>
-          <p>{bus.busName}</p>
+        <div className="flex flex-col gap-2">
+          <h2 className="text-text-primary font-bold text-3xl">
+            {bus.operator}
+          </h2>
+          <p className="text-text-secondary text-xl font-semibold tracking-wide">
+            {bus.busName}
+          </p>
         </div>
 
         {/* AMENITIES */}
-        <ul className="flex gap-6">
+        <ul className="flex gap-x-6 gap-y-1 flex-wrap">
           {bus.amenities.map((amenity, i) => (
-            <li key={i}>{amenity}</li>
+            <li
+              key={i}
+              className="text-xl text-text-primary/70 font-semibold tracking-tighter w-fit "
+            >
+              {amenity}
+            </li>
           ))}
         </ul>
+      </div>
 
-        {/* JOURNEY */}
+      {/* JOURNEY */}
+      <div className="">
         <div className="flex">
           <div className="flex flex-col items-center justify-center gap-3">
             <h2>{bus.arrival.time}</h2>

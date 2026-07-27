@@ -24,25 +24,30 @@ const buses = [
       sleeper: 14,
       seater: 20,
     },
-    amenities: ["WiFi", "Charging", "Blanket", "Water Bottle"],
-    bookedToday: 235,
-    image: "/assets/buses/royal-travels.png",
+    amenities: [
+      "WiFi",
+      "Charging",
+      "Blanket",
+      "Water Bottle",
+      "Reading Light",
+      "Son of Odin",
+    ],
   },
   {
     id: 2,
     operator: "ZingBus",
     busName: "Bharat Benz AC Sleeper",
     departure: {
-      time: "23:45",
+      time: "23:00",
       city: "Delhi",
     },
     arrival: {
-      time: "07:15",
+      time: "06:30",
       city: "Jaipur",
     },
     duration: "7h 30m",
     fare: {
-      price: 649,
+      price: 699,
     },
     seats: {
       available: 12,
@@ -50,149 +55,68 @@ const buses = [
       seater: 0,
     },
     amenities: ["WiFi", "Charging", "Blanket"],
-    bookedToday: 198,
-    image: "/assets/buses/zingbus.png",
   },
   {
     id: 3,
     operator: "IntrCity SmartBus",
-    busName: "AC Seater Sleeper",
+    busName: "AC Sleeper",
     departure: {
-      time: "21:30",
+      time: "21:15",
       city: "Delhi",
     },
     arrival: {
       time: "04:45",
       city: "Jaipur",
     },
-    duration: "7h 15m",
+    duration: "7h 30m",
     fare: {
-      price: 599,
+      price: 749,
     },
     seats: {
-      available: 16,
-      sleeper: 10,
-      seater: 24,
+      available: 10,
+      sleeper: 16,
+      seater: 0,
     },
     amenities: ["WiFi", "Charging", "Reading Light"],
-    bookedToday: 142,
-    image: "/assets/buses/intrcity.png",
   },
   {
     id: 4,
-    operator: "RSRTC",
-    busName: "Non AC Express",
+    operator: "Laxmi Holidays",
+    busName: "Mercedes Benz AC Sleeper",
+    departure: {
+      time: "20:45",
+      city: "Delhi",
+    },
+    arrival: {
+      time: "04:15",
+      city: "Jaipur",
+    },
+    duration: "7h 30m",
+    fare: {
+      price: 899,
+    },
+    seats: {
+      available: 6,
+      sleeper: 12,
+      seater: 0,
+    },
+    amenities: ["WiFi", "Charging", "Blanket", "USB Charging", "Water Bottle"],
+  },
+  {
+    id: 5,
+    operator: "Shree Ganesh Travels",
+    busName: "AC Semi Sleeper",
     departure: {
       time: "18:30",
       city: "Delhi",
     },
     arrival: {
-      time: "01:20",
-      city: "Jaipur",
-    },
-    duration: "6h 50m",
-    fare: {
-      price: 450,
-    },
-    seats: {
-      available: 22,
-      sleeper: 0,
-      seater: 40,
-    },
-    amenities: ["Charging"],
-    bookedToday: 94,
-    image: "/assets/buses/rsrtc.png",
-  },
-  {
-    id: 5,
-    operator: "FlixBus",
-    busName: "Volvo AC Sleeper",
-    departure: {
-      time: "20:15",
-      city: "Delhi",
-    },
-    arrival: {
-      time: "03:45",
-      city: "Jaipur",
-    },
-    duration: "7h 30m",
-    fare: {
-      price: 999,
-    },
-    seats: {
-      available: 5,
-      sleeper: 16,
-      seater: 0,
-    },
-    amenities: ["WiFi", "Charging", "Blanket", "Water Bottle", "Entertainment"],
-    bookedToday: 318,
-    image: "/assets/buses/flixbus.png",
-  },
-  {
-    id: 6,
-    operator: "Mahadev Travels",
-    busName: "Ashok Leyland AC Sleeper",
-    departure: {
-      time: "19:45",
-      city: "Delhi",
-    },
-    arrival: {
-      time: "02:30",
+      time: "01:15",
       city: "Jaipur",
     },
     duration: "6h 45m",
     fare: {
-      price: 699,
-    },
-    seats: {
-      available: 14,
-      sleeper: 20,
-      seater: 0,
-    },
-    amenities: ["Charging", "Blanket", "Reading Light"],
-    bookedToday: 117,
-    image: "/assets/buses/mahadev.png",
-  },
-  {
-    id: 7,
-    operator: "Laxmi Holidays",
-    busName: "Mercedes AC Sleeper",
-    departure: {
-      time: "22:00",
-      city: "Delhi",
-    },
-    arrival: {
-      time: "05:40",
-      city: "Jaipur",
-    },
-    duration: "7h 40m",
-    fare: {
-      price: 849,
-    },
-    seats: {
-      available: 9,
-      sleeper: 18,
-      seater: 0,
-    },
-    amenities: ["WiFi", "Charging", "Blanket", "USB Charging", "Water Bottle"],
-    bookedToday: 201,
-    image: "/assets/buses/laxmi.png",
-  },
-  {
-    id: 8,
-    operator: "Shree Ganesh Travels",
-    busName: "AC Semi Sleeper",
-    departure: {
-      time: "17:45",
-      city: "Delhi",
-    },
-    arrival: {
-      time: "00:15",
-      city: "Jaipur",
-    },
-    duration: "6h 30m",
-    fare: {
-      price: 549,
+      price: 599,
     },
     seats: {
       available: 18,
@@ -200,8 +124,121 @@ const buses = [
       seater: 28,
     },
     amenities: ["Charging", "Water Bottle"],
-    bookedToday: 83,
-    image: "/assets/buses/shree-ganesh.png",
+  },
+  {
+    id: 6,
+    operator: "Mahadev Travels",
+    busName: "Ashok Leyland AC Sleeper",
+    departure: {
+      time: "19:30",
+      city: "Delhi",
+    },
+    arrival: {
+      time: "02:20",
+      city: "Jaipur",
+    },
+    duration: "6h 50m",
+    fare: {
+      price: 679,
+    },
+    seats: {
+      available: 15,
+      sleeper: 20,
+      seater: 0,
+    },
+    amenities: ["Charging", "Blanket", "Reading Light"],
+  },
+  {
+    id: 7,
+    operator: "RSRTC",
+    busName: "Non AC Express",
+    departure: {
+      time: "17:45",
+      city: "Delhi",
+    },
+    arrival: {
+      time: "00:30",
+      city: "Jaipur",
+    },
+    duration: "6h 45m",
+    fare: {
+      price: 449,
+    },
+    seats: {
+      available: 24,
+      sleeper: 0,
+      seater: 40,
+    },
+    amenities: ["Charging"],
+  },
+  {
+    id: 8,
+    operator: "Orange Travels",
+    busName: "Volvo AC Sleeper",
+    departure: {
+      time: "22:45",
+      city: "Delhi",
+    },
+    arrival: {
+      time: "06:15",
+      city: "Jaipur",
+    },
+    duration: "7h 30m",
+    fare: {
+      price: 849,
+    },
+    seats: {
+      available: 9,
+      sleeper: 15,
+      seater: 0,
+    },
+    amenities: ["WiFi", "Charging", "Blanket", "Water Bottle"],
+  },
+  {
+    id: 9,
+    operator: "Vijayanand Travels",
+    busName: "Scania AC Sleeper",
+    departure: {
+      time: "21:50",
+      city: "Delhi",
+    },
+    arrival: {
+      time: "05:20",
+      city: "Jaipur",
+    },
+    duration: "7h 30m",
+    fare: {
+      price: 929,
+    },
+    seats: {
+      available: 7,
+      sleeper: 14,
+      seater: 0,
+    },
+    amenities: ["WiFi", "Charging", "Blanket", "Water Bottle", "TV"],
+  },
+  {
+    id: 10,
+    operator: "Purple Travels",
+    busName: "AC Sleeper Coach",
+    departure: {
+      time: "23:30",
+      city: "Delhi",
+    },
+    arrival: {
+      time: "07:00",
+      city: "Jaipur",
+    },
+    duration: "7h 30m",
+    fare: {
+      price: 779,
+    },
+    seats: {
+      available: 11,
+      sleeper: 18,
+      seater: 0,
+    },
+    amenities: ["WiFi", "Charging", "Blanket", "USB Charging"],
   },
 ];
 
