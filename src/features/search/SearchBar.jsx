@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Button from "../../util/Button";
+import Button from "../../components/util/Button";
 import { HiOutlineSearch, HiOutlineSwitchHorizontal } from "react-icons/hi";
-import Icon from "../../util/Icon";
+import Icon from "../../components/util/Icon";
 import { LuMapPin } from "react-icons/lu";
 import SearchInput from "./SearchInput";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useSearchQuery } from "../../../context/SearchContext";
+import { useSearchQuery } from "../../context/SearchContext";
 
 const SearchBar = () => {
   const navigate = useNavigate();

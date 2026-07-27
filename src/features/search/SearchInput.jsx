@@ -1,7 +1,7 @@
 import React from "react";
 import { LuMapPin } from "react-icons/lu";
-import Icon from "../../util/Icon";
-import { useDarkMode } from "../../../context/ThemeContext";
+import Icon from "../../components/util/Icon";
+import { useDarkMode } from "../../context/ThemeContext";
 import { format } from "date-fns";
 
 const SearchInput = ({

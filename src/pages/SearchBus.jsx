@@ -1,8 +1,8 @@
 import React from "react";
-import SearchBar from "../components/ui/search/SearchBar";
-import Sidebar from "../components/ui/search/Sidebar";
-import SearchInfo from "../components/ui/search/SearchInfo";
-import SearchList from "../components/ui/search/SearchList";
+import SearchBar from "../features/search/SearchBar";
+import Sidebar from "../features/search/Sidebar";
+import SearchInfo from "../features/search/SearchInfo";
+import SearchList from "../features/search/SearchList";
 
 const SearchBus = () => {
   return (
