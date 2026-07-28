@@ -9,13 +9,13 @@ const DeckSelection = ({ deck, handleDeck, isUpperDeck }) => {
   return (
     <div className="mx-auto flex items-center justify-center  border-2 rounded-xl border-text-secondary">
       <div
-        className={`${deckClass} ${deck === 0 ? activeDeck : nonActiveDeck} border-r-2 border-text-secondary rounded-l-xl`}
+        className={`${deckClass} ${deck === 0 ? activeDeck : nonActiveDeck} border-r-2 border-text-secondary rounded-l-xl text-xl`}
         onClick={() => handleDeck(0)}
       >
         LOWER DECK
       </div>
       <div
-        className={`${deckClass} ${isUpperDeck ? (deck === 1 ? activeDeck : nonActiveDeck) : noUpperDeck} rounded-r-xl`}
+        className={`${deckClass} ${isUpperDeck ? (deck === 1 ? activeDeck : nonActiveDeck) : noUpperDeck} rounded-r-xl text-xl`}
         onClick={() => handleDeck(1)}
       >
         UPPER DECK
