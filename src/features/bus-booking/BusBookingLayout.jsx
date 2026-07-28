@@ -6,7 +6,7 @@ import PaymentSection from "./PaymentSection";
 import BookingSummary from "./BookingSummary";
 
 const BusBookingLayout = () => {
-  const [progress, setProgress] = useState(2);
+  const [progress, setProgress] = useState(1);
 
   const nextProgress = () => {
     if (progress < 3) {
@@ -37,12 +37,14 @@ const BusBookingLayout = () => {
     <div>
       <BookingProgress progressInfo={progressInfo} />
       <div className="my-10 mx-15  grid grid-cols-[2fr_3fr] gap-15">
-        <div className="border border-border rounded-2xl h-100 bg-background">
+        <div className="p-10 border-2 border-border rounded-2xl bg-background">
           {progress === 1 && <BusLayoutSection />}
           {progress === 2 && <PassengerDetailSection />}
           {progress === 3 && <PaymentSection />}
         </div>
-        <BookingSummary />
+        <div className="p-10 border-2 border-border rounded-2xl h-100 bg-background">
+          <BookingSummary />
+        </div>
       </div>
     </div>
   );
