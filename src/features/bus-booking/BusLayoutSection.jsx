@@ -1,14 +1,35 @@
 import React, { useState } from "react";
 import BookingLegend from "./BookingLegend";
-import BusLayout from "./BusLayout";
 import DeckSelection from "./DeckSelection";
+import BusLayout from "../bus-layout/BusLayout";
+
+const data = {
+  layout: "2X3",
+  type: "seater",
+  bookedSeats: [
+    "L-23",
+    "L-57",
+    "L-38",
+    "L-44",
+    "L-31",
+    "L-19",
+    "L-11",
+    "L-10",
+    "U-3",
+    "U-7",
+    "U-1",
+  ],
+  backrowSeat: true,
+  seaterRow: 10,
+  sleeperRow: 0,
+  isUpperDeck: true,
+};
 
 const BusLayoutSection = () => {
-  const [deck, setDeck] = useState(0);
-  const isUpperDeck = false;
+  const [deck, setDeck] = useState(data.isUpperDeck);
 
   const handleDeck = (d) => {
-    if (d === 1 && !isUpperDeck) return;
+    if (d === 1 && !data.isUpperDeck) return;
     if (deck === d) return;
     setDeck(1 - deck);
   };
@@ -18,9 +39,9 @@ const BusLayoutSection = () => {
       <DeckSelection
         deck={deck}
         handleDeck={handleDeck}
-        isUpperDeck={isUpperDeck}
+        isUpperDeck={data.isUpperDeck}
       />
-      <BusLayout />
+      <BusLayout deck={deck} data={data} />
       <BookingLegend />
     </div>
   );
