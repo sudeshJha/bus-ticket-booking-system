@@ -42,7 +42,7 @@ const SeatLayout = ({
       {type === "sleeper" && deck === 0 && (
         <div className="flex flex-col items-center justify-center gap-8">
           {Array.from({ length: sleeperRow }).map((_, i) => {
-            return <SeaterRow key={i} leftCol={1} rightCol={1} />;
+            return <SleeperRow key={i} leftCol={leftCol} rightCol={rightCol} />;
           })}
         </div>
       )}

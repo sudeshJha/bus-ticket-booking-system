@@ -16,7 +16,7 @@ const BusLayout = ({ data, deck }) => {
   } = data;
 
   return (
-    <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-110">
+    <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-fit">
       <div className="mx-5 flex items-center justify-between border-b-2 border-border pb-2">
         <Icon icon={<FaPerson />} color="text-text-secondary" size="small" />
         <Icon
