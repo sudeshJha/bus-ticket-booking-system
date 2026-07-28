@@ -4,7 +4,7 @@ import DeckSelection from "./DeckSelection";
 import BusLayout from "../bus-layout/BusLayout";
 
 const data = {
-  layout: "2X3",
+  layout: "2X1",
   type: "seater",
   bookedSeats: [
     "L-23",
@@ -21,12 +21,12 @@ const data = {
   ],
   backrowSeat: true,
   seaterRow: 10,
-  sleeperRow: 0,
+  sleeperRow: 5,
   isUpperDeck: true,
 };
 
 const BusLayoutSection = () => {
-  const [deck, setDeck] = useState(data.isUpperDeck);
+  const [deck, setDeck] = useState(0);
 
   const handleDeck = (d) => {
     if (d === 1 && !data.isUpperDeck) return;

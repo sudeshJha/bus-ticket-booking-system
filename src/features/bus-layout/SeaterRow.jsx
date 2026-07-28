@@ -1,7 +1,7 @@
 import React from "react";
 import Seat from "./Seat";
 
-const SeatRow = ({ leftCol, rightCol = 0 }) => {
+const SeaterRow = ({ leftCol, rightCol = 0 }) => {
   return (
     <div className="flex items-center justify-center gap-x-20">
       <div className="flex items-center justify-center gap-5">
@@ -19,4 +19,4 @@ const SeatRow = ({ leftCol, rightCol = 0 }) => {
   );
 };
 
-export default SeatRow;
+export default SeaterRow;
