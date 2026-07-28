@@ -1,7 +1,14 @@
 import React from "react";
 import Button from "../../components/util/Button";
+import { useNavigate } from "react-router-dom";
 
 const SearchItem = ({ bus }) => {
+  const navigate = useNavigate();
+
+  const handleViewSeats = () => {
+    navigate(`/search_bus/${bus.id}`);
+  };
+
   return (
     <div className=" bg-surface shadow-md hover:shadow-xl  grid grid-cols-[1fr_2fr_1fr] gap-15 p-8 rounded-2xl">
       {/* INFORMATION */}
@@ -83,7 +90,10 @@ const SearchItem = ({ bus }) => {
         </div>
 
         <div className="w-full flex flex-col items-center gap-2">
-          <Button custom="bg-primary text-primary-anti font-bold text-xl py-3 w-full rounded-xl">
+          <Button
+            custom="bg-primary text-primary-anti font-bold text-xl py-3 w-full rounded-xl"
+            onClick={handleViewSeats}
+          >
             View Seats
           </Button>
 

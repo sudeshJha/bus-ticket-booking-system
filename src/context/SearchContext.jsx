@@ -6,7 +6,7 @@ const SearchContext = createContext();
 const initialState = {
   source: "",
   destination: "",
-  date: format(new Date(), "yyyyMMdd"),
+  date: format(new Date(), "yyyy-MM-dd"),
 };
 
 const reducer = (state, action) => {

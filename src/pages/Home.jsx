@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../components/ui/home/hero/HeroSection";
-import SearchBarSection from "../components/ui/SearchBarSection";
+import SearchBarSection from "../components/ui/home/SearchBarSection";
 import AboutSection from "../components/ui/home/about/AboutSection";
 import ChooseSection from "../components/ui/home/choose/ChooseSection";
 import AccordianSection from "../components/ui/home/accordian/AccordianSection";

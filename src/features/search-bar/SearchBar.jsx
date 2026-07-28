@@ -19,9 +19,13 @@ const SearchBar = () => {
     setSearch,
   } = useSearchQuery();
 
+  console.log(sourceCity, destinationCity, journeyDate);
+
   const [source, setSource] = useState(sourceCity);
   const [destination, setDestination] = useState(destinationCity);
   const [date, setDate] = useState(journeyDate);
+
+  console.log("-------" + date);
 
   const handleSubmit = (e) => {
     e.preventDefault();

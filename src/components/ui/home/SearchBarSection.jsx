@@ -1,8 +1,8 @@
 import React from "react";
-import SearchBar from "../../features/search/SearchBar";
+import SearchBar from "../../../features/search-bar/SearchBar";
 import { BiBus } from "react-icons/bi";
-import Icon from "../util/Icon";
-import SectionHeader from "./home/SectionHeader";
+import Icon from "../../util/Icon";
+import SectionHeader from "./SectionHeader";
 
 const SearchBarSection = () => {
   return (

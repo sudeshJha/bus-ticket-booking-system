@@ -1,17 +1,17 @@
 import React from "react";
-import SearchBar from "../features/search/SearchBar";
-import Sidebar from "../features/search/Sidebar";
-import SearchInfo from "../features/search/SearchInfo";
-import SearchList from "../features/search/SearchList";
+import SearchBar from "../features/search-bar/SearchBar";
+import Sidebar from "../features/search-bus/Sidebar";
+import SearchInfo from "../features/search-bus/SearchInfo";
+import SearchList from "../features/search-bus/SearchList";
 
 const SearchBus = () => {
   return (
     <div className="pt-15 px-15">
       <SearchBar />
 
-      <main className=" mt-15 grid grid-cols-[1fr_4fr]">
+      <main className="mt-15 grid grid-cols-[1fr_4fr] gap-10">
         <Sidebar />
-        <div className="bg-surface-dark border-2 border-border rounded-2xl">
+        <div className="bg-surface-dark border-2 border-border mb-10 rounded-2xl">
           <SearchInfo />
           <SearchList />
         </div>
