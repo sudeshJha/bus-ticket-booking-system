@@ -17,16 +17,14 @@ export const getSeats = ({
   if (leftCol === 2 && rightCol === 1 && type === "sleeper") {
     lower = getSeatsSleeper_2X1(bookedSeats, sleeperRow);
   } else if (type === "sleeper") {
-    getSleeperSeats(bookedSeats, getSleeperSeats, "L");
+    getSleeperSeats(bookedSeats, sleeperRow, "L");
   } else {
     lower = getSeaterSeats(bookedSeats, col, seaterRow, backrowSeat);
   }
 
   return {
     lower,
-    upper: isUpperDeck
-      ? getSleeperSeats(bookedSeats, getSleeperSeats, "U")
-      : [],
+    upper: isUpperDeck ? getSleeperSeats(bookedSeats, sleeperRow, "U") : [],
   };
 };
 

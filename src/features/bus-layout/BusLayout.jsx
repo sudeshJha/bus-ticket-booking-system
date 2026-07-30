@@ -26,7 +26,6 @@ const BusLayout = ({ data, deck }) => {
   });
 
   console.log(seats);
-  console.log(bookedSeats);
 
   return (
     <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-fit">
