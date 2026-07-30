@@ -15,7 +15,7 @@ export const getSeats = ({
   let lower;
 
   if (leftCol === 2 && rightCol === 1 && type === "sleeper") {
-    lower = getSeatsSleeper_2X1(bookedSeats, sleeperRow);
+    lower = getSemiSleeperSeats(bookedSeats, sleeperRow);
   } else if (type === "sleeper") {
     getSleeperSeats(bookedSeats, sleeperRow, "L");
   } else {
@@ -52,13 +52,13 @@ const getSleeperSeats = (bookedSeats, row, deck) => {
   });
 };
 
-const getSeatsSleeper_2X1 = (bookedSeats, row) => {
+const getSemiSleeperSeats = (bookedSeats, row) => {
   return Array.from({ length: row * 5 }).map((_, i) => {
     const seatNo = `L-${i + 1}`;
     return {
       seatNo: seatNo,
       status: checkBooked(bookedSeats, seatNo),
-      type: seatNo === 5 ? "sleeper" : "seater",
+      type: (i + 1) % 5 === 0 ? "sleeper" : "seater",
     };
   });
 };

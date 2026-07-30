@@ -27,6 +27,8 @@ const BusLayout = ({ data, deck }) => {
     bookedSeats,
   });
 
+  console.log(seats);
+
   return (
     <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-120">
       <div className="mx-5 flex items-center justify-between border-b-2 border-border pb-2">
@@ -38,8 +40,14 @@ const BusLayout = ({ data, deck }) => {
         />
       </div>
 
-      <div className="bg-green-100 flex items-center w-full">
-        {deck === 1 && <SleeperLayout />}
+      <div className="bg-green-100 w-full">
+        {deck === 1 && (
+          <SleeperLayout
+            layout={"1X1"}
+            seats={seats.upper}
+            sleeperRow={sleeperRow}
+          />
+        )}
         {deck === 0 && (
           <SeaterLayout
             layout={layout}

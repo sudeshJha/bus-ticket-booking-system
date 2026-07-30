@@ -6,13 +6,13 @@ const SeaterLayout = ({ layout, type, seats, seaterRow, sleeperRow }) => {
   const leftCol = Number(layout[0]);
   const rightCol = Number(layout[2]);
 
-  if (leftCol === rightCol && type === "sleeper")
+  if (type === "sleeper")
     return (
       <SleeperLayout seats={seats} layout={layout} sleeperRow={sleeperRow} />
     );
 
   return (
-    <div>
+    <div className="flex flex-col gap-y-8">
       {Array.from({ length: seaterRow }).map((_, i) => {
         const L_Start = i * (leftCol + rightCol);
         const L_End = L_Start + leftCol;
@@ -22,7 +22,7 @@ const SeaterLayout = ({ layout, type, seats, seaterRow, sleeperRow }) => {
         // console.log(L_Start, L_End, R_Start, R_End);
 
         return (
-          <div className="flex items-center" key={i}>
+          <div className="flex items-center justify-between" key={i}>
             <SeatRow seats={seats.slice(L_Start, L_End)} />
             <SeatRow seats={seats.slice(R_Start, R_End)} />
           </div>

@@ -1,7 +1,32 @@
 import React from "react";
+import Sleeper_2X1_Layout from "./SemiSleeperLayout";
+import SeatRow from "./SeatRow";
 
-const SleeperLayout = () => {
-  return <div>SleeperLayout</div>;
+const SleeperLayout = ({ layout, seats, sleeperRow }) => {
+  const leftCol = Number(layout[0]);
+  const rightCol = Number(layout[2]);
+
+  if (leftCol != rightCol)
+    return (
+      <Sleeper_2X1_Layout
+        layout={layout}
+        seats={seats}
+        sleeperRow={sleeperRow}
+      />
+    );
+
+  return (
+    <div className="flex flex-col gap-8">
+      {Array.from({ length: sleeperRow }).map((_, i) => {
+        return (
+          <div className="flex items-center justify-between w-full" key={i}>
+            <SeatRow seats={seats.slice(2 * i, 2 * i + 1)} />
+            <SeatRow seats={seats.slice(2 * i + 1, 2 * i + 2)} />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default SleeperLayout;
