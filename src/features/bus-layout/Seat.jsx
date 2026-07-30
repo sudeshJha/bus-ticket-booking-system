@@ -3,19 +3,19 @@ import React from "react";
 const legends = [
   {
     id: 1,
-    name: "Available",
+    name: "available",
     textColor: "text-text-primary",
     bgColor: "bg-text-secondary/20",
   },
   {
     id: 2,
-    name: "Selected",
+    name: "selected",
     textColor: "text-success",
     bgColor: "bg-success/40",
   },
   {
     id: 3,
-    name: "Booked",
+    name: "booked",
     textColor: "text-text-secondary",
     bgColor: "bg-text-secondary/20",
   },
@@ -25,15 +25,15 @@ const Seat = ({ seat, deck = 0 }) => {
   let legend;
   const { seatNo, status, type } = seat;
 
-  if (status === "Available") legend = legends[0];
-  if (status === "Selected") legend = legends[1];
-  if (status === "Booked") legend = legends[2];
+  if (status === "available") legend = legends[0];
+  if (status === "selected") legend = legends[1];
+  if (status === "booked") legend = legends[2];
 
   return (
     <div
-      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"} rounded-md border-3 ${legend.textColor} ${legend.bgColor}`}
+      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"}  ${legend.textColor} ${legend.bgColor} rounded-md border-3 flex items-center justify-center cursor-pointer`}
     >
-      {seatNo}
+      <span className="text-[1.2rem]">{seatNo}</span>
     </div>
   );
 };

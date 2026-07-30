@@ -42,7 +42,7 @@ const getSeaterSeats = (bookedSeats, col, row, backrowSeat) => {
 };
 
 const getSleeperSeats = (bookedSeats, row, deck) => {
-  const arr = Array.from({ length: row * 2 }).map((_, i) => {
+  return Array.from({ length: row * 2 }).map((_, i) => {
     const seatNo = `${deck}-${i + 1}`;
     return {
       seatNo: seatNo,
@@ -50,10 +50,6 @@ const getSleeperSeats = (bookedSeats, row, deck) => {
       type: "sleeper",
     };
   });
-
-  console.log(arr);
-
-  return arr;
 };
 
 const getSeatsSleeper_2X1 = (bookedSeats, row) => {
