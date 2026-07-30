@@ -21,8 +21,9 @@ const legends = [
   },
 ];
 
-const Seat = ({ status = "Available", type = "seater", deck = 0 }) => {
+const Seat = ({ seat, deck = 0 }) => {
   let legend;
+  const { seatNo, status, type } = seat;
 
   if (status === "Available") legend = legends[0];
   if (status === "Selected") legend = legends[1];
@@ -30,8 +31,10 @@ const Seat = ({ status = "Available", type = "seater", deck = 0 }) => {
 
   return (
     <div
-      className={`${type === "seater" ? "h-10 w-10" : "w-20 h-32"} rounded-md border-3 ${legend.textColor} ${legend.bgColor}`}
-    ></div>
+      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"} rounded-md border-3 ${legend.textColor} ${legend.bgColor}`}
+    >
+      {seatNo}
+    </div>
   );
 };
 
