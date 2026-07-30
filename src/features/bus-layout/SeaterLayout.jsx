@@ -2,13 +2,19 @@ import React from "react";
 import SleeperLayout from "./SleeperLayout";
 import SeatRow from "./SeatRow";
 
-const SeaterLayout = ({ layout, type, seats, seaterRow, sleeperRow }) => {
+const SeaterLayout = ({
+  layout,
+  type,
+  seats: { lower, upper },
+  seaterRow,
+  sleeperRow,
+}) => {
   const leftCol = Number(layout[0]);
   const rightCol = Number(layout[2]);
 
   if (type === "sleeper")
     return (
-      <SleeperLayout seats={seats} layout={layout} sleeperRow={sleeperRow} />
+      <SleeperLayout seats={upper} layout={layout} sleeperRow={sleeperRow} />
     );
 
   return (
@@ -23,8 +29,8 @@ const SeaterLayout = ({ layout, type, seats, seaterRow, sleeperRow }) => {
 
         return (
           <div className="flex items-center justify-between" key={i}>
-            <SeatRow seats={seats.slice(L_Start, L_End)} />
-            <SeatRow seats={seats.slice(R_Start, R_End)} />
+            <SeatRow seats={lower.slice(L_Start, L_End)} />
+            <SeatRow seats={lower.slice(R_Start, R_End)} />
           </div>
         );
       })}

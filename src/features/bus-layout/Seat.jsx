@@ -31,9 +31,9 @@ const Seat = ({ seat, deck = 0 }) => {
 
   return (
     <div
-      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-32"}  ${legend.textColor} ${legend.bgColor} rounded-md border-3 flex items-center justify-center ${status === "booked" ? "cursor-no-drop" : "cursor-pointer"}`}
+      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"}  ${legend.textColor} ${legend.bgColor} rounded-md border-2 flex items-center justify-center ${status === "booked" ? "cursor-no-drop" : "cursor-pointer"}`}
     >
-      <span className="text-[1.2rem]">{seatNo}</span>
+      <span className="text-[1rem]">{seatNo}</span>
     </div>
   );
 };

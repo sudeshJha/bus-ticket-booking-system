@@ -40,7 +40,7 @@ const BusLayout = ({ data, deck }) => {
         />
       </div>
 
-      <div className="bg-green-100 w-full">
+      <div className="pt-10 px-2 py-2 w-full">
         {deck === 1 && (
           <SleeperLayout
             layout={"1X1"}
@@ -52,7 +52,7 @@ const BusLayout = ({ data, deck }) => {
           <SeaterLayout
             layout={layout}
             type={type}
-            seats={seats.lower}
+            seats={seats}
             seaterRow={seaterRow}
             sleeperRow={sleeperRow}
           />
