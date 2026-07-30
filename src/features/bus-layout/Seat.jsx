@@ -23,23 +23,35 @@ const legends = [
 ];
 
 const Seat = ({ seat, deck = 0 }) => {
-  let legend;
   const { seatNo, status, type } = seat;
-
-  if (status === "available") legend = legends[0];
-  if (status === "selected") legend = legends[1];
-  if (status === "booked") legend = legends[2];
 
   const { addSeat, removeSelectedSeat } = useSeatSelection();
 
   const handleClick = () => {
-    if()
+    switch (status) {
+      case "booking":
+        return;
+
+      case "selected":
+        removeSelectedSeat(seatNo);
+        break;
+
+      case "available":
+        addSeat(seatNo);
+        break;
+    }
   };
+
+  let legend;
+  if (status === "available") legend = legends[0];
+  if (status === "selected") legend = legends[1];
+  if (status === "booked") legend = legends[2];
 
   return (
     <div
       className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"}  ${legend.textColor} ${legend.bgColor} rounded-md border-2 flex items-center justify-center ${status === "booked" ? "cursor-no-drop" : "cursor-pointer"}`}
- onClick={handleClick}   >
+      onClick={handleClick}
+    >
       <span className="text-[1rem]">{seatNo}</span>
     </div>
   );

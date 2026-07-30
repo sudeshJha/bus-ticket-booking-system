@@ -5,6 +5,7 @@ import Icon from "../../components/util/Icon";
 import { getSeats } from "./seat_api";
 import SeaterLayout from "./SeaterLayout";
 import SleeperLayout from "./SleeperLayout";
+import { useSeatSelection } from "./SeatSelectionContext";
 
 const BusLayout = ({ data, deck }) => {
   const {
@@ -17,6 +18,7 @@ const BusLayout = ({ data, deck }) => {
     isUpperDeck,
   } = data;
 
+  const { selectedSeats } = useSeatSelection();
   const seats = getSeats({
     layout,
     type,
@@ -25,9 +27,10 @@ const BusLayout = ({ data, deck }) => {
     sleeperRow,
     backrowSeat,
     bookedSeats,
+    selectedSeats,
   });
 
-  console.log(seats);
+  console.log(selectedSeats);
 
   return (
     <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-120">
