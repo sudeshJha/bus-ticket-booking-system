@@ -5,7 +5,7 @@ import Icon from "../../components/util/Icon";
 import { getSeats } from "./seat_api";
 import SeaterLayout from "./SeaterLayout";
 import SleeperLayout from "./SleeperLayout";
-import { useSeatSelection } from "./SeatSelectionContext";
+import { useSeatSelection } from "../../context/SeatSelectionContext";
 
 const BusLayout = ({ data, deck }) => {
   const {

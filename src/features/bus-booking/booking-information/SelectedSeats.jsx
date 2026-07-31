@@ -1,5 +1,5 @@
 import React from "react";
-import { useSeatSelection } from "../../bus-layout/SeatSelectionContext";
+import { useSeatSelection } from "../../../context/SeatSelectionContext";
 
 const SelectedSeats = () => {
   const { selectedSeats } = useSeatSelection();

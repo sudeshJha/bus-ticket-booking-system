@@ -1,5 +1,5 @@
 import React from "react";
-import { useSeatSelection } from "./SeatSelectionContext";
+import { useSeatSelection } from "../../context/SeatSelectionContext";
 
 const legends = [
   {

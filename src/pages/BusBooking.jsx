@@ -1,12 +1,16 @@
 import React from "react";
 import BusBookingLayout from "../features/bus-booking/BusBookingLayout";
-import { SeatSelectionProvider } from "../features/bus-layout/SeatSelectionContext";
+import { SeatSelectionProvider } from "../context/SeatSelectionContext";
+import BookingProgress from "../features/bus-booking/BookingProgress";
+import { BookingProgressProvider } from "../context/BookingProgressContext";
 
 const BusBooking = () => {
   return (
-    <SeatSelectionProvider>
-      <BusBookingLayout />
-    </SeatSelectionProvider>
+    <BookingProgressProvider>
+      <SeatSelectionProvider>
+        <BusBookingLayout />
+      </SeatSelectionProvider>
+    </BookingProgressProvider>
   );
 };
 

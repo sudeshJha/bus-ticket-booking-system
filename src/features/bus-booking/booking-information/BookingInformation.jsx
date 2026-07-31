@@ -5,7 +5,7 @@ import BookingRoute from "./BookingRoute";
 import BookingBusInfo from "./BookingBusInfo";
 import BookingBusImages from "./BookingBusImages";
 
-const BookingInformation = ({ children }) => {
+const BookingInformation = () => {
   const [active, setActive] = useState(0);
 
   const selectTab = (id) => {
