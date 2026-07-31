@@ -1,19 +1,9 @@
 import React from "react";
-import Sleeper_2X1_Layout from "./SemiSleeperLayout";
 import SeatRow from "./SeatRow";
 
 const SleeperLayout = ({ layout, seats, sleeperRow }) => {
   const leftCol = Number(layout[0]);
   const rightCol = Number(layout[2]);
-
-  if (leftCol != rightCol)
-    return (
-      <Sleeper_2X1_Layout
-        layout={layout}
-        seats={seats}
-        sleeperRow={sleeperRow}
-      />
-    );
 
   return (
     <div className="flex flex-col gap-8">

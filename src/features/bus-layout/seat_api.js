@@ -18,7 +18,7 @@ export const getSeats = ({
   if (leftCol === 2 && rightCol === 1 && type === "sleeper") {
     lower = getSemiSleeperSeats(selectedSeats, bookedSeats, sleeperRow);
   } else if (type === "sleeper") {
-    getSleeperSeats(selectedSeats, bookedSeats, sleeperRow, "L");
+    lower = getSleeperSeats(selectedSeats, bookedSeats, sleeperRow, "L");
   } else {
     lower = getSeaterSeats(
       selectedSeats,

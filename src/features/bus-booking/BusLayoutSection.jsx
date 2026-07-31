@@ -4,14 +4,14 @@ import DeckSelection from "./DeckSelection";
 import BusLayout from "../bus-layout/BusLayout";
 
 const data = {
-  layout: "2X3",
-  type: "seater",
+  layout: "2X1",
+  type: "sleeper",
   bookedSeats: [
     "L-23",
-    // "L-57",
-    // "L-38",
-    // "L-44",
-    // "L-31",
+    "L-57",
+    "L-38",
+    "L-44",
+    "L-31",
     "L-19",
     "L-11",
     "L-10",

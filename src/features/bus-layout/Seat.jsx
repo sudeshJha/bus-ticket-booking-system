@@ -5,20 +5,18 @@ const legends = [
   {
     id: 1,
     name: "available",
-    textColor: "text-text-primary",
-    bgColor: "bg-text-secondary/20",
+    style: "text-text-primary bg-surface cursor-pointer hover:scale-110",
   },
   {
     id: 2,
     name: "selected",
-    textColor: "text-success",
-    bgColor: "bg-success/40",
+    style: "text-success bg-success/40 cursor-pointer",
   },
   {
     id: 3,
     name: "booked",
-    textColor: "text-text-secondary",
-    bgColor: "bg-text-secondary/20",
+    style:
+      "text-text-secondary opacity-60 bg-text-secondary/30 border-text-secondary bg-surface cursor-no-drop",
   },
 ];
 
@@ -49,10 +47,10 @@ const Seat = ({ seat, deck = 0 }) => {
 
   return (
     <div
-      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"}  ${legend.textColor} ${legend.bgColor} rounded-md border-2 flex items-center justify-center ${status === "booked" ? "cursor-no-drop" : "cursor-pointer"}`}
+      className={`${type === "seater" ? "h-12 w-12" : "w-20 h-36"}  ${legend.style} rounded-md border-2 flex items-center justify-center text-[1rem]`}
       onClick={handleClick}
     >
-      <span className="text-[1rem]">{seatNo}</span>
+      <span className="text-inherit">{seatNo}</span>
     </div>
   );
 };

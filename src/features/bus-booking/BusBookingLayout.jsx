@@ -3,7 +3,8 @@ import BookingProgress from "./BookingProgress";
 import BusLayoutSection from "./BusLayoutSection";
 import PassengerDetailSection from "./PassengerDetailSection";
 import PaymentSection from "./PaymentSection";
-import BookingSummary from "./BookingSummary";
+import BookingInformation from "./booking-information/BookingInformation";
+import Button from "../../components/util/Button";
 
 const BusBookingLayout = () => {
   const [progress, setProgress] = useState(1);
@@ -42,8 +43,17 @@ const BusBookingLayout = () => {
           {progress === 2 && <PassengerDetailSection />}
           {progress === 3 && <PaymentSection />}
         </div>
-        <div className="p-10 border-2 border-border rounded-2xl h-100 bg-background">
-          <BookingSummary />
+
+        <div>
+          <BookingInformation />
+          <Button
+            className=""
+            onClick={nextProgress}
+            custom="bg-primary text-primary-anti w-full mt-6 py-4 mx-auto rounded-xl font-semibold hover:bg-primary-hover hover:-translate-y-1"
+          >
+            {progress === 1 && "Select Seats"}
+            {progress === 2 && "Continue to Payment"}
+          </Button>
         </div>
       </div>
     </div>

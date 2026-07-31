@@ -10,11 +10,9 @@ const SemiSleeperLayout = ({ layout, seats, sleeperRow }) => {
       {Array.from({ length: sleeperRow }).map((_, i) => {
         const s = 5 * i;
 
-        // console.log(L_Start, L_End, R_Start, R_End);
-
         return (
           <div className="flex items-center justify-between" key={i}>
-            <div className="flex flex-col items-center justify-center gap-8">
+            <div className="flex flex-col gap-10">
               <SeatRow seats={seats.slice(s, s + 2)} />
               <SeatRow seats={seats.slice(s + 2, s + 4)} />
             </div>
