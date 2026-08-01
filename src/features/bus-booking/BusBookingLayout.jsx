@@ -6,12 +6,18 @@ import PaymentSection from "./PaymentSection";
 import BookingInformation from "./booking-information/BookingInformation";
 import Button from "../../components/util/Button";
 import { useBookingProgress } from "../../context/BookingProgressContext";
+import BackButton from "../../components/util/BackButton";
 
 const BusBookingLayout = () => {
   const { progress } = useBookingProgress();
   return (
     <div>
-      <BookingProgress />
+      <div className="relative">
+        <div className="absolute top-15 left-20">
+          <BackButton />
+        </div>
+        <BookingProgress />
+      </div>
       <div className="mt-10 mx-15  grid grid-cols-[2fr_3fr] gap-15">
         <div className="p-10 border-2 border-border rounded-2xl bg-background">
           {progress === 1 && <BusLayoutSection />}
