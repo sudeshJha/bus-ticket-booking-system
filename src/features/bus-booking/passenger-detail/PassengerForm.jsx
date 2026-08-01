@@ -3,18 +3,41 @@ import InputField from "./InputField";
 import Button from "../../../components/util/Button";
 import { MdOutlineEdit } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
+import { useBusBooking } from "../../../context/BusBookingContext";
 
-const PassengerForm = () => {
+const PassengerForm = ({ passengerNo: id }) => {
+  const { addPassenger, passengers, updatePassenger } = useBusBooking();
   const [isAdded, setIsAdded] = useState(false);
-  const [name, setName] = useState("");
-  const [age, setAge] = useState();
-  const [gender, setGender] = useState("Male");
+
+  const passenger = passengers[id];
+
+  const [name, setName] = useState(passenger?.name || "");
+  const [age, setAge] = useState(passenger?.age || NaN);
+  const [gender, setGender] = useState(passenger?.gender || "Male");
+
+  const handleUpdate = (passenger) => {
+    updatePassenger(passenger);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !age || !gender) return;
+
+    if (isAdded) return handleUpdate({ id, name, age, gender });
+
     setIsAdded(true);
+    addPassenger({ id, name, age, gender });
   };
+
+  useEffect(() => {
+    const passenger = passengers[id];
+    if (!passenger) return;
+
+    setName(passenger.name);
+    setAge(passenger.age);
+    setGender(passenger.gender);
+    console.log("------------------");
+  }, [passengers[id]]);
 
   return (
     <form className="border border-border px-8 py-6 rounded-xl">

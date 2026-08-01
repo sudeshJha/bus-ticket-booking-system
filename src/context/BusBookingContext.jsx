@@ -1,34 +1,33 @@
 import React, { createContext, useContext } from "react";
-import { useBookingProgress } from "./BookingProgressContext";
-import { usePassengerDetail } from "./PassengerDetailContext";
-import { useSeatSelection } from "./SeatSelectionContext";
-
-const BusBookingContext = createContext();
+import {
+  BookingProgressProvider,
+  useBookingProgress,
+} from "./BookingProgressContext";
+import {
+  PassengerDetailProvider,
+  usePassengerDetail,
+} from "./PassengerDetailContext";
+import {
+  SeatSelectionProvider,
+  useSeatSelection,
+} from "./SeatSelectionContext";
 
 const BusBookingProvider = ({ children }) => {
-  const bookingProgressContext = useBookingProgress();
-  const passengerDetailContext = usePassengerDetail();
-  const seatSelectionContext = useSeatSelection();
-
   return (
-    <BusBookingContext.Provider
-      value={{
-        ...bookingProgressContext,
-        ...passengerDetailContext,
-        ...seatSelectionContext,
-      }}
-    >
-      {children}
-    </BusBookingContext.Provider>
+    <BookingProgressProvider>
+      <SeatSelectionProvider>
+        <PassengerDetailProvider>{children}</PassengerDetailProvider>
+      </SeatSelectionProvider>
+    </BookingProgressProvider>
   );
 };
 
 const useBusBooking = () => {
-  const context = useContext(BusBookingContext);
-
-  if (!context)
-    throw new Error(
-      "Bus Booking context was used outside of BusBookingProvider",
-    );
-  return context;
+  return {
+    ...useBookingProgress(),
+    ...useSeatSelection(),
+    ...usePassengerDetail(),
+  };
 };
+
+export { useBusBooking, BusBookingProvider };

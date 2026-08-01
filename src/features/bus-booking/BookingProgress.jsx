@@ -1,6 +1,6 @@
 import React from "react";
 import ProgressStep from "./ProgressStep";
-import { useBookingProgress } from "../../context/BookingProgressContext";
+import { useBusBooking } from "../../context/BusBookingContext";
 
 const steps = [
   { id: 1, name: "Select Seats" },
@@ -9,7 +9,7 @@ const steps = [
 ];
 
 const BookingProgress = ({ progressInfo }) => {
-  const { progress, jumpProgress } = useBookingProgress();
+  const { progress, jumpProgress } = useBusBooking();
 
   return (
     <div className="mx-auto w-200 py-10">

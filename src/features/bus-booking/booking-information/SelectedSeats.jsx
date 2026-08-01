@@ -3,7 +3,6 @@ import { useSeatSelection } from "../../../context/SeatSelectionContext";
 
 const SelectedSeats = () => {
   const { selectedSeats } = useSeatSelection();
-  console.log(selectedSeats);
 
   if (selectedSeats?.length === 0) return;
   return (

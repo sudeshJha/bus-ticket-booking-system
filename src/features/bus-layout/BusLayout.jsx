@@ -6,6 +6,7 @@ import { getSeats } from "./seat_api";
 import SeaterLayout from "./SeaterLayout";
 import SleeperLayout from "./SleeperLayout";
 import { useSeatSelection } from "../../context/SeatSelectionContext";
+import { useBusBooking } from "../../context/BusBookingContext";
 
 const BusLayout = ({ data, deck }) => {
   const {
@@ -18,7 +19,7 @@ const BusLayout = ({ data, deck }) => {
     isUpperDeck,
   } = data;
 
-  const { selectedSeats } = useSeatSelection();
+  const { selectedSeats } = useBusBooking();
   const seats = getSeats({
     layout,
     type,

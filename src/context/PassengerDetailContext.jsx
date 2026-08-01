@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-const PassengerDetailContext = useContext();
+const PassengerDetailContext = createContext();
 
 const PassengerDetailProvider = ({ children }) => {
   const [passengers, setPassengers] = useState([]);
@@ -13,9 +13,15 @@ const PassengerDetailProvider = ({ children }) => {
     setPassengers([]);
   };
 
+  const updatePassenger = (passenger) => {
+    setPassengers([
+      ...passengers.map((ps) => (ps.id === passenger.id ? passenger : ps)),
+    ]);
+  };
+
   return (
     <PassengerDetailContext.Provider
-      value={{ passengers, addPassenger, removeAllPassengers }}
+      value={{ passengers, addPassenger, removeAllPassengers, updatePassenger }}
     >
       {children}
     </PassengerDetailContext.Provider>
@@ -29,6 +35,7 @@ const usePassengerDetail = () => {
     throw new Error(
       "Passenger Detail context was used outside of PassengerDetailProvider",
     );
+  return context;
 };
 
 export { usePassengerDetail, PassengerDetailProvider };

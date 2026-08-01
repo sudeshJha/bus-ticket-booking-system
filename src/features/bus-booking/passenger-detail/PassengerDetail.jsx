@@ -13,7 +13,7 @@ const PassengerDetail = ({ seat, passengerNo }) => {
         </h3>
       </div>
 
-      <PassengerForm />
+      <PassengerForm passengerNo={passengerNo} />
     </div>
   );
 };

@@ -1,9 +1,11 @@
 import React from "react";
+import { useBusBooking } from "../../context/BusBookingContext";
 
 const MAX_PROGRESS = 3;
 
 const ProgressStep = ({ step, progress, jumpProgress }) => {
   let stepStatus;
+  const { removeAllPassengers } = useBusBooking();
 
   if (step.id === progress) {
     stepStatus = "border-success bg-primary text-primary-anti";
@@ -16,6 +18,9 @@ const ProgressStep = ({ step, progress, jumpProgress }) => {
 
   const handleClick = () => {
     jumpProgress(step.id);
+    if (step.id === 1) {
+      removeAllPassengers();
+    }
   };
 
   return (

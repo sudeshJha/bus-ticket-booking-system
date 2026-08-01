@@ -32,6 +32,7 @@ const InputField = ({ type, label, options, value, setValue }) => {
         <input
           name={label}
           type={type}
+          value={value}
           onChange={(e) => {
             setValue(e.target.value);
           }}

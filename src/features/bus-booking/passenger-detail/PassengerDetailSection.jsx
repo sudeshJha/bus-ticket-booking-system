@@ -3,9 +3,10 @@ import { useSeatSelection } from "../../../context/SeatSelectionContext";
 import { FaCirclePlus } from "react-icons/fa6";
 import Icon from "../../../components/util/Icon";
 import PassengerDetail from "./PassengerDetail";
+import { useBusBooking } from "../../../context/BusBookingContext";
 
 const PassengerDetailSection = () => {
-  const { selectedSeats } = useSeatSelection();
+  const { selectedSeats } = useBusBooking();
   return (
     <div>
       <h3 className="text-primary text-2xl tracking-wide flex items-center justify-start py-1 gap-4 font-semibold">

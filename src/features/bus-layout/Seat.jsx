@@ -1,5 +1,6 @@
 import React from "react";
 import { useSeatSelection } from "../../context/SeatSelectionContext";
+import { useBusBooking } from "../../context/BusBookingContext";
 
 const legends = [
   {
@@ -23,7 +24,7 @@ const legends = [
 const Seat = ({ seat, deck = 0 }) => {
   const { seatNo, status, type } = seat;
 
-  const { addSeat, removeSelectedSeat } = useSeatSelection();
+  const { addSeat, removeSelectedSeat } = useBusBooking();
 
   const handleClick = () => {
     switch (status) {

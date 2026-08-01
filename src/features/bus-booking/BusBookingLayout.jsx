@@ -7,9 +7,12 @@ import BookingInformation from "./booking-information/BookingInformation";
 import Button from "../../components/util/Button";
 import { useBookingProgress } from "../../context/BookingProgressContext";
 import BackButton from "../../components/util/BackButton";
+import { useBusBooking } from "../../context/BusBookingContext";
 
 const BusBookingLayout = () => {
-  const { progress } = useBookingProgress();
+  const { progress, passengers } = useBusBooking();
+  console.log(passengers);
+
   return (
     <div>
       <div className="relative">
