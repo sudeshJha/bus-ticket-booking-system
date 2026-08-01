@@ -5,6 +5,7 @@ const SelectedSeats = () => {
   const { selectedSeats } = useSeatSelection();
 
   if (selectedSeats?.length === 0) return;
+
   return (
     <div className="border border-border w-full p-8 rounded-2xl bg-surface">
       <h3 className="font-semibold text-text-primary">Selected Seats</h3>

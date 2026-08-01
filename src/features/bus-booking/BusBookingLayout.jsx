@@ -14,7 +14,7 @@ const BusBookingLayout = () => {
   console.log(passengers);
 
   return (
-    <div>
+    <div className="bg-surface">
       <div className="relative">
         <div className="absolute top-15 left-20">
           <BackButton />
