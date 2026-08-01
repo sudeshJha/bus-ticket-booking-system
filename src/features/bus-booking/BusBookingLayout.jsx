@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BookingProgress from "./BookingProgress";
 import BusLayoutSection from "./BusLayoutSection";
-import PassengerDetailSection from "./PassengerDetailSection";
+import PassengerDetailSection from "./passenger-detail/PassengerDetailSection";
 import PaymentSection from "./PaymentSection";
 import BookingInformation from "./booking-information/BookingInformation";
 import Button from "../../components/util/Button";
