@@ -4,15 +4,16 @@ import SelectedSeats from "./SelectedSeats";
 import Button from "../../../components/util/Button";
 import { useBookingProgress } from "../../../context/BookingProgressContext";
 import { useSeatSelection } from "../../../context/SeatSelectionContext";
+import { useBusBooking } from "../../../context/BusBookingContext";
 
 const BookingSummary = () => {
   const { progress, nextProgress } = useBookingProgress();
-  const { selectedSeats } = useSeatSelection();
+  const { selectedSeats, passengers } = useBusBooking();
 
   const handleClick = () => {
-    if (progress === 1 && selectedSeats.length === 0) {
-      return;
-    }
+    if (progress === 1 && selectedSeats.length === 0) return;
+
+    if (progress === 2 && passengers.length !== selectedSeats.length) return;
 
     nextProgress();
   };

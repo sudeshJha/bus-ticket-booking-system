@@ -23,21 +23,11 @@ const PassengerForm = ({ passengerNo: id }) => {
     e.preventDefault();
     if (!name || !age || !gender) return;
 
-    if (isAdded) return handleUpdate({ id, name, age, gender });
+    if (isAdded || passenger) return handleUpdate({ id, name, age, gender });
 
     setIsAdded(true);
     addPassenger({ id, name, age, gender });
   };
-
-  useEffect(() => {
-    const passenger = passengers[id];
-    if (!passenger) return;
-
-    setName(passenger.name);
-    setAge(passenger.age);
-    setGender(passenger.gender);
-    console.log("------------------");
-  }, [passengers[id]]);
 
   return (
     <form className="border border-border px-8 py-6 rounded-xl">
@@ -57,7 +47,7 @@ const PassengerForm = ({ passengerNo: id }) => {
         onClick={handleSubmit}
       >
         <span className="flex mx-auto items-center w-fit  text-primary-anti gap-2">
-          {isAdded ? (
+          {passenger ? (
             <>
               <MdOutlineEdit />
               <p>Modify Passenger</p>
