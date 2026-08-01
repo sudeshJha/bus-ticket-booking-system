@@ -25,7 +25,7 @@ html {
 }
 
 * {
-  transition: ease-out 0.2s;
+  transition: all 0.3s;
 }
 
 body {

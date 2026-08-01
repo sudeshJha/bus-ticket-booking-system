@@ -36,6 +36,10 @@ function BookingProgressProvider({ children }) {
 
 const useBookingProgress = () => {
   const context = useContext(BookingProgressContext);
+  if (!context)
+    throw new Error(
+      "Booking Progress context was used outside of BookingProgressProvider",
+    );
   return context;
 };
 

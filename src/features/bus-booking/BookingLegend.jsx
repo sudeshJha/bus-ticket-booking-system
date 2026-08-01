@@ -23,7 +23,7 @@ const legends = [
 
 const BookingLegend = () => {
   return (
-    <div className="flex items-start justify-evenly gap-10">
+    <div className="flex items-start justify-evenly gap-10 mt-10">
       {legends.map((legend) => {
         return (
           <div

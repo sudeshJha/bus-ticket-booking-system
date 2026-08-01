@@ -35,7 +35,7 @@ const BusLayoutSection = () => {
   };
 
   return (
-    <div className="flex flex-col gap-20 py-15">
+    <div className="flex flex-col gap-15 py-10">
       <DeckSelection
         deck={deck}
         handleDeck={handleDeck}
