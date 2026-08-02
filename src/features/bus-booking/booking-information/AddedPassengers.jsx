@@ -14,14 +14,14 @@ const AddedPassengers = () => {
           return (
             <div
               key={i}
-              className="grid grid-cols-[2fr_1fr_1fr_1fr] items-center rounded-xl border border-border px-6 py-5 text-lg"
+              className="grid grid-cols-[2fr_1fr_1fr_1fr] items-center rounded-xl  border border-border px-6 py-5 text-xl"
             >
-              <p className="font-semibold text-text-primary text-xl tracking-wide uppercase">
+              <p className="font-bold text-text-primary text-xl tracking-wide uppercase">
                 {passenger.name}
               </p>
 
               <p className="text-text-secondary">
-                <span className="font-medium text-text-primary">Seat :</span>{" "}
+                <span className="text-text-primary">Seat :</span>{" "}
                 {selectedSeats[i]}
               </p>
 
