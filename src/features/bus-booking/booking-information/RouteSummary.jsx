@@ -12,27 +12,25 @@ const RouteSummary = ({ totalDistance, totalHaltTime, estimatedTime }) => {
     <div className="border border-border rounded-xl flex items-center justify-between px-8">
       <div className="flex items-center justify-center">
         <div>
-          <Icon icon={<GiPathDistance />} color="text-primary" size="large" />
+          <Icon icon={<GiPathDistance />} color="text-error" size="large" />
         </div>
         <div className="flex flex-col">
           <span className="text-xl font-bold text-text-secondary">
             Total Distance
           </span>
-          <span className="text-3xl font-bold text-primary">
-            {totalDistance}
-          </span>
+          <span className="text-3xl font-bold text-error">{totalDistance}</span>
         </div>
       </div>
 
       <div className="flex items-center justify-center">
         <div>
-          <Icon icon={<PiCookingPot />} color="text-primary" size="large" />
+          <Icon icon={<PiCookingPot />} color="text-success" size="large" />
         </div>
         <div className="flex flex-col">
           <span className="text-xl font-bold text-text-secondary">
             Total Halt Time
           </span>
-          <span className="text-3xl font-bold text-primary">
+          <span className="text-3xl font-bold text-success">
             <span>
               {totalHaltTime / 60 !== 0
                 ? `${Math.floor(totalHaltTime / 60)}h `
@@ -50,13 +48,13 @@ const RouteSummary = ({ totalDistance, totalHaltTime, estimatedTime }) => {
 
       <div className="flex items-center justify-center">
         <div>
-          <Icon icon={<GoClock />} color="text-primary" size="large" />
+          <Icon icon={<GoClock />} color="text-warning" size="large" />
         </div>
         <div className="flex flex-col">
           <span className="text-xl font-bold text-text-secondary">
             Estimated Duration
           </span>
-          <span className="text-3xl font-bold text-primary">
+          <span className="text-3xl font-bold text-warning">
             <span>
               {getHours(addMinutes(estimatedTime, totalHaltTime)) !== 0
                 ? `${getHours(addMinutes(estimatedTime, totalHaltTime))}h `
