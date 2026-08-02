@@ -5,7 +5,12 @@ import Icon from "../../components/util/Icon";
 import { LuMapPin } from "react-icons/lu";
 import SearchInput from "./SearchInput";
 import { MdOutlineCalendarMonth } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { useSearchQuery } from "../../context/SearchContext";
 
 const SearchBar = () => {
@@ -19,13 +24,10 @@ const SearchBar = () => {
     setSearch,
   } = useSearchQuery();
 
-  console.log(sourceCity, destinationCity, journeyDate);
-
   const [source, setSource] = useState(sourceCity);
   const [destination, setDestination] = useState(destinationCity);
   const [date, setDate] = useState(journeyDate);
-
-  console.log("-------" + date);
+  const { pathname } = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +37,8 @@ const SearchBar = () => {
     if (
       source === sourceCity &&
       destination === destinationCity &&
-      date === journeyDate
+      date === journeyDate &&
+      pathname === "/search_bus"
     ) {
       return;
     }
