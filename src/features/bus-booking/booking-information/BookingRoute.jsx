@@ -1,5 +1,7 @@
 import React from "react";
 import BusRoute from "../../../components/ui/route/BusRoute";
+import RouteSummary from "./RouteSummary";
+import { addMinutes } from "date-fns";
 
 const BookingRoute = () => {
   const route = {
@@ -88,9 +90,22 @@ const BookingRoute = () => {
     ],
   };
 
+  const { arrivalTime: arrival, departureTime: departure } = {
+    departureTime: "2026-08-02T06:00:00",
+    arrivalTime: "2026-08-02T13:30:00",
+  };
+
   return (
-    <div>
-      <BusRoute route={route} />
+    <div className="flex flex-col gap-10">
+      <BusRoute route={route} arrival={arrival} departure={departure} />
+      <RouteSummary
+        totalDistance={route.totalDistance}
+        totalHaltTime={route.midCities.reduce(
+          (acc, curr) => (acc += curr.haltTime),
+          0,
+        )}
+        estimatedTime={departure}
+      />
     </div>
   );
 };

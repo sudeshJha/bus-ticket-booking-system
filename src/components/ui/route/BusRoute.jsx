@@ -2,7 +2,7 @@ import React from "react";
 import RouteRow from "./RouteRow";
 import { addMinutes, format } from "date-fns";
 
-const Route = ({ route }) => {
+const Route = ({ route, arrival, departure }) => {
   const {
     title,
     totalDistance,
@@ -12,14 +12,10 @@ const Route = ({ route }) => {
     destinationCity,
   } = route;
 
-  const { arrivalTime: arrival, departureTime: departure } = {
-    departureTime: "2026-08-02T06:00:00",
-    arrivalTime: "2026-08-02T13:30:00",
-  };
   let haltTime = 0;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-surface  py-2">
+    <div className="rounded-xl border border-border bg-surface py-2">
       <div className="grid grid-cols-[18%_34%_16%_14%_18%] border-b border-border text-[1.1rem] font-bold text-text-secondary px-4">
         <div className="px-4 py-4">Distance from Jabalpur (km)</div>
 
