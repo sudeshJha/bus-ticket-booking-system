@@ -1,13 +1,13 @@
 import React from "react";
 
-const ButtonIcon = ({ icon, onClick, color = "text-secondary" }) => {
+const ButtonIcon = ({ icon, onClick, color = "text-secondary", size = 14 }) => {
   return (
     <button
       className={`bg-transparent border-none p-1 rounded-full ${color} cursor-pointer`}
       onClick={onClick}
     >
       {React.cloneElement(icon, {
-        className: `w-14 h-14 ${color}`,
+        className: `w-${size} h-${size} ${color}`,
       })}
     </button>
   );
