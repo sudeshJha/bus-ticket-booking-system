@@ -15,7 +15,7 @@ const ThemeButton = () => {
     <ButtonIcon
       onClick={handleClick}
       icon={isDarkMode ? <MdBrightness2 /> : <HiOutlineSun />}
-      color={isDarkMode ? "text-secondary" : "text-warning"}
+      color={isDarkMode ? "text-info" : "text-warning"}
     />
   );
 };
