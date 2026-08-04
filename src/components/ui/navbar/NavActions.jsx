@@ -49,7 +49,10 @@ const NavActions = () => {
           <ThemeButton />
 
           <div className="flex items-center justify-center gap-4 mr-8 ml-4">
-            <div className="border-2 border-text-secondary h-14 w-14 rounded-full overflow-hidden">
+            <div
+              className="border-2 border-text-secondary h-14 w-14 rounded-full overflow-hidden cursor-pointer"
+              onClick={() => navigate("/settings/profile")}
+            >
               <img
                 src={
                   user?.profile ? user.profile : "src/assets/default_user.jpg"

@@ -30,7 +30,7 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  color: var(--color-grey-700);
+  background-color: var(--color-surface-dark);
 
   min-height: 100vh;
   line-height: 1.5;

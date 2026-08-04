@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const tabs = [
   { id: 0, name: "Home", link: "/home" },
   { id: 1, name: "Search Bus", link: "/search_bus" },
-  { id: 2, name: "My Bookings", link: "/bookings" },
+  { id: 2, name: "My Bookings", link: "settings/bookings" },
   { id: 3, name: "Routes", link: "/routes" },
 ];
 

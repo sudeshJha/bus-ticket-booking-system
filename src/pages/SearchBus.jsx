@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "../features/search-bar/SearchBar";
-import Sidebar from "../features/search-bus/Sidebar";
+import Sidebar from "../features/search-bus/FilterSidebar";
 import SearchInfo from "../features/search-bus/SearchInfo";
 import SearchList from "../features/search-bus/SearchList";
 

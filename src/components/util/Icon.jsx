@@ -14,7 +14,7 @@ const Icon = ({ icon, size, color, bgColor, custom, onClick }) => {
       onClick={onClick}
     >
       {React.cloneElement(icon, {
-        className: `${sizes[size]} ${color}`,
+        className: `${sizes[size]} ${color} ${custom}`,
       })}
     </div>
   );
