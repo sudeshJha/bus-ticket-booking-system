@@ -47,7 +47,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[22vw] px-8 pb-4 pt-10 bg-background absolute h-screen flex flex-col ">
+    <div className="fixed w-[22vw] px-8 pb-4 pt-10 bg-background h-screen flex flex-col">
       <div className="flex flex-col items-center border-b border-border pb-8">
         <div className="w-32 rounded-full overflow-hidden mb-8">
           <img src={defaultUserImg} alt="user profile" />

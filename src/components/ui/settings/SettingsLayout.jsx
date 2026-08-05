@@ -6,7 +6,7 @@ const SettingsLayout = () => {
   return (
     <div>
       <Sidebar />
-      <main>
+      <main className="ml-[22vw]">
         <Outlet />
       </main>
     </div>
