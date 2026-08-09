@@ -10,6 +10,10 @@ import BusBooking from "./pages/BusBooking";
 import Bookings from "./pages/Bookings";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
+import OperatorLayout from "./features/operator/OperatorLayout";
+import PassengerLayout from "./features/passenger/PassengerLayout";
+import Logo from "./components/ui/navbar/Logo";
+import RoleRedirect from "./components/RoleRedirect";
 
 const App = () => {
   return (
@@ -17,10 +21,18 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="home" />} />
-            <Route path="home" element={<Home />} />
-            <Route path="search_bus" element={<SearchBus />} />
-            <Route path="search_bus/:id" element={<BusBooking />} />
+            <Route index element={<RoleRedirect />} />
+
+            <Route element={<PassengerLayout />}>
+              <Route path="home" element={<Home />} />
+              <Route path="search_bus" element={<SearchBus />} />
+              <Route path="search_bus/:id" element={<BusBooking />} />
+            </Route>
+
+            <Route element={<OperatorLayout />}>
+              <Route path="dashboard" element={<Logo />} />
+              {/* other links for operator */}
+            </Route>
           </Route>
 
           <Route path="settings" element={<Settings />}>

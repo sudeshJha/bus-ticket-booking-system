@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 
-const SettingsLayout = () => {
+const PassengerSettingsLayout = () => {
   return (
     <div>
       <Sidebar />
@@ -13,4 +13,4 @@ const SettingsLayout = () => {
   );
 };
 
-export default SettingsLayout;
+export default PassengerSettingsLayout;

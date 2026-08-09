@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import Logo from "../navbar/Logo";
-import defaultUserImg from "../../../assets/default_user.jpg";
-import Icon from "../../util/Icon";
+import defaultUserImg from "../../../../assets/default_user.jpg";
+import Icon from "../../../util/Icon";
 import { BiHome } from "react-icons/bi";
 import { GrTicket } from "react-icons/gr";
 import { IoPersonOutline } from "react-icons/io5";
 import { RiLockLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
-import ThemeButton from "../navbar/ThemeButton";
 import { TbLogout } from "react-icons/tb";
 
 const navs = [
@@ -57,8 +55,6 @@ const Sidebar = () => {
           <span className="text-text-secondary text-xl">sudesh@gmail.com</span>
         </div>
       </div>
-
-      {/* <ThemeButton /> */}
 
       <ul className="mt-16 flex flex-col gap-4">
         {navs.map((nav, i) => {

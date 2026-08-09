@@ -1,8 +1,15 @@
 import React from "react";
-import SettingsLayout from "../components/ui/settings/SettingsLayout";
+import PassengerSettingsLayout from "../components/ui/settings/passenger-settings/PassengerSettingsLayout";
+import OperatorSettingsLayout from "../components/ui/settings/operator-settings/OperatorSettingsLayout";
 
 const Settings = () => {
-  return <div>{<SettingsLayout />}</div>;
+  const user = { userType: "passenger" };
+  return (
+    <div>
+      {user.userType === "passenger" && <PassengerSettingsLayout />}
+      {user.userType === "operator" && <OperatorSettingsLayout />}
+    </div>
+  );
 };
 
 export default Settings;
