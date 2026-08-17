@@ -17,7 +17,6 @@ const OperatorLayout = () => {
       <main className={`w-full  ${isSidebarOpen ? "ml-[20vw]" : "ml-0"}`}>
         <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <Outlet />
-        <ThemeButton />
       </main>
     </div>
   );

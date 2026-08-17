@@ -2,6 +2,8 @@ import React from "react";
 import Logo from "../navbar/Logo";
 import ButtonIcon from "../../util/ButtonIcon";
 import { FiMenu } from "react-icons/fi";
+import ThemeButton from "../navbar/ThemeButton";
+import NavActions from "../navbar/NavActions";
 
 const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
   return (
@@ -11,13 +13,12 @@ const Navbar = ({ isSidebarOpen, toggleSidebar }) => {
           icon={<FiMenu />}
           onClick={toggleSidebar}
           color="text-text-primary"
-          bgColor="text-primary"
           size={12}
         />
         {!isSidebarOpen && <Logo />}
       </div>
 
-      <div>Other things</div>
+      <NavActions />
     </nav>
   );
 };

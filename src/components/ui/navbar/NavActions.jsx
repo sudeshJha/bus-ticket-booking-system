@@ -23,9 +23,9 @@ const NavActions = () => {
 
   return (
     <div className="flex items-center justify-center gap-10">
+      <ThemeButton />
       {!user ? (
         <>
-          <ThemeButton />
           <Button
             type="primary"
             size="small"
@@ -46,11 +46,9 @@ const NavActions = () => {
         </>
       ) : (
         <>
-          <ThemeButton />
-
           <div className="flex items-center justify-center gap-4 mr-8 ml-4">
             <div
-              className="border-2 border-text-secondary h-14 w-14 rounded-full overflow-hidden cursor-pointer"
+              className="border border-text-secondary h-14 w-14 rounded-full overflow-hidden cursor-pointer"
               onClick={() => navigate("/settings/profile")}
             >
               <img
