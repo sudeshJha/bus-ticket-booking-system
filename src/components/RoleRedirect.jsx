@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const RoleRedirect = () => {
   const user = {
-    userType: "operator",
+    userType: "passenger",
   };
 
   return (

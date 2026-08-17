@@ -10,8 +10,8 @@ import BusBooking from "./pages/BusBooking";
 import Bookings from "./pages/Bookings";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
-import OperatorLayout from "./features/operator/OperatorLayout";
-import PassengerLayout from "./features/passenger/PassengerLayout";
+import OperatorLayout from "./components/ui/operator/OperatorLayout";
+import PassengerLayout from "./components/ui/passenger/PassengerLayout";
 import Logo from "./components/ui/navbar/Logo";
 import RoleRedirect from "./components/RoleRedirect";
 
