@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../navbar/Logo";
 import Icon from "../../util/Icon";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoBus, IoHomeOutline } from "react-icons/io5";
-import { RiMapLine } from "react-icons/ri";
+import { MdOutlinePinDrop } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
 import { MdOutlineHomeWork } from "react-icons/md";
-import { Link } from "react-router-dom";
 import { AiOutlineCalendar } from "react-icons/ai";
 
 const navs = [
@@ -24,31 +24,51 @@ const navs = [
     link: "/my_company",
     icon: <MdOutlineHomeWork />,
   },
-  { id: 5, name: "Routes", link: "/routes", icon: <RiMapLine /> },
+  { id: 5, name: "Routes", link: "/routes", icon: <MdOutlinePinDrop /> },
 ];
 
 const Sidebar = () => {
-  const active = 4;
+  const [activeTab, setActiveTab] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const section = "/" + location.pathname.split("/")[1];
+    navs.map((tab) => {
+      tab.link === section && setActiveTab(tab.id);
+    });
+  }, [location]);
+
+  const selectTab = (id) => {
+    if (id === activeTab) return;
+
+    setActiveTab(id);
+    navigate(navs[id].link);
+  };
   return (
-    <div className="bg-surface px-8 min-h-screen">
-      <Logo />
-      <ul className="flex flex-col mt-20">
+    <div className="bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[25vw]">
+      <div className="-ml-6 w-full flex justify-center">
+        <Logo />
+      </div>
+
+      <ul className="flex flex-col px-8 gap-1">
         {navs.map((nav) => {
           return (
             <li
+              onClick={() => selectTab(nav.id)}
               key={nav.id}
-              className={`flex items-center justify-start gap-6 pl-4 py-4  cursor-pointer rounded-xl ${active === nav.id ? "bg-primary text-primary-anti" : "bg-surface hover:bg-surface-dark text-text-primary"}`}
+              className={`flex items-center justify-start gap-6 pl-4 py-3 cursor-pointer rounded-xl ${activeTab === nav.id ? "bg-primary text-primary-anti" : "bg-surface hover:bg-surface-dark text-text-primary"}`}
             >
               <Icon
                 icon={nav.icon}
-                size="small"
+                size="extraSmall"
                 color={
-                  active === nav.id ? "text-primary-anti" : "text-text-primary"
+                  activeTab === nav.id
+                    ? "text-primary-anti"
+                    : "text-text-primary"
                 }
               />
-              <p className="mr-20 tracking-wide">
-                <Link to={nav.link}>{nav.name}</Link>
-              </p>
+              <p className="mr-20 tracking-wide text-2xl">{nav.name}</p>
             </li>
           );
         })}

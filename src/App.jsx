@@ -14,6 +14,7 @@ import OperatorLayout from "./components/ui/operator/OperatorLayout";
 import PassengerLayout from "./components/ui/passenger/PassengerLayout";
 import Logo from "./components/ui/navbar/Logo";
 import RoleRedirect from "./components/RoleRedirect";
+import Footer from "./components/ui/home/footer/Footer";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
 
             <Route element={<OperatorLayout />}>
               <Route path="dashboard" element={<Logo />} />
+              <Route path="my_company" element={<Footer />} />
               {/* other links for operator */}
             </Route>
           </Route>

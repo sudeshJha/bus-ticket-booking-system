@@ -7,13 +7,9 @@ import { MdBrightness2 } from "react-icons/md";
 const ThemeButton = () => {
   const { isDarkMode, toggleTheme } = useDarkMode();
 
-  const handleClick = () => {
-    toggleTheme();
-  };
-
   return (
     <ButtonIcon
-      onClick={handleClick}
+      onClick={() => toggleTheme()}
       icon={isDarkMode ? <MdBrightness2 /> : <HiOutlineSun />}
       color={isDarkMode ? "text-info" : "text-warning"}
     />
