@@ -12,8 +12,9 @@ const OperatorLayout = () => {
 
   return (
     <div className="flex min-w-screen">
-      {isSidebarOpen && <Sidebar />}
-      <main className="w-full">
+      {/* {isSidebarOpen && <Sidebar />} */}
+      <Sidebar isSidebarOpen={isSidebarOpen} />
+      <main className={`w-full  ${isSidebarOpen ? "ml-[20vw]" : "ml-0"}`}>
         <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <Outlet />
         <ThemeButton />

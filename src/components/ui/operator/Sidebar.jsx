@@ -27,7 +27,7 @@ const navs = [
   { id: 5, name: "Routes", link: "/routes", icon: <MdOutlinePinDrop /> },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen }) => {
   const [activeTab, setActiveTab] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,7 +46,9 @@ const Sidebar = () => {
     navigate(navs[id].link);
   };
   return (
-    <div className="bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[25vw]">
+    <div
+      className={`fixed left-0 top-0 bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[20vw]  ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+    >
       <div className="-ml-6 w-full flex justify-center">
         <Logo />
       </div>
