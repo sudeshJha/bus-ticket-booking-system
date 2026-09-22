@@ -1,20 +1,20 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Home from "./pages/HomePage";
 import { ThemeProvider } from "./context/ThemeContext";
 import AppLayout from "./components/ui/AppLayout";
-import SearchBus from "./pages/SearchBus";
-import BusBooking from "./pages/BusBooking";
-import Bookings from "./pages/Bookings";
-import Settings from "./pages/Settings";
-import Profile from "./pages/Profile";
+import SearchBus from "./pages/SearchBusPage";
+import BusBooking from "./pages/BusBookingPage";
 import OperatorLayout from "./components/ui/operator/OperatorLayout";
 import PassengerLayout from "./components/ui/passenger/PassengerLayout";
 import Logo from "./components/ui/navbar/Logo";
 import Footer from "./components/ui/home/footer/Footer";
-import IndexPage from "./components/IndexPage";
+import IndexPage from "./pages/IndexPage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import BookingsPage from "./pages/BookingsPage";
+import ProfilePage from "./pages/ProfilePage";
+import SettingsPage from "./pages/SettingsPage";
 
 const App = () => {
   return (
@@ -37,14 +37,14 @@ const App = () => {
             </Route>
           </Route>
 
-          <Route path="settings" element={<Settings />}>
+          <Route path="settings" element={<SettingsPage />}>
             <Route index element={<Navigate replace to="profile" />} />
-            <Route path="bookings" element={<Bookings />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="bookings" element={<BookingsPage />} />
+            <Route path="profile" element={<ProfilePage />} />
           </Route>
 
-          <Route path="signup" element={<Signup />} />
-          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignupPage />} />
+          <Route path="login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

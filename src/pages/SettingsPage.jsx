@@ -2,7 +2,7 @@ import React from "react";
 import PassengerSettingsLayout from "../components/ui/settings/passenger-settings/PassengerSettingsLayout";
 import OperatorSettingsLayout from "../components/ui/settings/operator-settings/OperatorSettingsLayout";
 
-const Settings = () => {
+const SettingsPage = () => {
   const user = { userType: "operator" };
   return (
     <div>
@@ -12,4 +12,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SettingsPage;

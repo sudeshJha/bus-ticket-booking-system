@@ -6,7 +6,7 @@ import ChooseSection from "../components/ui/home/choose/ChooseSection";
 import AccordianSection from "../components/ui/home/accordian/AccordianSection";
 import Footer from "../components/ui/home/footer/Footer";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div id="#">
       <HeroSection />
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

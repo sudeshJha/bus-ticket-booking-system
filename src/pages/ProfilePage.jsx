@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileLayout from "../components/ui/settings/passenger-settings/ProfileLayout";
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <div>
       <ProfileLayout />
@@ -9,4 +9,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

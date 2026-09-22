@@ -2,7 +2,7 @@ import React from "react";
 import BusBookingLayout from "../features/bus-booking/BusBookingLayout";
 import { BusBookingProvider } from "../context/BusBookingContext";
 
-const BusBooking = () => {
+const BusBookingPage = () => {
   return (
     <BusBookingProvider>
       <BusBookingLayout />
@@ -10,4 +10,4 @@ const BusBooking = () => {
   );
 };
 
-export default BusBooking;
+export default BusBookingPage;

@@ -4,7 +4,7 @@ import Sidebar from "../features/search-bus/FilterSidebar";
 import SearchInfo from "../features/search-bus/SearchInfo";
 import SearchList from "../features/search-bus/SearchList";
 
-const SearchBus = () => {
+const SearchBusPage = () => {
   return (
     <div className="pt-15 px-15">
       <SearchBar />
@@ -20,4 +20,4 @@ const SearchBus = () => {
   );
 };
 
-export default SearchBus;
+export default SearchBusPage;
