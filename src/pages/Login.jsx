@@ -5,7 +5,6 @@ import { MdOutlineLock } from "react-icons/md";
 import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/util/Button";
-import ThemeButton from "../components/ui/navbar/ThemeButton";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,18 +18,19 @@ const Login = () => {
   };
 
   const togglePasswordVisibility = () => {
+    if (!password) return;
     setIsPasswordVisible((vis) => !vis);
   };
 
   return (
-    <div className="h-screen bg-background flex pt-30 justify-center">
-      <div className="px-20 py-15 text-center w-[40vw] h-fit rounded-2xl bg-surface shadow-xl">
-        <div className="mx-auto w-fit">
+    <div className="h-screen bg-background flex pt-20 justify-center">
+      <div className="px-20 py-10 text-center w-[40vw] h-fit rounded-2xl bg-surface shadow-xl">
+        <div className="mx-auto w-fit scale-90">
           <Logo />
         </div>
-        <div className="flex flex-col gap-4 mt-12">
+        <div className="flex flex-col gap-2 mt-8">
           <h1 className="text-5xl font-bold text-text-primary">Welcome Back</h1>
-          <span className="text-text-secondary text-[1.4rem] tracking-wider">
+          <span className="text-text-secondary text-[1.2rem] tracking-wider">
             Login to continue your journey
           </span>
         </div>
@@ -38,7 +38,7 @@ const Login = () => {
         <form className="mt-14 flex flex-col items-center gap-12">
           <div className="flex flex-col gap-2 items-start w-full">
             <label className="font-bold text-text-primary ml-2">Email</label>
-            <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl">
+            <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
               <Icon
                 icon={<FiUser />}
                 size="small"
@@ -55,14 +55,14 @@ const Login = () => {
 
           <div className="flex flex-col gap-2 items-start w-full">
             <label className="font-bold text-text-primary ml-2">Password</label>
-            <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl">
+            <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
               <Icon
                 icon={<MdOutlineLock />}
                 size="small"
                 color="text-text-secondary"
               />
               <input
-                placeholder="Enter your password"
+                placeholder="Enter password"
                 type={isPasswordVisible ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

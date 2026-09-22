@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-const RoleRedirect = () => {
+const IndexPage = () => {
   const user = {
     userType: "passenger",
   };
@@ -14,4 +14,4 @@ const RoleRedirect = () => {
   );
 };
 
-export default RoleRedirect;
+export default IndexPage;

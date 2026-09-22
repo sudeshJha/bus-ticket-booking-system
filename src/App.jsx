@@ -13,8 +13,8 @@ import Profile from "./pages/Profile";
 import OperatorLayout from "./components/ui/operator/OperatorLayout";
 import PassengerLayout from "./components/ui/passenger/PassengerLayout";
 import Logo from "./components/ui/navbar/Logo";
-import RoleRedirect from "./components/RoleRedirect";
 import Footer from "./components/ui/home/footer/Footer";
+import IndexPage from "./components/IndexPage";
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<RoleRedirect />} />
+            <Route index element={<IndexPage />} />
 
             <Route element={<PassengerLayout />}>
               <Route path="home" element={<Home />} />

@@ -4,9 +4,8 @@ import { SearchProvider } from "../../../context/SearchContext";
 import Navbar from "../navbar/Navbar";
 
 const PassengerLayout = () => {
-  const user = {
-    userType: "operator",
-  };
+  // if user not passenger
+  // redirect to page not found
 
   return (
     <SearchProvider>

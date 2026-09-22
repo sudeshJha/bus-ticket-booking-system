@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-import ThemeButton from "../navbar/ThemeButton";
 
 const OperatorLayout = () => {
+  // if user not operator
+  // redirect to page not found
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => {
     setIsSidebarOpen((s) => !s);
