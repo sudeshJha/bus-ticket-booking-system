@@ -1,10 +1,14 @@
 import React from "react";
 import Logo from "../../components/ui/navbar/Logo";
 import { Link } from "react-router-dom";
+import BackButton from "../../components/util/BackButton";
 
 const AuthLayout = ({ children, title, subtitle }) => {
   return (
-    <div className="min-h-screen h-fit bg-primary/10 flex py-15 justify-center">
+    <div className="min-h-screen h-fit bg-primary/10 flex py-15 justify-center relative">
+      <div className="absolute left-10 top-10">
+        <BackButton />
+      </div>
       <div className="px-20 py-10 text-center w-[45vw] h-fit rounded-2xl bg-surface shadow-xl">
         <Link to="/" className="mx-auto w-fit scale-90 block">
           <Logo />

@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../../util/Button";
 import ThemeButton from "./ThemeButton";
 import { useNavigate } from "react-router-dom";
-import ButtonIcon from "../../util/ButtonIcon";
-import { TbLogout } from "react-icons/tb";
-import Icon from "../../util/Icon";
-import { CgProfile } from "react-icons/cg";
 
 const NavActions = () => {
   const navigate = useNavigate();
 
-  const fakeUser = {
+  let user = {
     name: "Sudesh Jha",
-    profile: "",
   };
 
-  const [user, setUser] = useState(fakeUser);
+  user = undefined;
 
   const handleLogin = () => navigate("/login");
   const handleSignup = () => navigate("/signup");
-  const handleLogout = () => setUser(undefined);
 
   return (
     <div className="flex items-center justify-center gap-10">
