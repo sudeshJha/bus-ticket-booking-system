@@ -1,24 +1,39 @@
 import React, { useState } from "react";
-import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import Button from "../../components/util/Button";
 import Icon from "../../components/util/Icon";
+import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
 import { MdOutlineLock } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/util/SubmitButton";
+import { useForm } from "react-hook-form";
 
-const LoginForm = () => {
+const SignupForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: {},
+  });
+  const { errors } = formState;
+
+  const onSubmit = () => {};
+  const onError = () => {};
 
   const togglePasswordVisibility = () => {
     if (!password) return;
     setIsPasswordVisible((vis) => !vis);
   };
   return (
-    <form className="mt-14 flex flex-col items-center gap-12">
+    <form
+      className="mt-14 flex flex-col items-center gap-12"
+      onSubmit={handleSubmit(onSubmit, onError)}
+    >
       <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-semibold text-text-primary ml-2">Email</label>
+        <label className="font-bold text-text-primary ml-2">Email</label>
         <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
           <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
           <input
@@ -31,7 +46,7 @@ const LoginForm = () => {
       </div>
 
       <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-semibold text-text-primary ml-2">Password</label>
+        <label className="font-bold text-text-primary ml-2">Password</label>
         <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
           <Icon
             icon={<MdOutlineLock />}
@@ -63,9 +78,9 @@ const LoginForm = () => {
         </a>
       </div>
 
-      <SubmitButton size="l">Login</SubmitButton>
+      <SubmitButton size="l">Signup</SubmitButton>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignupForm;

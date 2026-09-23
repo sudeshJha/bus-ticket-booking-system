@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
-import Button from "../../../components/util/Button";
 import { MdOutlineEdit } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { useBusBooking } from "../../../context/BusBookingContext";
+import SubmitButton from "../../../components/util/SubmitButton";
 
 const PassengerForm = ({ passengerNo: id }) => {
   const { addPassenger, passengers, updatePassenger } = useBusBooking();
@@ -42,10 +42,7 @@ const PassengerForm = ({ passengerNo: id }) => {
           setValue={setGender}
         />
       </div>
-      <Button
-        custom="bg-primary text-primary-anti w-full  py-3 text-xl mx-auto rounded-xl font-semibold hover:bg-primary-hover hover:-translate-y-1"
-        onClick={handleSubmit}
-      >
+      <SubmitButton onClick={handleSubmit} size="s">
         <span className="flex mx-auto items-center w-fit  text-primary-anti gap-2">
           {passenger ? (
             <>
@@ -59,7 +56,7 @@ const PassengerForm = ({ passengerNo: id }) => {
             </>
           )}
         </span>
-      </Button>
+      </SubmitButton>
     </form>
   );
 };

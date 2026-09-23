@@ -1,11 +1,11 @@
 import React from "react";
 import TripDetails from "./TripDetails";
 import SelectedSeats from "./SelectedSeats";
-import Button from "../../../components/util/Button";
 import { useBookingProgress } from "../../../context/BookingProgressContext";
 import { useSeatSelection } from "../../../context/SeatSelectionContext";
 import { useBusBooking } from "../../../context/BusBookingContext";
 import AddedPassengers from "./AddedPassengers";
+import SubmitButton from "../../../components/util/SubmitButton";
 
 const BookingSummary = () => {
   const { progress, nextProgress } = useBookingProgress();
@@ -24,15 +24,11 @@ const BookingSummary = () => {
       <TripDetails />
       <SelectedSeats />
       <AddedPassengers />
-      <Button
-        className=""
-        onClick={handleClick}
-        custom="bg-primary text-primary-anti w-full mt-6 py-4 mx-auto rounded-xl font-semibold hover:bg-primary-hover hover:-translate-y-1"
-      >
+      <SubmitButton onClick={handleClick} size="m">
         {progress === 1 && "Select Seats"}
         {progress === 2 && "Continue to Payment"}
         {progress === 3 && "Pay Now $90"}
-      </Button>
+      </SubmitButton>
     </div>
   );
 };

@@ -11,7 +11,6 @@ import { useBusBooking } from "../../context/BusBookingContext";
 
 const BusBookingLayout = () => {
   const { progress, passengers } = useBusBooking();
-  console.log(passengers);
 
   return (
     <div className="bg-surface pb-10">
