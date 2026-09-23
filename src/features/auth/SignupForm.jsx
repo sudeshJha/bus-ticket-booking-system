@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import Icon from "../../components/util/Icon";
 import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
 import { MdOutlineLock, MdOutlineMail, MdOutlinePhone } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/util/SubmitButton";
 import { useForm } from "react-hook-form";
+import FormError from "../../components/util/FormError";
 
 const SignupForm = () => {
   const navigate = useNavigate();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [name, setName] = useState("");
-  // const [phone, setPhone] = useState("");
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const { register, handleSubmit, reset, getValues, formState } = useForm({
+  const { register, handleSubmit, getValues, formState } = useForm({
     defaultValues: {},
   });
   const { errors } = formState;
@@ -22,7 +20,9 @@ const SignupForm = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
-  const onError = () => {};
+  const onError = (error) => {
+    console.log(error);
+  };
 
   const togglePasswordVisibility = () => {
     getValues;
@@ -30,7 +30,7 @@ const SignupForm = () => {
   };
   return (
     <form
-      className="mt-14 flex flex-col items-center gap-12"
+      className="mt-14 flex flex-col items-center gap-8"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <div className="flex flex-col gap-2 items-start w-full">
@@ -47,6 +47,7 @@ const SignupForm = () => {
             className="outline-none text-text-primary w-full"
           />
         </div>
+        <FormError message={errors?.name?.message} />
       </div>
 
       <div className="flex flex-col gap-2 items-start w-full">
@@ -63,10 +64,15 @@ const SignupForm = () => {
             id="phone"
             {...register("phone", {
               required: "This field is required",
+              pattern: {
+                value: /^((\+91[-.\s]?)?\d{10}|0\d{3}[-.\s]?\d{7})$/,
+                message: "Phone number must be exactly 10 digits",
+              },
             })}
             className="outline-none text-text-primary w-full"
           />
         </div>
+        <FormError message={errors?.phone?.message} />
       </div>
 
       <div className="flex flex-col gap-2 items-start w-full">
@@ -83,10 +89,15 @@ const SignupForm = () => {
             id="email"
             {...register("email", {
               required: "This field is required",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Please enter a valid email address",
+              },
             })}
             className="outline-none text-text-primary w-full"
           />
         </div>
+        <FormError message={errors?.email?.message} />
       </div>
 
       <div className="flex flex-col gap-2 items-start w-full">
@@ -103,6 +114,10 @@ const SignupForm = () => {
             id="password"
             {...register("password", {
               required: "This field is required",
+              pattern: {
+                value: /^[a-zA-Z0-9!@#$()_]{8,}$/,
+                message: "Password must be at least 8 characters",
+              },
             })}
             defaultValue=""
             className="outline-none text-text-primary w-full"
@@ -115,15 +130,12 @@ const SignupForm = () => {
             onClick={togglePasswordVisibility}
           />
         </div>
-        <Link
-          className="ml-auto font-semibold text-xl text-secondary mt-2 cursor-pointer"
-          to="/"
-        >
-          Forgot Password?
-        </Link>
+        <FormError message={errors?.password?.message} />
       </div>
 
-      <SubmitButton size="l">Signup</SubmitButton>
+      <div className="mt-6 w-full">
+        <SubmitButton size="l">Signup</SubmitButton>
+      </div>
     </form>
   );
 };

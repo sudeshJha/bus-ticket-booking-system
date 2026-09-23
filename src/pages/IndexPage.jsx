@@ -9,7 +9,7 @@ const IndexPage = () => {
   return (
     <>
       {user.userType === "operator" && <Navigate to="/dashboard" />}
-      {user.userType === "passenger" && <Navigate to="/home" />}
+      {(user.userType === "passenger" || !user) && <Navigate to="/home" />}
     </>
   );
 };
