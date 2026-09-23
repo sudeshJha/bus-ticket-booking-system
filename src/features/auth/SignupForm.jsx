@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import Button from "../../components/util/Button";
 import Icon from "../../components/util/Icon";
 import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
-import { MdOutlineLock } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { MdOutlineLock, MdOutlineMail, MdOutlinePhone } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/util/SubmitButton";
 import { useForm } from "react-hook-form";
 
 const SignupForm = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [name, setName] = useState("");
+  // const [phone, setPhone] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -20,11 +19,13 @@ const SignupForm = () => {
   });
   const { errors } = formState;
 
-  const onSubmit = () => {};
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   const onError = () => {};
 
   const togglePasswordVisibility = () => {
-    if (!password) return;
+    getValues;
     setIsPasswordVisible((vis) => !vis);
   };
   return (
@@ -33,13 +34,56 @@ const SignupForm = () => {
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Email</label>
+        <label className="font-bold text-text-primary ml-2">Name</label>
         <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
           <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
           <input
+            placeholder="Enter your name"
+            defaultValue=""
+            id="name"
+            {...register("name", {
+              required: "This field is required",
+            })}
+            className="outline-none text-text-primary w-full"
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2 items-start w-full">
+        <label className="font-bold text-text-primary ml-2">Phone</label>
+        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
+          <Icon
+            icon={<MdOutlinePhone />}
+            size="small"
+            color="text-text-secondary"
+          />
+          <input
+            placeholder="Enter your phone number"
+            defaultValue=""
+            id="phone"
+            {...register("phone", {
+              required: "This field is required",
+            })}
+            className="outline-none text-text-primary w-full"
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2 items-start w-full">
+        <label className="font-bold text-text-primary ml-2">Email</label>
+        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
+          <Icon
+            icon={<MdOutlineMail />}
+            size="small"
+            color="text-text-secondary"
+          />
+          <input
             placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            defaultValue=""
+            id="email"
+            {...register("email", {
+              required: "This field is required",
+            })}
             className="outline-none text-text-primary w-full"
           />
         </div>
@@ -56,8 +100,11 @@ const SignupForm = () => {
           <input
             placeholder="Enter password"
             type={isPasswordVisible ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            {...register("password", {
+              required: "This field is required",
+            })}
+            defaultValue=""
             className="outline-none text-text-primary w-full"
           />
           <Icon
@@ -68,14 +115,12 @@ const SignupForm = () => {
             onClick={togglePasswordVisibility}
           />
         </div>
-        <a
+        <Link
           className="ml-auto font-semibold text-xl text-secondary mt-2 cursor-pointer"
-          onClick={() => {
-            navigate("/");
-          }}
+          to="/"
         >
           Forgot Password?
-        </a>
+        </Link>
       </div>
 
       <SubmitButton size="l">Signup</SubmitButton>
