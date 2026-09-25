@@ -1,6 +1,6 @@
-const API_BASE_URL = import.meta.env.API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const signup = async (userData) => {
+export const userSignup = async (userData) => {
   const response = await fetch(`${API_BASE_URL}/signup`, {
     method: "POST",
     headers: {

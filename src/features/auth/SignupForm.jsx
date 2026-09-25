@@ -6,26 +6,28 @@ import { useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/util/SubmitButton";
 import { useForm } from "react-hook-form";
 import FormError from "../../components/util/FormError";
+import useSignup from "./useSignup";
 
 const SignupForm = () => {
   const navigate = useNavigate();
+  const { signingUp, signup, error } = useSignup();
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const { register, handleSubmit, getValues, formState } = useForm({
+  const { register, handleSubmit, formState } = useForm({
     defaultValues: {},
   });
   const { errors } = formState;
 
   const onSubmit = (data) => {
-    console.log(data);
+    signup(data);
+    navigate("/home");
   };
   const onError = (error) => {
     console.log(error);
   };
 
   const togglePasswordVisibility = () => {
-    getValues;
     setIsPasswordVisible((vis) => !vis);
   };
   return (
