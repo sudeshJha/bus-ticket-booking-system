@@ -3,7 +3,7 @@ import PassengerSettingsLayout from "../components/ui/settings/passenger-setting
 import OperatorSettingsLayout from "../components/ui/settings/operator-settings/OperatorSettingsLayout";
 
 const SettingsPage = () => {
-  const user = { userType: "operator" };
+  const user = { userType: "passenger" };
   return (
     <div>
       {user.userType === "passenger" && <PassengerSettingsLayout />}

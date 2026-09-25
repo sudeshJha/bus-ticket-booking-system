@@ -25,9 +25,9 @@ const App = () => {
             <Route index element={<IndexPage />} />
 
             <Route element={<PassengerLayout />}>
-              <Route path="home" element={<Home />} />
-              <Route path="search_bus" element={<SearchBus />} />
-              <Route path="search_bus/:id" element={<BusBooking />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/search_bus" element={<SearchBus />} />
+              <Route path="/search_bus/:id" element={<BusBooking />} />
             </Route>
 
             <Route element={<OperatorLayout />}>
@@ -37,14 +37,14 @@ const App = () => {
             </Route>
           </Route>
 
-          <Route path="settings" element={<SettingsPage />}>
+          <Route path="/settings" element={<SettingsPage />}>
             <Route index element={<Navigate replace to="profile" />} />
-            <Route path="bookings" element={<BookingsPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="bookings" element={<BookingsPage />} />
           </Route>
 
-          <Route path="signup" element={<SignupPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
