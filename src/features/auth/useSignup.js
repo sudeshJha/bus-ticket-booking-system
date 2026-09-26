@@ -5,7 +5,7 @@ import { signupApi } from "../../services/apiUser";
 export default function useSignup() {
   const {
     mutate: signup,
-    isLoading: signingUp,
+    isPending: signingUp,
     error,
   } = useMutation({
     mutationFn: (userData) => signupApi(userData),

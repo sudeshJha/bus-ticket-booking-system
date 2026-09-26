@@ -8,10 +8,12 @@ import useSignup from "./useSignup";
 import { useForm } from "react-hook-form";
 import FormRow from "./FormRow";
 import InputWrapper from "./InputWrapper";
+import SpinnerMini from "../../components/ui/SpinnerMini";
 
 const OperatorSignupForm = () => {
   const navigate = useNavigate();
   const { signingUp, signup, error } = useSignup();
+  console.log(signingUp);
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -22,6 +24,7 @@ const OperatorSignupForm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
     signup(data, {
       onSuccess: () => {
         navigate("/home");
@@ -117,7 +120,9 @@ const OperatorSignupForm = () => {
       </FormRow>
 
       <div className="mt-6 w-full">
-        <SubmitButton size="l">Signup</SubmitButton>
+        <SubmitButton size="l">
+          {signingUp ? <SpinnerMini /> : "Signup"}
+        </SubmitButton>
       </div>
     </form>
   );
