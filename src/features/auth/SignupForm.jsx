@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import useSignup from "./useSignup";
 import FormRow from "./FormRow";
 import InputWrapper from "./InputWrapper";
+import SpinnerMini from "../../components/ui/SpinnerMini";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -117,7 +118,9 @@ const SignupForm = () => {
       </FormRow>
 
       <div className="mt-6 w-full">
-        <SubmitButton size="l">Signup</SubmitButton>
+        <SubmitButton size="l">
+          {signingUp ? <SpinnerMini /> : "Signup"}
+        </SubmitButton>
       </div>
     </form>
   );
