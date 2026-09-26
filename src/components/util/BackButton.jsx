@@ -8,7 +8,7 @@ const BackButton = () => {
   return (
     <button
       onClick={moveBack}
-      className="group inline-flex items-center gap-3 rounded-full border border-border bg-surface px-4 py-2 text-xl font-medium text-text-secondary shadow-sm transition-all duration-200 hover:-translate-x-1 hover:border-primary hover:bg-primary/10 hover:text-primary hover:shadow-md active:scale-95 cursor-pointer"
+      className="group inline-flex items-center gap-3 rounded-full border border-border bg-surface px-4 py-2 text-xl font-medium text-text-secondary shadow-sm transition-all duration-200 hover:-translate-x-1 hover:border-text-primary hover:bg-text-primary/10 hover:text-text-primary hover:shadow-md active:scale-95 cursor-pointer"
     >
       <Icon
         icon={<PiLessThanBold />}
