@@ -20,10 +20,14 @@ const SignupForm = () => {
   const { errors } = formState;
 
   const onSubmit = (data) => {
-    signup(data);
-    navigate("/home");
+    signup(data, {
+      onSuccess: () => {
+        navigate("/home");
+      },
+    });
   };
   const onError = (error) => {
+    console.log(error);
     console.log(error);
   };
 

@@ -7,32 +7,36 @@ const content = [
   {
     title: "Company",
     links: [
-      { name: "About us", link: "about" },
-      { name: "Careers", link: "#" },
-      { name: "Login", link: "#" },
+      { name: "About us", link: "about", page: false },
+      { name: "Careers", link: "#", page: false },
+      { name: "Login", link: "/login", page: true },
     ],
   },
   {
     title: "Support",
     links: [
-      { name: "FAQs", link: "faq" },
-      { name: "Cancellation Policy", link: "about" },
-      { name: "Booking Policy", link: "about" },
+      { name: "FAQs", link: "faq", page: false },
+      { name: "Cancellation Policy", link: "about", page: false },
+      { name: "Booking Policy", link: "about", page: false },
     ],
   },
   {
     title: "Service",
     links: [
-      { name: "Search Bus", link: "search-bus" },
-      { name: "Bookings", link: "#" },
-      { name: "Become an Operator", link: "#" },
+      { name: "Search Bus", link: "search-bus", page: false },
+      { name: "Bookings", link: "/bookings", page: true },
+      { name: "Become an Operator", link: "/operator/signup", page: true },
     ],
   },
   {
     title: "Contact",
     links: [
-      { name: "+91 9244249441", comms: "tel:+9244249441" },
-      { name: "rajjhaa333@gmail.com", comms: "mailto:rajjhaa333@gmail.com" },
+      { name: "+91 9244249441", comms: "tel:+9244249441", page: false },
+      {
+        name: "rajjhaa333@gmail.com",
+        comms: "mailto:rajjhaa333@gmail.com",
+        page: false,
+      },
     ],
   },
 ];

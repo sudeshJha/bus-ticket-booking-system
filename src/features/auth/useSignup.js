@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { userSignup } from "../../services/apiUser";
+import { signupApi } from "../../services/apiUser";
 
 export default function useSignup() {
   const {
@@ -8,7 +8,7 @@ export default function useSignup() {
     isLoading: signingUp,
     error,
   } = useMutation({
-    mutationFn: (userData) => userSignup(userData),
+    mutationFn: (userData) => signupApi(userData),
 
     onSuccess: () => {
       toast.success("Successfully, signed up.");
@@ -16,11 +16,11 @@ export default function useSignup() {
         toast.success(
           "Activate your account by clicking on the link shared in email",
         );
-      }, 500);
+      }, 1000);
     },
     onError: (err) => {
-      console.log(err.message);
-      toast.error("Signup Failed. Try again!");
+      console.log(err);
+      toast.error(err.message);
     },
   });
 
