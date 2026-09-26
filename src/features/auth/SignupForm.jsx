@@ -5,8 +5,9 @@ import { MdOutlineLock, MdOutlineMail, MdOutlinePhone } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/util/SubmitButton";
 import { useForm } from "react-hook-form";
-import FormError from "../../components/util/FormError";
 import useSignup from "./useSignup";
+import FormRow from "./FormRow";
+import InputWrapper from "./InputWrapper";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const SignupForm = () => {
       },
     });
   };
+
   const onError = (error) => {
     console.error(error);
   };
@@ -38,61 +40,23 @@ const SignupForm = () => {
       className="mt-14 flex flex-col items-center gap-8"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">First Name</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
+      <FormRow label="Name" error={errors?.name?.message}>
+        <InputWrapper icon={<FiUser />}>
           <input
-            placeholder="Enter your first name"
+            placeholder="Enter your name"
             defaultValue=""
-            id="firstName"
-            {...register("firstName", {
+            id="name"
+            {...register("name", {
               required: "This field is required",
             })}
-            className="outline-none text-text-primary w-full"
           />
-        </div>
-        <FormError message={errors?.firstName?.message} />
-      </div>
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Middle Name</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
-          <input
-            placeholder="Enter your middle name"
-            defaultValue=""
-            id="middleName"
-            {...register("middleName")}
-            className="outline-none text-text-primary w-full"
-          />
-        </div>
-        <FormError message={errors?.middleName?.message} />
-      </div>
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Last Name</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
-          <input
-            placeholder="Enter your last name"
-            defaultValue=""
-            id="lastName"
-            {...register("lastName")}
-            className="outline-none text-text-primary w-full"
-          />
-        </div>
-        <FormError message={errors?.lastName?.message} />
-      </div>
+        </InputWrapper>
+      </FormRow>
 
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Phone</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon
-            icon={<MdOutlinePhone />}
-            size="small"
-            color="text-text-secondary"
-          />
+      <FormRow label="Phone" error={errors?.phone?.message}>
+        <InputWrapper icon={<MdOutlinePhone />}>
           <input
-            placeholder="Enter your phone number"
+            placeholder="Enter your phone"
             defaultValue=""
             id="phone"
             {...register("phone", {
@@ -102,22 +66,14 @@ const SignupForm = () => {
                 message: "Phone number must be exactly 10 digits",
               },
             })}
-            className="outline-none text-text-primary w-full"
           />
-        </div>
-        <FormError message={errors?.phone?.message} />
-      </div>
+        </InputWrapper>
+      </FormRow>
 
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Email</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon
-            icon={<MdOutlineMail />}
-            size="small"
-            color="text-text-secondary"
-          />
+      <FormRow label="Email" error={errors?.email?.message}>
+        <InputWrapper icon={<MdOutlineMail />}>
           <input
-            placeholder="Enter your email"
+            placeholder="Enter company email"
             defaultValue=""
             id="email"
             {...register("email", {
@@ -127,22 +83,26 @@ const SignupForm = () => {
                 message: "Please enter a valid email address",
               },
             })}
-            className="outline-none text-text-primary w-full"
           />
-        </div>
-        <FormError message={errors?.email?.message} />
-      </div>
+        </InputWrapper>
+      </FormRow>
 
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Password</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon
-            icon={<MdOutlineLock />}
-            size="small"
-            color="text-text-secondary"
-          />
+      <FormRow label="Password" error={errors?.password?.message}>
+        <InputWrapper
+          icon={<MdOutlineLock />}
+          password={
+            <Icon
+              icon={isPasswordVisible ? <FiEye /> : <FiEyeOff />}
+              size="small"
+              color="text-text-secondary"
+              custom="cursor-pointer"
+              onClick={togglePasswordVisibility}
+            />
+          }
+        >
           <input
             placeholder="Enter password"
+            defaultValue=""
             type={isPasswordVisible ? "text" : "password"}
             id="password"
             {...register("password", {
@@ -152,19 +112,9 @@ const SignupForm = () => {
                 message: "Password must be at least 8 characters",
               },
             })}
-            defaultValue=""
-            className="outline-none text-text-primary w-full"
           />
-          <Icon
-            icon={isPasswordVisible ? <FiEye /> : <FiEyeOff />}
-            size="small"
-            color="text-text-secondary"
-            custom="cursor-pointer"
-            onClick={togglePasswordVisibility}
-          />
-        </div>
-        <FormError message={errors?.password?.message} />
-      </div>
+        </InputWrapper>
+      </FormRow>
 
       <div className="mt-6 w-full">
         <SubmitButton size="l">Signup</SubmitButton>
