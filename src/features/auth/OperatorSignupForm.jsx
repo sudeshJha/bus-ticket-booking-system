@@ -1,14 +1,6 @@
-import React, { useState } from "react";
-import Icon from "../../components/util/Icon";
-import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
-import { MdOutlineLock, MdOutlineMail, MdOutlinePhone } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import SubmitButton from "../../components/util/SubmitButton";
-import { useForm } from "react-hook-form";
-import FormError from "../../components/util/FormError";
-import useSignup from "./useSignup";
+import React from "react";
 
-const SignupForm = () => {
+const OperatorSignupForm = () => {
   const navigate = useNavigate();
   const { signingUp, signup, error } = useSignup();
 
@@ -27,7 +19,8 @@ const SignupForm = () => {
     });
   };
   const onError = (error) => {
-    console.error(error);
+    console.log(error);
+    console.log(error);
   };
 
   const togglePasswordVisibility = () => {
@@ -39,48 +32,20 @@ const SignupForm = () => {
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">First Name</label>
+        <label className="font-bold text-text-primary ml-2">Name</label>
         <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
           <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
           <input
-            placeholder="Enter your first name"
+            placeholder="Enter your name"
             defaultValue=""
-            id="firstName"
-            {...register("firstName", {
+            id="name"
+            {...register("name", {
               required: "This field is required",
             })}
             className="outline-none text-text-primary w-full"
           />
         </div>
-        <FormError message={errors?.firstName?.message} />
-      </div>
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Middle Name</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
-          <input
-            placeholder="Enter your middle name"
-            defaultValue=""
-            id="middleName"
-            {...register("middleName")}
-            className="outline-none text-text-primary w-full"
-          />
-        </div>
-        <FormError message={errors?.middleName?.message} />
-      </div>
-      <div className="flex flex-col gap-2 items-start w-full">
-        <label className="font-bold text-text-primary ml-2">Last Name</label>
-        <div className="border border-border w-full flex items-center gap-2 justify-start py-1 pr-8 rounded-xl text-2xl">
-          <Icon icon={<FiUser />} size="small" color="text-text-secondary" />
-          <input
-            placeholder="Enter your last name"
-            defaultValue=""
-            id="lastName"
-            {...register("lastName")}
-            className="outline-none text-text-primary w-full"
-          />
-        </div>
-        <FormError message={errors?.lastName?.message} />
+        <FormError message={errors?.name?.message} />
       </div>
 
       <div className="flex flex-col gap-2 items-start w-full">
@@ -173,4 +138,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default OperatorSignupForm;

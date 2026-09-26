@@ -17,6 +17,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import OperatorSignupPage from "./pages/OperatorSignupPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -75,6 +76,7 @@ const App = () => {
               <Route path="bookings" element={<BookingsPage />} />
             </Route>
 
+            <Route path="/operator/signup" element={<OperatorSignupPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
