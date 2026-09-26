@@ -42,6 +42,12 @@ const faqs = [
     answer:
       "Minor changes may be allowed depending on the bus operator. Please check the booking details or contact customer support.",
   },
+  {
+    id: 7,
+    question: "How do I become an Operator?",
+    answer:
+      "Enter all the credentials and required documents on the operator signup page. You can find the link on the services section on the foot of home page",
+  },
 ];
 
 const AccordianSection = () => {
