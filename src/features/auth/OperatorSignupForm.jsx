@@ -115,7 +115,7 @@ const OperatorSignupForm = () => {
                 <option
                   value={gender}
                   key={gender}
-                  className="bg-surface-dark text-text-primary"
+                  className="bg-surface-dark text-text-secondary"
                 >
                   {gender.charAt(0).toUpperCase() + gender.slice(1)}
                 </option>
@@ -176,7 +176,7 @@ const OperatorSignupForm = () => {
           <input
             type="number"
             step="any"
-            placeholder="Enter seater base price"
+            placeholder="₹ 0.50/km person"
             defaultValue=""
             id="seaterBasePrice"
             {...register("seaterBasePrice", {
@@ -197,7 +197,7 @@ const OperatorSignupForm = () => {
           <input
             type="number"
             step="any"
-            placeholder="Enter sleeper base price address"
+            placeholder="₹ 0.50/km person"
             defaultValue=""
             id="sleeperBasePrice"
             {...register("sleeperBasePrice", {
@@ -228,7 +228,7 @@ const OperatorSignupForm = () => {
           {...register("license", {
             required: "This  filed is required",
           })}
-          className="text-2xl w-full text-text-primary file:mr-4 file:cursor-pointer border border-border rounded-xl  file:border-0 file:rounded-l-xl file:bg-surface-dark file:px-6 file:py-4 file:text-text-primary  hover:file:bg-text-secondary/70"
+          className="text-2xl w-full text-text-primary file:mr-4 file:cursor-pointer border border-border rounded-xl  file:border-0 file:rounded-l-xl file:bg-surface-dark file:px-6 file:py-4 file:text-text-primary  hover:file:bg-text-secondary/15"
         />
       </FormRow>
 
@@ -238,7 +238,7 @@ const OperatorSignupForm = () => {
           type="file"
           accept="image/*"
           {...register("banner")}
-          className="text-2xl w-full text-text-primary file:mr-4 file:cursor-pointer border border-border rounded-xl  file:border-0 file:rounded-l-xl file:bg-surface-dark file:px-6 file:py-4 file:text-text-primary  hover:file:bg-text-secondary/70"
+          className="text-2xl w-full text-text-primary file:mr-4 file:cursor-pointer border border-border rounded-xl  file:border-0 file:rounded-l-xl file:bg-surface-dark file:px-6 file:py-4 file:text-text-primary  hover:file:bg-text-secondary/15"
         />
       </FormRow>
 

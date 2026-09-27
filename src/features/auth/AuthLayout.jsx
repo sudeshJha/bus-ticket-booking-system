@@ -5,9 +5,9 @@ import BackButton from "../../components/util/BackButton";
 import toast from "react-hot-toast";
 
 const AuthLayout = ({ children, title, subtitle }) => {
-  const user = { name: "sudesh" };
+  const user = {};
 
-  if (user) {
+  if (user?.userId) {
     toast.error("To continue please  logout first", { id: "logout toast" });
     return <Navigate to="/" />;
   }
