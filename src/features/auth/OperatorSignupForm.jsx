@@ -6,6 +6,7 @@ import {
   MdOutlineLock,
   MdOutlineMail,
   MdOutlinePhone,
+  MdOutlineSupportAgent,
 } from "react-icons/md";
 import SubmitButton from "../../components/util/SubmitButton";
 import { useNavigate } from "react-router-dom";
@@ -29,6 +30,8 @@ const OperatorSignupForm = () => {
   const { errors } = formState;
 
   const onSubmit = (data) => {
+    data.license = data.license[0];
+    data.banner = data.banner[0];
     console.log(data);
 
     signup(data, {
@@ -49,6 +52,22 @@ const OperatorSignupForm = () => {
       className="mt-14 flex flex-col items-center gap-8"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
+      <FormRow label="User Type" error={errors?.userType?.message}>
+        <InputWrapper icon={<MdOutlineSupportAgent />} disabled={true}>
+          <input
+            className="cursor-not-allowed"
+            disabled
+            type="text"
+            // defaultValue="Operator"
+            value="Operator"
+            id="userType"
+            {...register("userType", {
+              required: "This field is required",
+            })}
+          />
+        </InputWrapper>
+      </FormRow>
+
       <FormRow label="Name" error={errors?.name?.message}>
         <InputWrapper icon={<FiUser />}>
           <input
@@ -107,7 +126,12 @@ const OperatorSignupForm = () => {
             defaultValue=""
             {...register("gender")}
           >
-            <option value="" disabled hidden className="bg-primary">
+            <option
+              value=""
+              disabled
+              hidden
+              className="bg-primary text-text-secondary"
+            >
               Please select gender
             </option>
             {["male", "female", "other"].map((gender) => {
@@ -212,7 +236,7 @@ const OperatorSignupForm = () => {
 
       <FormRow label="Description" error={errors?.description?.message}>
         <textarea
-          className="border border-border w-full flex items-center gap-2 justify-start p-4 rounded-xl text-2xl outline-none text-text-primary"
+          className="border border-border w-full flex items-center gap-2 justify-start p-4 rounded-xl text-2xl outline-none text-text-primary h-32 min-h-16"
           placeholder="Enter company description"
           defaultValue=""
           id="description"

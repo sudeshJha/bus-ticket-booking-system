@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { signupApi } from "../../services/apiUser";
+import { signupApi, signupOperatorApi } from "../../services/apiUser";
 
 export default function useSignup() {
   const {
@@ -8,7 +8,10 @@ export default function useSignup() {
     isPending: signingUp,
     error,
   } = useMutation({
-    mutationFn: (userData) => signupApi(userData),
+    mutationFn: (userData) =>
+      userData?.userType === "operator"
+        ? signupOperatorApi(userData)
+        : signupApi(userData),
 
     onSuccess: () => {
       toast.success("Successfully, signed up.");

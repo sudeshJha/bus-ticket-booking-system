@@ -16,7 +16,7 @@ const AuthLayout = ({ children, title, subtitle }) => {
       <div className="fixed left-10 top-10">
         <BackButton />
       </div>
-      <div className="px-20 py-10 text-center w-[45vw] h-fit rounded-2xl bg-surface shadow-xl">
+      <div className="px-20 py-10 text-center w-[50vw] h-fit rounded-2xl bg-surface shadow-xl">
         <Link to="/" className="mx-auto w-fit scale-90 block">
           <Logo />
         </Link>
