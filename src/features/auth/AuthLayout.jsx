@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../components/ui/navbar/Logo";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import BackButton from "../../components/util/BackButton";
+import toast from "react-hot-toast";
 
 const AuthLayout = ({ children, title, subtitle }) => {
+  const user = { name: "sudesh" };
+
+  if (user) {
+    toast.error("To continue please  logout first", { id: "logout toast" });
+    return <Navigate to="/" />;
+  }
   return (
     <div className="min-h-screen h-fit bg-primary/10 flex py-15 justify-center relative">
       <div className="fixed left-10 top-10">
