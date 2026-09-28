@@ -36,7 +36,7 @@ const OperatorSignupForm = () => {
     signup(data, {
       onSuccess: () => {
         console.log(data);
-        // navigate("/home");
+        navigate("/home");
       },
     });
   };
