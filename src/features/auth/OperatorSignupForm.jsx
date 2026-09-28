@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Icon from "../../components/util/Icon";
 import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
 import {
-  MdOutlineDescription,
   MdOutlineLock,
   MdOutlineMail,
   MdOutlinePhone,
@@ -36,7 +35,8 @@ const OperatorSignupForm = () => {
 
     signup(data, {
       onSuccess: () => {
-        navigate("/home");
+        console.log(data);
+        // navigate("/home");
       },
     });
   };
@@ -52,14 +52,13 @@ const OperatorSignupForm = () => {
       className="mt-14 flex flex-col items-center gap-8"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
-      <FormRow label="User Type" error={errors?.userType?.message}>
+      <FormRow label="Register as" error={errors?.userType?.message}>
         <InputWrapper icon={<MdOutlineSupportAgent />} disabled={true}>
           <input
             className="cursor-not-allowed"
             disabled
             type="text"
-            // defaultValue="Operator"
-            value="Operator"
+            value="operator"
             id="userType"
             {...register("userType", {
               required: "This field is required",
