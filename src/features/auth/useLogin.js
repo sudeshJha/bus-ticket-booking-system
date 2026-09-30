@@ -9,8 +9,8 @@ export default function useSignup() {
     error,
   } = useMutation({
     mutationFn: (userData) => loginApi(userData),
-    onSuccess: () => {
-      console.log();
+    onSuccess: (res) => {
+      console.log(res);
     },
     onError: (err) => {
       console.log(err);

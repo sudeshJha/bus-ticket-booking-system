@@ -6,17 +6,26 @@ import { MdOutlineLock, MdOutlineMail } from "react-icons/md";
 import SubmitButton from "../../components/util/SubmitButton";
 import FormError from "../../components/util/FormError";
 import { useForm } from "react-hook-form";
+import useMoveBack from "../../hooks/useMoveBack";
+import useLogin from "./useLogin";
+import SpinnerMini from "../../components/ui/SpinnerMini";
 
 const LoginForm = () => {
+  const { moveBack } = useMoveBack();
   const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const { register, handleSubmit, formState } = useForm({
     defaultValues: {},
   });
   const { errors } = formState;
+  const { login, loggingIn, error } = useLogin();
 
   const onSubmit = (data) => {
-    console.log(data);
+    login(data, {
+      onSuccess: () => {
+        moveBack();
+      },
+    });
   };
   const onError = (error) => {
     console.log(error);
@@ -99,7 +108,9 @@ const LoginForm = () => {
       </div>
 
       <div className="mt-6 w-full">
-        <SubmitButton size="l">Signup</SubmitButton>
+        <SubmitButton size="l">
+          {loggingIn ? <SpinnerMini /> : "Login"}
+        </SubmitButton>
       </div>
     </form>
   );
