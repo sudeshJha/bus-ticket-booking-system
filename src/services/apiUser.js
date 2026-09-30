@@ -38,15 +38,12 @@ export const signupOperatorApi = async (userData) => {
   if (userData.license) formData.append("license", userData.license);
   if (userData.banner) formData.append("banner", userData.banner);
 
-  console.log(formData);
-
   const response = await fetch(`${API_BASE_URL}/operator/signup`, {
     method: "POST",
     body: formData,
   });
 
   const data = await response.text();
-  console.log(data);
 
   if (!response.ok) {
     console.log(data.message);
@@ -66,7 +63,7 @@ export const loginApi = async (userData) => {
   });
 
   const data = await response.json();
-
+  console.log(data);
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
   }
