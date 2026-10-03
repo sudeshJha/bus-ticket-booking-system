@@ -1,3 +1,5 @@
+import { getLocalStorage } from "./localStorage";
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const signupApi = async (userData) => {
@@ -71,4 +73,21 @@ export const loginApi = async (userData) => {
   return data;
 };
 
-export const getUserApi = async (userId) => {};
+export const getUserApi = async () => {
+  const bearerToken = getLocalStorage("authToken");
+
+  const response = await fetch(`${API_BASE_URL}/get_user`, {
+    method: "GET",
+    headers: {
+      Authorization: bearerToken,
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong!");
+  }
+
+  return data;
+};
