@@ -2,18 +2,20 @@ import React from "react";
 import Button from "../../util/Button";
 import ThemeButton from "./ThemeButton";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../services/useUser";
+import SpinnerMini from "../SpinnerMini";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const NavActions = () => {
   const navigate = useNavigate();
 
-  let user = {
-    name: "Sudesh Jha",
-  };
-
-  user = undefined;
+  const { user, gettingUser } = useUser();
 
   const handleLogin = () => navigate("/login");
   const handleSignup = () => navigate("/signup");
+
+  if (gettingUser) return <SpinnerMini />;
 
   return (
     <div className="flex items-center justify-center gap-10">
@@ -47,12 +49,13 @@ const NavActions = () => {
             >
               <img
                 src={
-                  user?.profile ? user.profile : "src/assets/default_user.jpg"
+                  // user?.profile ? user.profile : "src/assets/default_user.jpg"
+                  `${API_BASE_URL}/${user.bannerUrl}`
                 }
               />
             </div>
             <h1 className="text-text-primary tracking-wide font-bold">
-              {user.name.split(" ")[0]}
+              {user.userInfo.name}
             </h1>
           </div>
         </>

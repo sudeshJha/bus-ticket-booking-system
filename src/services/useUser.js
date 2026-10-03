@@ -3,8 +3,8 @@ import { getUserApi } from "./apiUser";
 
 export const useUser = () => {
   const {
-    isPending,
-    data: cabins,
+    isPending: gettingUser,
+    data: user,
     error,
   } = useQuery({
     queryKey: ["user"],
@@ -12,5 +12,7 @@ export const useUser = () => {
     retry: false,
   });
 
-  return { isPending, cabins, error };
+  console.log(user);
+
+  return { gettingUser, user, error };
 };

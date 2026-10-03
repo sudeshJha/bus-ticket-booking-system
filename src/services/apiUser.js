@@ -65,7 +65,6 @@ export const loginApi = async (userData) => {
   });
 
   const data = await response.json();
-  console.log(data);
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
   }
@@ -88,6 +87,5 @@ export const getUserApi = async () => {
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
   }
-
-  return data;
+  return data.response;
 };
