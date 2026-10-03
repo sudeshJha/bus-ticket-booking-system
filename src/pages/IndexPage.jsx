@@ -1,15 +1,21 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { useUser } from "../services/useUser";
+import Spinner from "../components/ui/Spinner";
 
 const IndexPage = () => {
-  const user = {
-    userType: "passenger",
-  };
+  const { user, gettingUser } = useUser();
+
+  if (gettingUser) {
+    return <Spinner />;
+  }
+
+  const userType = user?.userInfo?.userType;
 
   return (
     <>
-      {user.userType === "operator" && <Navigate to="/dashboard" />}
-      {(user.userType === "passenger" || !user) && <Navigate to="/home" />}
+      {userType === "OPERATOR" && <Navigate to="/dashboard" />}
+      {(userType === "PASSENGER" || !userType) && <Navigate to="/home" />}
     </>
   );
 };
