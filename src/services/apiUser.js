@@ -70,3 +70,5 @@ export const loginApi = async (userData) => {
 
   return data;
 };
+
+export const getUserApi = async (userId) => {};
