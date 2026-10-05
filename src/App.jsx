@@ -3,8 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/HomePage";
 import { ThemeProvider } from "./context/ThemeContext";
 import AppLayout from "./components/ui/AppLayout";
-import SearchBus from "./pages/SearchBusPage";
-import BusBooking from "./pages/BusBookingPage";
+import SearchBuspage from "./pages/SearchBusPage";
+import BusBookingPage from "./pages/BusBookingPage";
 import OperatorLayout from "./components/ui/operator/OperatorLayout";
 import PassengerLayout from "./components/ui/passenger/PassengerLayout";
 import Logo from "./components/ui/navbar/Logo";
@@ -18,6 +18,8 @@ import SettingsPage from "./pages/SettingsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import OperatorSignupPage from "./pages/OperatorSignupPage";
+import SearchBusPage from "./pages/SearchBusPage";
+import RoutesPage from "./pages/RoutesPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,13 +61,14 @@ const App = () => {
 
               <Route element={<PassengerLayout />}>
                 <Route path="/home" element={<Home />} />
-                <Route path="/search_bus" element={<SearchBus />} />
-                <Route path="/search_bus/:id" element={<BusBooking />} />
+                <Route path="/search_bus" element={<SearchBusPage />} />
+                <Route path="/search_bus/:id" element={<BusBookingPage />} />
               </Route>
 
               <Route element={<OperatorLayout />}>
                 <Route path="dashboard" element={<Logo />} />
                 <Route path="my_company" element={<Footer />} />
+                <Route path="routes" element={<RoutesPage />} />
                 {/* other links for operator */}
               </Route>
             </Route>
