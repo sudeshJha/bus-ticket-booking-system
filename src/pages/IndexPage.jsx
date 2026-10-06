@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../services/useUser";
+import { useUser } from "../features/auth/useUser";
 import Spinner from "../components/ui/Spinner";
 
 const IndexPage = () => {

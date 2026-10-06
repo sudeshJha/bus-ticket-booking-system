@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../util/Button";
 import ThemeButton from "./ThemeButton";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../../services/useUser";
+import { useUser } from "../../../features/auth/useUser";
 import SpinnerMini from "../SpinnerMini";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;

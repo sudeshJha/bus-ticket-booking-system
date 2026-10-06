@@ -20,7 +20,7 @@ const OperatorLayout = () => {
     <div className="min-w-screen">
       {/* {isSidebarOpen && <Sidebar />} */}
       <Sidebar isSidebarOpen={isSidebarOpen} closeSideBar={closeSideBar} />
-      <main className={"w-full"}>
+      <main className={"w-screen min-h-screen"}>
         <Navbar isSidebarOpen={isSidebarOpen} openSideBar={openSideBar} />
         <Outlet />
       </main>
