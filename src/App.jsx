@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/HomePage";
 import { ThemeProvider } from "./context/ThemeContext";
 import AppLayout from "./components/ui/AppLayout";
-import SearchBuspage from "./pages/SearchBusPage";
 import BusBookingPage from "./pages/BusBookingPage";
 import OperatorLayout from "./components/ui/operator/OperatorLayout";
 import PassengerLayout from "./components/ui/passenger/PassengerLayout";

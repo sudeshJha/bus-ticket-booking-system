@@ -1,15 +1,20 @@
-import { getLocalStorage, setLocalStorage } from "./localStorage";
+import {
+  getLocalStorage,
+  removeLocalStorage,
+  setLocalStorage,
+} from "./localStorage";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const getStatesApi = async () => {
   // check if states exist in local storage
-  const states = JSON.parse(getLocalStorage("states"));
+  removeLocalStorage("states");
+  const states = getLocalStorage("states");
 
   // if yes then send from local storage
-  if (states) {
-    return states;
-  }
+  // if (states) {
+  //   return JSON.parse(states);
+  // }
 
   // if state not in localstorage then fetch from backend
   const response = await fetch(`${API_BASE_URL}/states`, {
@@ -18,22 +23,24 @@ export const getStatesApi = async () => {
 
   //   save state to local storage after fetching
   const data = await response.json();
-  setLocalStorage("states", data);
 
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
   }
+
+  setLocalStorage("states", data);
   return data.response;
 };
 
 export const getCitiesApi = async () => {
   // check if states exist in local storage
-  const cities = JSON.parse(getLocalStorage("cities"));
+  removeLocalStorage("cities");
+  const cities = getLocalStorage("cities");
 
   // if yes then send from local storage
-  if (cities) {
-    return cities;
-  }
+  // if (cities) {
+  //   return JSON.parse(cities);
+  // }
 
   // if state not in localstorage then fetch from backend
   const response = await fetch(`${API_BASE_URL}/cities`, {
@@ -42,10 +49,10 @@ export const getCitiesApi = async () => {
 
   //   save state to local storage after fetching
   const data = await response.json();
-  setLocalStorage("cities", data);
 
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
   }
+  setLocalStorage("cities", data.response);
   return data.response;
 };

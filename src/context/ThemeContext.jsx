@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getLocalStorage } from "../services/localStorage";
 
 const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return getLocalStorage("isDarkMode");
+  });
 
   const toggleTheme = () => {
     setIsDarkMode((darkMode) => !darkMode);
