@@ -28,7 +28,7 @@ export const getStatesApi = async () => {
     throw new Error(data.message || "Something went wrong!");
   }
 
-  setLocalStorage("states", data);
+  setLocalStorage("states", data.response);
   return data.response;
 };
 
@@ -38,9 +38,9 @@ export const getCitiesApi = async () => {
   const cities = getLocalStorage("cities");
 
   // if yes then send from local storage
-  // if (cities) {
-  //   return JSON.parse(cities);
-  // }
+  if (cities) {
+    return JSON.parse(cities);
+  }
 
   // if state not in localstorage then fetch from backend
   const response = await fetch(`${API_BASE_URL}/cities`, {

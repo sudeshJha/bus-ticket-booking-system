@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { getStatesApi } from "../../services/apiStateCity";
-import { getLocalStorage } from "../../services/localStorage";
 
 export const useStates = () => {
   const {
