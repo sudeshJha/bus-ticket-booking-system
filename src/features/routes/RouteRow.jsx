@@ -10,9 +10,13 @@ const RouteRow = ({ route }) => {
     >
       <td className="px-5 py-4 text-xl  text-text-primary/80">{route.title}</td>
 
-      <td className="px-5 py-4  text-text-primary">{route.source}</td>
+      <td className="px-5 py-4  text-text-primary text-2xl tracking-tight">
+        {route.source}
+      </td>
 
-      <td className="px-5 py-4  text-text-primary">{route.destination}</td>
+      <td className="px-5 py-4  text-text-primary text-2xl tracking-tight">
+        {route.destination}
+      </td>
 
       <td className="px-5 py-4  text-text-secondary">{route.distance}</td>
 
@@ -36,7 +40,7 @@ const RouteRow = ({ route }) => {
         <Button
           custom="rounded-lg border border-border px-4 py-2
                text-sm font-medium text-primary
-               hover:bg-primary/40 hover:text-primary-anti
+               hover:bg-primary/60 hover:text-primary-anti
                "
         >
           View Details

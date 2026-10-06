@@ -81,8 +81,8 @@ const RouteTable = () => {
   return (
     <div className="w-full overflow-x-auto rounded-xl border border-border bg-surface">
       <table className="w-full min-w-225 border-collapse">
-        <thead>
-          <tr className="text-left bg-background">
+        <thead className="bg-background w-full">
+          <tr className="text-left w-full">
             <RouteHead title="Title" />
             <RouteHead title="Source" />
             <RouteHead title="Destination" />
@@ -90,7 +90,7 @@ const RouteTable = () => {
             <RouteHead title="Duration" />
             <RouteHead title="Bus Assigned" />
             <RouteHead title="Status" />
-            <RouteHead title="Actions" />
+            <th></th>
           </tr>
         </thead>
         <tbody>

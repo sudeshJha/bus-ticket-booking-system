@@ -11,7 +11,7 @@ const RoutesPage = () => {
 
           <p className="text-lg text-text-secondary">Manage your bus routes</p>
         </div>
-        <Button size="medium" type="secondary">
+        <Button size="small" type="secondary">
           Add Route +
         </Button>
       </div>
