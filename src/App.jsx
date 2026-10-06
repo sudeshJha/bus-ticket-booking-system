@@ -20,6 +20,7 @@ import { Toaster } from "react-hot-toast";
 import OperatorSignupPage from "./pages/OperatorSignupPage";
 import SearchBusPage from "./pages/SearchBusPage";
 import RoutesPage from "./pages/RoutesPage";
+import AddOperatorRoutePage from "./pages/AddOperatorRoutePage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -69,6 +70,7 @@ const App = () => {
                 <Route path="dashboard" element={<Logo />} />
                 <Route path="my_company" element={<Footer />} />
                 <Route path="routes" element={<RoutesPage />} />
+                <Route path="add_route" element={<AddOperatorRoutePage />} />
                 {/* other links for operator */}
               </Route>
             </Route>

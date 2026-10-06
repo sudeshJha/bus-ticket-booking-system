@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import Logo from "../navbar/Logo";
 import Icon from "../../util/Icon";
 import { useLocation, useNavigate } from "react-router-dom";
-import { IoBus, IoHomeOutline } from "react-icons/io5";
+import { IoBus, IoClose, IoHomeOutline } from "react-icons/io5";
 import { MdOutlinePinDrop } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
 import { MdOutlineHomeWork } from "react-icons/md";
 import { AiOutlineCalendar } from "react-icons/ai";
+import ButtonIcon from "../../util/ButtonIcon";
+import { IoIosArrowDropleft, IoIosArrowDropleftCircle } from "react-icons/io";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const navs = [
   { id: 0, name: "Dashboard", link: "/dashboard", icon: <IoHomeOutline /> },
@@ -27,7 +30,7 @@ const navs = [
   { id: 5, name: "Routes", link: "/routes", icon: <MdOutlinePinDrop /> },
 ];
 
-const Sidebar = ({ isSidebarOpen }) => {
+const Sidebar = ({ isSidebarOpen, closeSideBar }) => {
   const [activeTab, setActiveTab] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
@@ -47,9 +50,17 @@ const Sidebar = ({ isSidebarOpen }) => {
   };
   return (
     <div
-      className={`fixed left-0 top-0 bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[20vw]  ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+      className={`fixed left-0 top-0 bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[20vw]  ${isSidebarOpen ? "translate-x-0" : "-translate-x-150"}`}
     >
-      <div className="-ml-6 w-full flex justify-center">
+      <div className="absolute -right-7 top-1/2">
+        <ButtonIcon
+          icon={<IoIosArrowDropleftCircle />}
+          onClick={closeSideBar}
+          color="text-text-primary"
+          size={16}
+        />
+      </div>
+      <div className="-ml-6 w-full flex justify-evenly items-center ">
         <Logo />
       </div>
 
