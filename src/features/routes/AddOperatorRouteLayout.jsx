@@ -4,18 +4,25 @@ import RouteResult from "./RouteResult";
 import RouteSummary from "./RouteSummary";
 import { FiInfo, FiSend } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
+import { useCityRoutes } from "./useCityRoutes";
+import Spinner from "../../components/ui/Spinner";
 
 const AddOperatorRouteLayout = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sourceCity, setSourceCity] = useState("");
-  const [destinationCity, setDestinationCity] = useState("");
 
-  const handleSearch = (sourceCity, destinationCity) => {
+  const { routes, gettingCityRoute } = useCityRoutes();
+
+  const [sourceCity, setSourceCity] = useState(
+    searchParams.get("sourceCity") || "",
+  );
+  const [destinationCity, setDestinationCity] = useState(
+    searchParams.get("destinationCity") || "",
+  );
+
+  const handleSearch = (e) => {
     e.preventDefault();
-
-    console.log(sourceCity, destinationCity);
 
     if (!sourceCity || !destinationCity) {
       return;
@@ -48,12 +55,16 @@ const AddOperatorRouteLayout = () => {
           />
 
           {/* Dynamic Section: Routes & Stops (Appears after search) */}
-          {hasSearched && (
-            <RouteResult
-              setSelectedRoute={setSelectedRoute}
-              selectedRoute={selectedRoute}
-            />
-          )}
+          {sourceCity &&
+            destinationCity &&
+            (gettingCityRoute && routes ? (
+              <Spinner />
+            ) : (
+              <RouteResult
+                setSelectedRoute={setSelectedRoute}
+                selectedRoute={selectedRoute}
+              />
+            ))}
         </div>
 
         {/* Right Sidebar: Route Summary */}

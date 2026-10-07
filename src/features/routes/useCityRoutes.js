@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCityRouteApi } from "../../services/apiRoute";
 
-export const useStates = () => {
+export const useCityRoutes = () => {
   const {
     isPending: gettingStates,
     data: routes,

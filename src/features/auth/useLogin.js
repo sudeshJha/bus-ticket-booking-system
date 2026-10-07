@@ -3,7 +3,7 @@ import { loginApi } from "../../services/apiUser";
 import toast from "react-hot-toast";
 import { setLocalStorage } from "../../services/localStorage";
 
-export default function useSignup() {
+export default function useLogin() {
   const {
     mutate: login,
     isPending: loggingIn,

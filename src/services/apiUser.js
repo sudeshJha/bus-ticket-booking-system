@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./localStorage";
+import { getLocalStorage, setLocalStorage } from "./localStorage";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

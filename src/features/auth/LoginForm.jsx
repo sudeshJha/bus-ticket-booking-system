@@ -18,7 +18,7 @@ const LoginForm = () => {
     defaultValues: {},
   });
   const { errors } = formState;
-  const { login, loggingIn, error } = useLogin();
+  const { login, loggingIn } = useLogin();
 
   const onSubmit = (data) => {
     login(data, {
