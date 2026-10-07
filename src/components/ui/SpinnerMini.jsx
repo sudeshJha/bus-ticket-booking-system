@@ -3,7 +3,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 
 const SpinnerMini = () => {
   return (
-    <BiLoaderAlt className="w-[2.4rem] h-[2.4rem] animate-spin text-surface-dark mx-auto" />
+    <BiLoaderAlt className="w-[2.4rem] h-[2.4rem] animate-spin text-text-secondary mx-auto" />
   );
 };
 

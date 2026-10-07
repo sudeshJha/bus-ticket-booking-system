@@ -4,11 +4,14 @@ import Spinner from "../../components/ui/Spinner";
 import Button from "../../components/util/Button";
 import toast from "react-hot-toast";
 
-const RouteSearch = ({ handleSearch }) => {
+const RouteSearch = ({
+  sourceCity,
+  setSourceCity,
+  destinationCity,
+  setDestinationCity,
+  handleSearch,
+}) => {
   const { cities, gettingCities } = useCities();
-
-  const [sourceCity, setSourceCity] = useState("");
-  const [destinationCity, setDestinationCity] = useState("");
 
   const selectSourceCity = (e) => {
     if (e.target.value == destinationCity) {
@@ -29,7 +32,10 @@ const RouteSearch = ({ handleSearch }) => {
   if (gettingCities) return <Spinner />;
 
   return (
-    <form className="grid grid-cols-[2.5fr_2.5fr_1fr] items-end gap-6">
+    <form
+      className="grid grid-cols-[2.5fr_2.5fr_1fr] items-end gap-6"
+      onSubmit={handleSearch}
+    >
       <div className="flex-col">
         <label className="block text-lg font-medium text-text-secondary mb-2 ml-2">
           Source City
@@ -89,7 +95,7 @@ const RouteSearch = ({ handleSearch }) => {
       </div>
 
       <div className="">
-        <Button onClick={handleSearch} size="medium" type="primary">
+        <Button size="medium" type="primary">
           Search Routes
         </Button>
       </div>

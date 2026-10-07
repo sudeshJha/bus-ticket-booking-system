@@ -12,9 +12,9 @@ export const getStatesApi = async () => {
   const states = getLocalStorage("states");
 
   // if yes then send from local storage
-  // if (states) {
-  //   return JSON.parse(states);
-  // }
+  if (states) {
+    return JSON.parse(states);
+  }
 
   // if state not in localstorage then fetch from backend
   const response = await fetch(`${API_BASE_URL}/states`, {
