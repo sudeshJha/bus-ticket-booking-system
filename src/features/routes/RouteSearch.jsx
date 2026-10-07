@@ -1,31 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
+import { useCities } from "./useCities";
+import Spinner from "../../components/ui/Spinner";
+import Button from "../../components/util/Button";
+import toast from "react-hot-toast";
 
 const RouteSearch = ({ handleSearch }) => {
+  const { cities, gettingCities } = useCities();
+
+  const [sourceCity, setSourceCity] = useState("");
+  const [destinationCity, setDestinationCity] = useState("");
+
+  const selectSourceCity = (e) => {
+    if (e.target.value == destinationCity) {
+      toast.error("Source and Destination city cannot be same.");
+      return;
+    }
+    setSourceCity(e.target.value);
+  };
+
+  const selectDestinationCity = (e) => {
+    if (e.target.value == sourceCity) {
+      toast.error("Source and Destination city cannot be same.");
+      return;
+    }
+    setDestinationCity(e.target.value);
+  };
+
+  if (gettingCities) return <Spinner />;
+
   return (
-    <div className="flex items-end gap-6">
-      <div className="flex-1">
-        <label className="block text-base font-medium text-gray-700 mb-2">
+    <form className="grid grid-cols-[2.5fr_2.5fr_1fr] items-end gap-6">
+      <div className="flex-col">
+        <label className="block text-lg font-medium text-text-secondary mb-2 ml-2">
           Source City
         </label>
-        <select className="w-full text-base border border-gray-300 rounded-xl p-3.5 outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-          <option>Jabalpur</option>
+        <select
+          className="w-full text-2xl text-semibold border border-brder rounded-xl p-4 outline-none focus:ring-2 focus:ring-secondary bg-primary-anti"
+          onChange={selectSourceCity}
+          value={sourceCity || "default"}
+        >
+          <option
+            disabled
+            className="bg-surface text-text-primary"
+            value="default"
+          >
+            Select source city
+          </option>
+          {cities.map((city, i) => {
+            return (
+              <option
+                key={i}
+                className="text-xl bg-surface-dark text-text-primary"
+              >
+                {city.name}
+              </option>
+            );
+          })}
         </select>
       </div>
-      <div className="flex-1">
-        <label className="block text-base font-medium text-gray-700 mb-2">
-          Destination City *
+
+      <div className="flex-col">
+        <label className="block text-lg font-medium text-text-secondary mb-2 ml-2">
+          Destination City
         </label>
-        <select className="w-full text-base border border-gray-300 rounded-xl p-3.5 outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-          <option>Indore</option>
+        <select
+          className="w-full text-2xl text-semibold border border-brder rounded-xl p-4 outline-none focus:ring-2 focus:ring-secondary bg-primary-anti"
+          value={destinationCity || "default"}
+          onChange={selectDestinationCity}
+        >
+          <option
+            disabled
+            className="bg-surface text-text-primary"
+            value="default"
+          >
+            Select destination city
+          </option>
+          {cities.map((city, i) => {
+            return (
+              <option
+                key={i}
+                className="text-xl bg-surface-dark text-text-primary"
+              >
+                {city.name}
+              </option>
+            );
+          })}
         </select>
       </div>
-      <button
-        onClick={handleSearch}
-        className="bg-blue-600 text-white text-base font-medium px-8 py-3.5 rounded-xl hover:bg-blue-700 transition shadow-sm"
-      >
-        Search Routes
-      </button>
-    </div>
+
+      <div className="">
+        <Button onClick={handleSearch} size="medium" type="primary">
+          Search Routes
+        </Button>
+      </div>
+    </form>
   );
 };
 

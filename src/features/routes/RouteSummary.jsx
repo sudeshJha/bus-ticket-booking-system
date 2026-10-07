@@ -2,10 +2,10 @@ import React from "react";
 
 const RouteSummary = () => {
   return (
-    <div className="w-[400px]">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sticky top-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-          <span>🗺️</span> Route Summary
+    <div className="w-125">
+      <div className="bg-bacgkround rounded-2xl shadow-sm border border-border p-8">
+        <h3 className="text-2xl font-bold text-text-primary mb-6">
+          Route Summary
         </h3>
 
         <div className="flex justify-between items-center mb-8 bg-gray-50 p-4 rounded-xl border border-gray-200">

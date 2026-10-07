@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Outlet } from "react-router-dom";
-import { useStates } from "../../features/auth/useStates";
-import { useCities } from "../../features/auth/useCities";
+import { useStates } from "../../features/routes/useStates";
+import { useCities } from "../../features/routes/useCities";
 
 const AppLayout = () => {
   useStates();

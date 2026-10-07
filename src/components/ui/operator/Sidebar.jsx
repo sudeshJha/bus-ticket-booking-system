@@ -45,6 +45,7 @@ const Sidebar = ({ isSidebarOpen, closeSideBar }) => {
   const selectTab = (id) => {
     if (id === activeTab) return;
 
+    closeSideBar();
     setActiveTab(id);
     navigate(navs[id].link);
   };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const RouteResult = () => {
+const RouteResult = (setSelectedRoute, selectedRoute) => {
   return (
     <div className="space-y-8">
       <div>

@@ -6,7 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = ({ isSidebarOpen, openSideBar }) => {
   return (
-    <nav className="px-8 py-6 flex items-center justify-between w-fit bg-surface h-[12vh] min-w-full ">
+    <nav className="px-8 py-6 flex items-center justify-between w-fit bg-surface h-[12vh] min-w-screen">
       <div
         className={`flex items-center justify-center w-fit gap-16 ${isSidebarOpen ? "-translate-x-40 opacity-0" : ""}`}
       >

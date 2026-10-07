@@ -7,7 +7,7 @@ const OperatorLayout = () => {
   // if user not operator
   // redirect to page not found
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const openSideBar = () => {
     setIsSidebarOpen(true);
   };
@@ -17,10 +17,10 @@ const OperatorLayout = () => {
   };
 
   return (
-    <div className="min-w-screen">
+    <div>
       {/* {isSidebarOpen && <Sidebar />} */}
       <Sidebar isSidebarOpen={isSidebarOpen} closeSideBar={closeSideBar} />
-      <main className={"w-screen min-h-screen"}>
+      <main className={"min-h-screen overflow-x-hidden"}>
         <Navbar isSidebarOpen={isSidebarOpen} openSideBar={openSideBar} />
         <Outlet />
       </main>
