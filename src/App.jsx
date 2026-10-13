@@ -20,6 +20,7 @@ import OperatorSignupPage from "./pages/OperatorSignupPage";
 import SearchBusPage from "./pages/SearchBusPage";
 import RoutesPage from "./pages/RoutesPage";
 import AddOperatorRoutePage from "./pages/AddOperatorRoutePage";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -86,6 +87,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>
   );

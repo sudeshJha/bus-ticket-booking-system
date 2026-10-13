@@ -33,7 +33,7 @@ const RouteSearch = ({
 
   return (
     <form
-      className="grid grid-cols-[2.5fr_2.5fr_1fr] items-end gap-6"
+      className="grid grid-cols-[2.5fr_2.5fr_0.75fr] items-end gap-12"
       onSubmit={handleSearch}
     >
       <div className="flex-col">

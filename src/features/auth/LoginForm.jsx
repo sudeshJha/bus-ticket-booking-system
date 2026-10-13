@@ -21,6 +21,7 @@ const LoginForm = () => {
   const { login, loggingIn } = useLogin();
 
   const onSubmit = (data) => {
+    console.log("---------------");
     login(data, {
       onSuccess: () => {
         moveBack();

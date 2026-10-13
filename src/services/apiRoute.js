@@ -2,10 +2,20 @@ import { getLocalStorage } from "./localStorage";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const getCityRouteApi = async () => {
+export const getCityRouteApi = async (sourceCity, destinationCity) => {
+  if (!sourceCity || !destinationCity) {
+    return;
+  }
+
   const bearerToken = getLocalStorage("authToken");
 
-  const response = await fetch(`${API_BASE_URL}/city_route`, {
+  const url = new URL(`${API_BASE_URL}/city_route`);
+  url.search = new URLSearchParams({
+    sourceCity,
+    destinationCity,
+  }).toString();
+
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       Authorization: bearerToken,
