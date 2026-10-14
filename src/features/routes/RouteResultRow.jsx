@@ -22,7 +22,7 @@ const RouteResultRow = ({ route, selectRoute }) => {
       onClick={selectRoute}
     >
       <div className="items-center gap-3 mb-6">
-        <span className="text-3xl font-bold text-primary">{title}</span>
+        <span className="text-2xl font-bold text-primary">{title}</span>
       </div>
       <p className="text-xl text-text-primary/80 mb-4 flex gap-4">
         {cities.map((city, i) => (

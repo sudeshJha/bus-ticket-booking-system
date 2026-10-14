@@ -4,7 +4,7 @@ const RouteDetailsTable = ({ routeCities: cities }) => {
   return (
     <div className="rounded-t-xl rounded-b-sm overflow-auto">
       <table className="w-full text-center">
-        <thead className="bg-surface text-lg text-text-primary">
+        <thead className="bg-surface-dark text-lg text-text-primary">
           <tr>
             <th className="px-4 py-4 font-medium">Stop Sequence</th>
             <th className="px-4 py-4 font-medium">City</th>
@@ -16,7 +16,7 @@ const RouteDetailsTable = ({ routeCities: cities }) => {
         <tbody>
           {cities.map((city, i) => (
             <tr
-              className="border-border border text-text-primary text-xl tracking-wider"
+              className="border-border border text-text-primary text-xl tracking-wider bg-surface"
               key={i}
             >
               <td className="px-4 py-4 font-medium">{i + 1}</td>

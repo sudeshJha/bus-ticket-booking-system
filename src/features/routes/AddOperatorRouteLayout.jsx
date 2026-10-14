@@ -20,9 +20,13 @@ const AddOperatorRouteLayout = () => {
   );
 
   const selectRoute = (index) => {
-    console.log(routes[index]);
     setSelectedRoute(index);
     setShowResult(false);
+  };
+
+  const backToResult = () => {
+    setSelectedRoute(null);
+    setShowResult(true);
   };
 
   const handleSearch = (e) => {
@@ -65,7 +69,10 @@ const AddOperatorRouteLayout = () => {
         )}
 
         {selectedRoute !== null && (
-          <RouteDetails route={routes[selectedRoute]} />
+          <RouteDetails
+            route={routes[selectedRoute]}
+            backToResult={backToResult}
+          />
         )}
       </div>
     </div>
