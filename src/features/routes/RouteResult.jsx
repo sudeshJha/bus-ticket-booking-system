@@ -8,7 +8,7 @@ import { PiPathFill } from "react-icons/pi";
 import { MdLocationPin } from "react-icons/md";
 import RouteResultRow from "./RouteResultRow";
 
-const RouteResult = ({ setSelectedRoute, selectedRoute }) => {
+const RouteResult = ({ selectRoute }) => {
   const { routes, gettingCityRoute } = useCityRoutes();
   const [searchParams] = useSearchParams();
 
@@ -38,7 +38,7 @@ const RouteResult = ({ setSelectedRoute, selectedRoute }) => {
           {routes.map((route, i) => (
             <RouteResultRow
               route={route}
-              selectRoute={() => selectedRoute(i)}
+              selectRoute={() => selectRoute(i)}
               key={i}
             />
           ))}

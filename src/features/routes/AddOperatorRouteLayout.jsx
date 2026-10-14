@@ -3,6 +3,7 @@ import RouteSearch from "./RouteSearch";
 import RouteResult from "./RouteResult";
 import { useSearchParams } from "react-router-dom";
 import { useCityRoutes } from "./useCityRoutes";
+import RouteDetails from "./RouteDetails";
 
 const AddOperatorRouteLayout = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
@@ -18,6 +19,12 @@ const AddOperatorRouteLayout = () => {
     searchParams.get("destinationCity") || "",
   );
 
+  const selectRoute = (index) => {
+    console.log(routes[index]);
+    setSelectedRoute(index);
+    setShowResult(false);
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
 
@@ -25,6 +32,7 @@ const AddOperatorRouteLayout = () => {
       return;
     }
 
+    setSelectedRoute(null);
     setShowResult(true);
     searchParams.set("sourceCity", sourceCity);
     searchParams.set("destinationCity", destinationCity);
@@ -52,8 +60,12 @@ const AddOperatorRouteLayout = () => {
         {showResult && (
           <RouteResult
             setSelectedRoute={setSelectedRoute}
-            selectedRoute={selectedRoute}
+            selectRoute={selectRoute}
           />
+        )}
+
+        {selectedRoute !== null && (
+          <RouteDetails route={routes[selectedRoute]} />
         )}
       </div>
     </div>
