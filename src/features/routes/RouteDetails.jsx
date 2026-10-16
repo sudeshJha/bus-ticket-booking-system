@@ -19,9 +19,14 @@ const RouteDetails = ({ route, backToResult }) => {
     const haltCity = {
       routeCity,
       haltTime,
-      stopSequence: haltCities.length + 1,
     };
     setHaltCities((cities) => [...cities, haltCity]);
+  };
+
+  const removeHaltCity = (cityId) => {
+    setHaltCities((cities) =>
+      cities.filter((city) => city.routeCity.routeCityId !== cityId),
+    );
   };
 
   return (
@@ -41,6 +46,7 @@ const RouteDetails = ({ route, backToResult }) => {
             haltCities={routeCities.slice(1, -1)}
             addedHaltCities={haltCities}
             addHaltCity={addHaltCity}
+            removeHaltCity={removeHaltCity}
           />
         </div>
 

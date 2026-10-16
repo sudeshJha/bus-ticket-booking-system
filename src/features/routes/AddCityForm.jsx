@@ -3,20 +3,17 @@ import Button from "../../components/util/Button";
 import toast from "react-hot-toast";
 import HaltCityRow from "./HaltCityRow";
 
-const AddCityForm = ({ haltCities, addedHaltCities, addHaltCity }) => {
-  console.log(addedHaltCities);
+const AddCityForm = ({
+  haltCities,
+  addedHaltCities,
+  removeHaltCity,
+  addHaltCity,
+}) => {
   const remainingHaltCities = haltCities.filter((city) => {
-    console.log(
-      city,
-      !addedHaltCities.find((addedCity) => addedCity === city.routeCityId),
-    );
-
     return !addedHaltCities.find(
       (addedCity) => addedCity.routeCity.routeCityId === city.routeCityId,
     );
   });
-
-  console.log(remainingHaltCities);
 
   const [haltCityId, setHaltCityId] = useState("");
   const [haltTime, setHaltTime] = useState();
@@ -25,6 +22,7 @@ const AddCityForm = ({ haltCities, addedHaltCities, addHaltCity }) => {
     e.preventDefault();
     if (!haltCityId && !haltTime) {
       toast.error("Please select Halt city and Halt time");
+      return;
     }
 
     addHaltCity(Number(haltCityId), Number(haltTime));
@@ -65,19 +63,19 @@ const AddCityForm = ({ haltCities, addedHaltCities, addHaltCity }) => {
           onChange={(e) => setHaltTime(e.target.value)}
         />
 
-        <Button
-          type="secondary"
-          size="small"
-          onClick={handleAdd}
-          disabled={haltCityId && haltTime}
-        >
+        <Button type="secondary" size="small" onClick={handleAdd}>
           + Add City
         </Button>
       </form>
       {addedHaltCities.length !== 0 && (
-        <div className="mt-8 p-4 bg-surface-dark rounded-2xl flex flex-col gap-4">
+        <div className="mt-8 p-4 border border-border bg-surface rounded-2xl flex flex-col gap-4">
           {addedHaltCities.map((city, i) => (
-            <HaltCityRow key={i} haltCity={city} />
+            <HaltCityRow
+              key={i}
+              haltCity={city}
+              stop={i + 1}
+              removeHaltCity={removeHaltCity}
+            />
           ))}
         </div>
       )}

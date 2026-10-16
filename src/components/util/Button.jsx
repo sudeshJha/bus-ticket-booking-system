@@ -12,10 +12,14 @@ const types = {
   tertiary: "bg-text-primary/90 hover:bg-text- text-background",
 };
 
-const Button = ({ size, type, custom, onClick, children, style }) => {
+const Button = ({ size, type, disabled, custom, onClick, children, style }) => {
   if (custom) {
     return (
-      <button onClick={onClick} className={`${custom} cursor-pointer`}>
+      <button
+        disabled={disabled}
+        onClick={onClick}
+        className={`${custom} cursor-pointer`}
+      >
         {children}
       </button>
     );
@@ -25,6 +29,7 @@ const Button = ({ size, type, custom, onClick, children, style }) => {
     <button
       className={`${sizes[size]} ${types[type]} ${style} rounded-xl cursor-pointer`}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
