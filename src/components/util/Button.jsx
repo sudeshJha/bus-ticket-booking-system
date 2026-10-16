@@ -9,6 +9,7 @@ const sizes = {
 const types = {
   primary: "bg-primary hover:bg-primary-hover text-primary-anti",
   secondary: "bg-secondary hover:bg-secondary-hover text-surface-dark",
+  tertiary: "bg-text-primary/90 hover:bg-text- text-background",
 };
 
 const Button = ({ size, type, custom, onClick, children, style }) => {

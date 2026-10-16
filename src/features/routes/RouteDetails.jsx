@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiArrowLeft, FiFileText, FiGitBranch, FiMapPin } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/util/Button";
@@ -6,9 +6,19 @@ import Icon from "../../components/util/Icon";
 import RouteDetailsTable from "./RouteDetailsTable";
 import BackButton from "../../components/util/BackButton";
 import RouteDetailsSummary from "./RouteDetailsSummary";
+import AddCityForm from "./AddCityForm";
+import SubmitButton from "../../components/util/SubmitButton";
 
 const RouteDetails = ({ route, backToResult }) => {
   const { routeCities, title } = route;
+
+  const [haltCities, setHaltCities] = useState([]);
+
+  const addHaltCity = (cityId, haltTime) => {
+    const haltCity = routeCities.find((city) => city.routeCityId === cityId);
+    console.log(haltCity, haltTime);
+    setHaltCities((haltCities) => [...haltCities, haltCity]);
+  };
 
   return (
     <div className="min-h-screen w-full p-6 md:p-7">
@@ -20,18 +30,19 @@ const RouteDetails = ({ route, backToResult }) => {
         </h1>
       </div>
 
-      <div className="w-full grid grid-cols-[2fr_1fr] items-start gap-6">
-        <RouteDetailsTable routeCities={routeCities} />
+      <div className="w-full grid grid-cols-[2fr_1fr] items-start gap-12">
+        <div className="flex flex-col gap-8">
+          <RouteDetailsTable routeCities={routeCities} />
+          <AddCityForm
+            haltCities={routeCities.slice(1, -1)}
+            addHaltCity={addHaltCity}
+          />
+        </div>
 
         <div className="flex flex-col gap-6">
           <RouteDetailsSummary route={route} />
-          <Button
-            onClick={backToResult}
-            custom="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-text-secondary transition hover:bg-surface-dark"
-          >
-            <FiArrowLeft size={16} />
-            Back to Routes
-          </Button>
+
+          <SubmitButton size="m">Add Route</SubmitButton>
         </div>
       </div>
     </div>

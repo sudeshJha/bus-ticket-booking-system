@@ -6,10 +6,8 @@ import { useCityRoutes } from "./useCityRoutes";
 import RouteDetails from "./RouteDetails";
 
 const AddOperatorRouteLayout = () => {
-  const [selectedRoute, setSelectedRoute] = useState(null);
-  const [showResult, setShowResult] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const [selectedRoute, setSelectedRoute] = useState(null);
   const { routes } = useCityRoutes();
 
   const [sourceCity, setSourceCity] = useState(
@@ -18,6 +16,7 @@ const AddOperatorRouteLayout = () => {
   const [destinationCity, setDestinationCity] = useState(
     searchParams.get("destinationCity") || "",
   );
+  const [showResult, setShowResult] = useState(sourceCity && destinationCity);
 
   const selectRoute = (index) => {
     setSelectedRoute(index);
