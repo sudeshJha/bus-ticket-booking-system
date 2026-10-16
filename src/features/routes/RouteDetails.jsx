@@ -20,7 +20,11 @@ const RouteDetails = ({ route, backToResult }) => {
       routeCity,
       haltTime,
     };
-    setHaltCities((cities) => [...cities, haltCity]);
+    setHaltCities((cities) =>
+      [...cities, haltCity].sort(
+        (a, b) => a.routeCity.stopSequence - b.routeCity.stopSequence,
+      ),
+    );
   };
 
   const removeHaltCity = (cityId) => {
