@@ -15,9 +15,13 @@ const RouteDetails = ({ route, backToResult }) => {
   const [haltCities, setHaltCities] = useState([]);
 
   const addHaltCity = (cityId, haltTime) => {
-    const haltCity = routeCities.find((city) => city.routeCityId === cityId);
-    console.log(haltCity, haltTime);
-    setHaltCities((haltCities) => [...haltCities, haltCity]);
+    const routeCity = routeCities.find((city) => city.routeCityId === cityId);
+    const haltCity = {
+      routeCity,
+      haltTime,
+      stopSequence: haltCities.length + 1,
+    };
+    setHaltCities((cities) => [...cities, haltCity]);
   };
 
   return (
@@ -35,6 +39,7 @@ const RouteDetails = ({ route, backToResult }) => {
           <RouteDetailsTable routeCities={routeCities} />
           <AddCityForm
             haltCities={routeCities.slice(1, -1)}
+            addedHaltCities={haltCities}
             addHaltCity={addHaltCity}
           />
         </div>
