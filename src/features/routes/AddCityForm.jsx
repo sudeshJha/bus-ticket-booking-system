@@ -16,7 +16,7 @@ const AddCityForm = ({
   });
 
   const [haltCityId, setHaltCityId] = useState("");
-  const [haltTime, setHaltTime] = useState();
+  const [haltTime, setHaltTime] = useState("");
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -63,7 +63,12 @@ const AddCityForm = ({
           onChange={(e) => setHaltTime(e.target.value)}
         />
 
-        <Button type="secondary" size="small" onClick={handleAdd}>
+        <Button
+          type="secondary"
+          size="small"
+          onClick={handleAdd}
+          disbled={!haltTime || !haltCityId}
+        >
           + Add City
         </Button>
       </form>
