@@ -1,14 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { signupApi, signupOperatorApi } from "../../services/apiUser";
+import { addOperatorRouteApi } from "../../services/apiRoute";
 
-export default function useSignup() {
+export default function useAddRoute() {
   const {
     mutate: addRoute,
     isPending: addingRoute,
     error,
   } = useMutation({
-    mutationFn: (operatorRoute) => signupOperatorApi(operatorRoute),
+    mutationFn: (operatorRoute) => addOperatorRouteApi(operatorRoute),
 
     onSuccess: () => {
       toast.success("Route added successfully.");

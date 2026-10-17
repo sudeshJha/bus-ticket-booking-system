@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-import { FiArrowLeft, FiFileText, FiGitBranch, FiMapPin } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/util/Button";
-import Icon from "../../components/util/Icon";
 import RouteDetailsTable from "./RouteDetailsTable";
 import BackButton from "../../components/util/BackButton";
 import RouteDetailsSummary from "./RouteDetailsSummary";
 import AddCityForm from "./AddCityForm";
 import SubmitButton from "../../components/util/SubmitButton";
+import useAddRoute from "./useAddRoute";
+import SpinnerMini from "../../components/ui/SpinnerMini";
 
 const RouteDetails = ({ route, backToResult }) => {
   const { routeCities, title } = route;
 
+  const { addRoute, addingRoute } = useAddRoute();
+
   const [haltCities, setHaltCities] = useState([]);
+
+  const handleAddRoute = (e) => {
+    e.preventDefault();
+    const operatorRoute = {
+      route,
+      operatorRouteCities: haltCities,
+    };
+    addRoute(operatorRoute);
+  };
 
   const addHaltCity = (cityId, haltTime) => {
     const routeCity = routeCities.find((city) => city.routeCityId === cityId);
@@ -57,7 +66,9 @@ const RouteDetails = ({ route, backToResult }) => {
         <div className="flex flex-col gap-6">
           <RouteDetailsSummary route={route} />
 
-          <SubmitButton size="m">Add Route</SubmitButton>
+          <SubmitButton onClick={handleAddRoute} size="m">
+            {addingRoute ? <SpinnerMini /> : "Add Route"}
+          </SubmitButton>
         </div>
       </div>
     </div>
