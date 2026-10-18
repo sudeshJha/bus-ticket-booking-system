@@ -31,10 +31,15 @@ export const getCityRouteApi = async (sourceCity, destinationCity) => {
 };
 
 export const addOperatorRouteApi = async (operatorRoute) => {
+  const bearerToken = getLocalStorage("authToken");
+
+  console.log(operatorRoute);
+
   const response = await fetch(`${API_BASE_URL}/add_operator_route`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: bearerToken,
     },
     body: JSON.stringify(operatorRoute),
   });
@@ -46,6 +51,8 @@ export const addOperatorRouteApi = async (operatorRoute) => {
     console.log(data.message);
     throw new Error(data.message || "Something went wrong!");
   }
+
+  console.log(data);
 
   return data;
 };

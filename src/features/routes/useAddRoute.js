@@ -10,7 +10,8 @@ export default function useAddRoute() {
   } = useMutation({
     mutationFn: (operatorRoute) => addOperatorRouteApi(operatorRoute),
 
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log(data);
       toast.success("Route added successfully.");
     },
 

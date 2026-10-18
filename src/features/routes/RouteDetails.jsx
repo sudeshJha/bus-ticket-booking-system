@@ -16,9 +16,16 @@ const RouteDetails = ({ route, backToResult }) => {
 
   const handleAddRoute = (e) => {
     e.preventDefault();
+
+    const operatorRouteCities = [
+      { routeCity: routeCities[0], haltTime: 0 },
+      ...haltCities,
+      { routeCity: routeCities[routeCities.length - 1], haltTime: 0 },
+    ];
+
     const operatorRoute = {
       route,
-      operatorRouteCities: haltCities,
+      operatorRouteCities,
     };
     addRoute(operatorRoute);
   };
