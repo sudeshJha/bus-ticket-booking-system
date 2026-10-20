@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getOperatorRouteApi } from "../../services/apiOperatorRoute";
 import { useParams } from "react-router-dom";
 
-export const useOperatorRoutes = () => {
+export const useOperatorRoute = () => {
   const { id: operatorRouteId } = useParams();
 
   const {

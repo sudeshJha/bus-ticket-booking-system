@@ -1,7 +1,10 @@
 import React from "react";
+import { useOperatorRoute } from "./useOperatorRoute";
 
-const RouteLayout = () => {
+const OperatorRouteLayout = () => {
+  const { operatorRoute } = useOperatorRoute();
+  console.log(operatorRoute);
   return <div>RouteLayout</div>;
 };
 
-export default RouteLayout;
+export default OperatorRouteLayout;

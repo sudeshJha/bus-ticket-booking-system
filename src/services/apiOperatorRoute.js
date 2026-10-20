@@ -6,7 +6,7 @@ export const getOperatorRouteApi = async (operatorRouteId) => {
   const bearerToken = getLocalStorage("authToken");
 
   const response = await fetch(
-    `${API_BASE_URL}/operator_route/${operatorRouteId}`,
+    `${API_BASE_URL}/operator_routes/${operatorRouteId}`,
     {
       method: "GET",
       headers: {

@@ -1,11 +1,10 @@
 import React from "react";
-import RouteLayout from "../features/routes/OperatorRouteLayout";
-import { useParams } from "react-router-dom";
+import OperatorRouteLayout from "../features/routes/OperatorRouteLayout";
 
 const RoutePage = () => {
   return (
     <div>
-      <RouteLayout />
+      <OperatorRouteLayout />
     </div>
   );
 };
