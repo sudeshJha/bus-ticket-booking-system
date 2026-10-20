@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getOperatorRoutesApi } from "../../services/apiOperatorRoute";
+import { getOperatorRouteApi } from "../../services/apiOperatorRoute";
 import { useParams } from "react-router-dom";
 
 export const useOperatorRoutes = () => {
@@ -10,9 +10,9 @@ export const useOperatorRoutes = () => {
     data: operatorRoute,
     error,
   } = useQuery({
-    queryKey: ["operatorRoute"],
-    queryFn: getOperatorRouteApi,
+    queryKey: ["operatorRoute", operatorRouteId],
+    queryFn: () => getOperatorRouteApi(operatorRouteId),
   });
 
-  return { gettingOperatorRoutes, operatorRoutes, error };
+  return { gettingOperatorRoute, operatorRoute, error };
 };
