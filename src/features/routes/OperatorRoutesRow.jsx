@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "../../components/util/Button";
+import { useNavigate } from "react-router-dom";
 
-const RouteRow = ({ operatorRoute }) => {
+const OperatorRoutesRow = ({ operatorRoute }) => {
+  const navigate = useNavigate();
+
   const { operatorRouteId, route, isActive, operatorRouteCities } =
     operatorRoute;
 
@@ -11,9 +14,15 @@ const RouteRow = ({ operatorRoute }) => {
     operatorRouteCities[noOfCities - 1].routeCity.distanceFromSource -
     operatorRouteCities[0].routeCity.distanceFromSource;
 
-  const time =
+  const totalTime =
     operatorRouteCities[noOfCities - 1].routeCity.timeFromSource -
     operatorRouteCities[0].routeCity.timeFromSource;
+
+  const time = { hour: Math.ceil(totalTime / 60), min: totalTime % 60 };
+
+  const handleDetails = () => {
+    navigate(`/routes/${operatorRouteId}`);
+  };
 
   return (
     <tr
@@ -30,9 +39,12 @@ const RouteRow = ({ operatorRoute }) => {
         {operatorRouteCities[noOfCities - 1].routeCity.name}
       </td>
 
-      <td className="px-5 py-4  text-text-secondary">{distance}</td>
+      <td className="px-5 py-4  text-text-secondary">{distance} km</td>
 
-      <td className="px-5 py-4  text-text-secondary">{time}</td>
+      <td className="px-5 py-4  text-text-secondary">
+        {time.hour !== 0 && `${time.hour}h `}{" "}
+        {time.min !== 0 && `${time.min}m `}
+      </td>
 
       <td className="px-5 py-4">
         <span
@@ -51,6 +63,7 @@ const RouteRow = ({ operatorRoute }) => {
                hover:bg-primary/60 hover:text-primary-anti
               text-sm 
                "
+          onClick={handleDetails}
         >
           View Details
         </Button>
@@ -59,4 +72,4 @@ const RouteRow = ({ operatorRoute }) => {
   );
 };
 
-export default RouteRow;
+export default OperatorRoutesRow;

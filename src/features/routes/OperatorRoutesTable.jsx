@@ -1,10 +1,9 @@
 import React from "react";
-import RouteHead from "./RouteHead";
-import RouteRow from "./RouteRow";
+import RouteRow from "./OperatorRoutesRow";
 import { useOperatorRoutes } from "./useOperatorRoutes";
 import Spinner from "../../components/ui/Spinner";
 
-const RouteTable = () => {
+const OperatorRouteTable = () => {
   const { operatorRoutes, gettingOperatorRoutes } = useOperatorRoutes();
 
   if (gettingOperatorRoutes) {
@@ -52,4 +51,4 @@ const RouteTable = () => {
   );
 };
 
-export default RouteTable;
+export default OperatorRouteTable;

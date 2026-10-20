@@ -2,13 +2,10 @@ import React from "react";
 import { useCityRoutes } from "./useCityRoutes";
 import Spinner from "../../components/ui/Spinner";
 import { useSearchParams } from "react-router-dom";
-import { FaMapPin, FaRegClock } from "react-icons/fa";
-import { GiPathDistance } from "react-icons/gi";
-import { PiPathFill } from "react-icons/pi";
-import { MdLocationPin } from "react-icons/md";
+
 import RouteResultRow from "./RouteResultRow";
 
-const RouteResult = ({ selectRoute }) => {
+const MasterRouteResult = ({ selectRoute }) => {
   const { routes, gettingCityRoute } = useCityRoutes();
   const [searchParams] = useSearchParams();
 
@@ -48,4 +45,4 @@ const RouteResult = ({ selectRoute }) => {
   );
 };
 
-export default RouteResult;
+export default MasterRouteResult;

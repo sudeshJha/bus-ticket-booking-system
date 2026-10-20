@@ -1,9 +1,9 @@
 import React from "react";
-import RouteTable from "../features/routes/RouteTable";
+import RouteTable from "../features/routes/OperatorRoutesTable";
 import Button from "../components/util/Button";
 import { useNavigate } from "react-router-dom";
 
-const RoutesPage = () => {
+const OpeartorRoutesPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -28,4 +28,4 @@ const RoutesPage = () => {
   );
 };
 
-export default RoutesPage;
+export default OpeartorRoutesPage;

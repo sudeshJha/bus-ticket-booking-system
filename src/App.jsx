@@ -18,9 +18,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import OperatorSignupPage from "./pages/OperatorSignupPage";
 import SearchBusPage from "./pages/SearchBusPage";
-import RoutesPage from "./pages/RoutesPage";
+import RoutesPage from "./pages/OperatorRoutesPage";
 import AddOperatorRoutePage from "./pages/AddOperatorRoutePage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import RoutePage from "./pages/OperatorRoutePage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -68,10 +69,11 @@ const App = () => {
               </Route>
 
               <Route element={<OperatorLayout />}>
-                <Route path="dashboard" element={<Logo />} />
-                <Route path="my_company" element={<Footer />} />
-                <Route path="routes" element={<RoutesPage />} />
-                <Route path="add_route" element={<AddOperatorRoutePage />} />
+                <Route path="/dashboard" element={<Logo />} />
+                <Route path="/my_company" element={<Footer />} />
+                <Route path="/routes" element={<RoutesPage />} />
+                <Route path="/routes/:id" element={<RoutePage />} />
+                <Route path="/add_route" element={<AddOperatorRoutePage />} />
                 {/* other links for operator */}
               </Route>
             </Route>

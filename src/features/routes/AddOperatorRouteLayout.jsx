@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RouteSearch from "./RouteSearch";
-import RouteResult from "./RouteResult";
+import RouteResult from "./MasterRouteResult";
 import { useSearchParams } from "react-router-dom";
 import { useCityRoutes } from "./useCityRoutes";
 import RouteDetails from "./AddRouteDetails";
