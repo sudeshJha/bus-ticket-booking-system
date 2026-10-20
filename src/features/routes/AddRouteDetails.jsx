@@ -7,7 +7,7 @@ import SubmitButton from "../../components/util/SubmitButton";
 import useAddRoute from "./useAddRoute";
 import SpinnerMini from "../../components/ui/SpinnerMini";
 
-const RouteDetails = ({ route, backToResult }) => {
+const RouteDetails = ({ route, backToResult, setSelectedRoute }) => {
   const { routeCities, title } = route;
 
   const { addRoute, addingRoute } = useAddRoute();
@@ -16,6 +16,8 @@ const RouteDetails = ({ route, backToResult }) => {
 
   const handleAddRoute = (e) => {
     e.preventDefault();
+
+    setSelectedRoute(null);
 
     const operatorRouteCities = [
       { routeCity: routeCities[0], haltTime: 0 },

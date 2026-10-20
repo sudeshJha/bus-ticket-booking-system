@@ -1,8 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { addOperatorRouteApi } from "../../services/apiRoute";
+import { useNavigate } from "react-router-dom";
 
 export default function useAddRoute() {
+  const navigate = useNavigate();
   const {
     mutate: addRoute,
     isPending: addingRoute,
@@ -13,6 +15,7 @@ export default function useAddRoute() {
     onSuccess: (data) => {
       console.log(data);
       toast.success("Route added successfully.");
+      navigate("/routes");
     },
 
     onError: (err) => {

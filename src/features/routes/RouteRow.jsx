@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonIcon from "../../components/util/ButtonIcon";
 import Button from "../../components/util/Button";
 
 const RouteRow = ({ route }) => {
@@ -22,8 +21,6 @@ const RouteRow = ({ route }) => {
 
       <td className="px-5 py-4  text-text-secondary">{route.duration}</td>
 
-      <td className="px-5 py-4  text-text-primary pl-16">{route.buses}</td>
-
       <td className="px-5 py-4">
         <span
           className={`rounded-3xl px-3 py-1 text-lg font-semibold ${
@@ -36,11 +33,12 @@ const RouteRow = ({ route }) => {
         </span>
       </td>
 
-      <td className="text-start px-5 py-4">
+      <td className="text-center px-5 py-4 ">
         <Button
           custom="rounded-lg border border-border px-4 py-2
-               text-sm font-medium text-primary
+               font-medium text-primary
                hover:bg-primary/60 hover:text-primary-anti
+              text-sm 
                "
         >
           View Details

@@ -3,7 +3,8 @@ import RouteSearch from "./RouteSearch";
 import RouteResult from "./RouteResult";
 import { useSearchParams } from "react-router-dom";
 import { useCityRoutes } from "./useCityRoutes";
-import RouteDetails from "./RouteDetails";
+import RouteDetails from "./AddRouteDetails";
+import BackButton from "../../components/util/BackButton";
 
 const AddOperatorRouteLayout = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,7 +45,10 @@ const AddOperatorRouteLayout = () => {
 
   return (
     <div className="min-h-screen p-6 pr-12 bg-background w-screen">
-      <div className="mb-12 mt-4 mx-2 w-fit">
+      <div className="my-4">
+        <BackButton />
+      </div>
+      <div className="mb-12 mt-16 mx-2 w-fit">
         <h1 className="text-4xl font-bold text-text-primary">Add Routes</h1>
 
         <p className="text-lg text-text-secondary">
@@ -69,6 +73,7 @@ const AddOperatorRouteLayout = () => {
 
         {selectedRoute !== null && (
           <RouteDetails
+            setSelectedRoute={setSelectedRoute}
             route={routes[selectedRoute]}
             backToResult={backToResult}
           />
