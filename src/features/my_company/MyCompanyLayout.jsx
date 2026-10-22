@@ -3,6 +3,7 @@ import { useUser } from "../auth/useUser";
 import Spinner from "../../components/ui/Spinner";
 import Banner from "./Banner";
 import CompanyDetail from "./CompanyDetail";
+import BaseFarePrice from "./BaseFarePrice";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -14,32 +15,13 @@ const MyCompanyLayout = () => {
   console.log(user.bannerUrl);
 
   return (
-    <div className="w-full p-6 md:p-8">
+    <div className="w-full p-6 md:p-8 bg-background">
       <Banner />
 
-      <div className="flex flex-col gap-6 mt-10">
+      <div className="flex flex-col gap-12 mt-10">
         <CompanyDetail />
 
-        {/* Base Fare Pricing */}
-        <section className="overflow-hidden rounded-xl border border-border bg-surface">
-          <h2 className="bg-background px-5 py-3 text-lg font-semibold">
-            Base Fare Pricing
-          </h2>
-          <div className="p-5 text-sm">
-            <div className="grid grid-cols-[300px_1fr] border-b border-border py-3">
-              <span className="text-gray-500">
-                Seater Fare (per person per km)
-              </span>
-              <span>₹ 0.40</span>
-            </div>
-            <div className="grid grid-cols-[300px_1fr] py-3">
-              <span className="text-gray-500">
-                Sleeper Fare (per person per km)
-              </span>
-              <span>₹ 0.70</span>
-            </div>
-          </div>
-        </section>
+        <BaseFarePrice />
 
         {/* Fare Factors */}
         <section className="overflow-hidden rounded-xl border border-border bg-surface">
