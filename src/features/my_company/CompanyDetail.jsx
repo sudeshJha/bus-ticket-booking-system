@@ -1,6 +1,8 @@
 import React from "react";
 import { useUser } from "../auth/useUser";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const CompanyDetail = () => {
   const {
     user: { address, licenseUrl, userInfo },
@@ -25,7 +27,16 @@ const CompanyDetail = () => {
         <span className="text-text-primary">{address}</span>
 
         <span className="text-text-secondary">License</span>
-        <span className="text-text-primary">{licenseUrl}</span>
+        <span className="text-text-primary">
+          <a
+            href={`${API_BASE_URL}/${licenseUrl}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-secondary px-3 py-2 rounded-lg text-background"
+          >
+            Download License
+          </a>
+        </span>
       </div>
     </section>
   );

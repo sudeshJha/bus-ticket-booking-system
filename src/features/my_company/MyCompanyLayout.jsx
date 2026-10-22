@@ -16,14 +16,6 @@ const MyCompanyLayout = () => {
   return (
     <div className="w-full p-6 md:p-8">
       <Banner />
-      <div className="mb-6 text-center">
-        <h1 className="text-5xl font-bold text-primary">
-          {user.userInfo.name}
-        </h1>
-        <p className="mt-1 text-sm text-gray-500">
-          View and manage your company details, pricing and other information.
-        </p>
-      </div>
 
       <div className="flex flex-col gap-6 mt-10">
         <CompanyDetail />
