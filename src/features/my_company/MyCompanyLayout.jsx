@@ -2,6 +2,7 @@ import React from "react";
 import { useUser } from "../auth/useUser";
 import Spinner from "../../components/ui/Spinner";
 import Banner from "./Banner";
+import CompanyDetail from "./CompanyDetail";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -25,27 +26,7 @@ const MyCompanyLayout = () => {
       </div>
 
       <div className="flex flex-col gap-6 mt-10">
-        <section className="overflow-hidden rounded-xl border border-border bg-surface">
-          <h2 className="bg-background px-5 py-2 text-2xl font-semibold text-text-primary/90 text-center">
-            Company Details
-          </h2>
-          <div className="grid grid-cols-[200px_1fr] gap-y-4 p-5 text-xl">
-            <span className="text-text-secondary">Company Name</span>
-            <span className="text-text-primary">{user.userInfo.name}</span>
-
-            <span className="text-gray-500">Email</span>
-            <span className="text-text-primary">{user.userInfo.email}</span>
-
-            <span className="text-gray-500">Phone</span>
-            <span className="text-text-primary">{user.userInfo.phone}</span>
-
-            <span className="text-gray-500">Address</span>
-            <span className="text-text-primary">{user.address}</span>
-
-            <span className="text-gray-500">License</span>
-            <span className="text-text-primary">{user.license}</span>
-          </div>
-        </section>
+        <CompanyDetail />
 
         {/* Base Fare Pricing */}
         <section className="overflow-hidden rounded-xl border border-border bg-surface">
