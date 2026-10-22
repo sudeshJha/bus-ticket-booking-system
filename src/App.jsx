@@ -22,6 +22,10 @@ import RoutesPage from "./pages/OperatorRoutesPage";
 import AddOperatorRoutePage from "./pages/AddOperatorRoutePage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import RoutePage from "./pages/OperatorRoutePage";
+import BusesPage from "./pages/BusesPage";
+import BusPage from "./pages/BusPage";
+import AddBusPage from "./pages/AddBusPage";
+import MyCompanyPage from "./pages/MyCompanyPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -70,10 +74,14 @@ const App = () => {
 
               <Route element={<OperatorLayout />}>
                 <Route path="/dashboard" element={<Logo />} />
-                <Route path="/my_company" element={<Footer />} />
+                <Route path="/my_company" element={<MyCompanyPage />} />
                 <Route path="/routes" element={<RoutesPage />} />
                 <Route path="/routes/:id" element={<RoutePage />} />
                 <Route path="/add_route" element={<AddOperatorRoutePage />} />
+                <Route path="/buses" element={<BusesPage />} />
+                <Route path="/buses/:id" element={<BusPage />} />
+                <Route path="/add_bus" element={<AddBusPage />} />
+
                 {/* other links for operator */}
               </Route>
             </Route>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const RouteDetailsTable = ({ routeCities: cities }) => {
+const MasterRouteDetailsTable = ({ routeCities: cities }) => {
   return (
     <div className="rounded-t-xl rounded-b-sm overflow-auto">
       <table className="w-full text-center">
@@ -35,4 +35,4 @@ const RouteDetailsTable = ({ routeCities: cities }) => {
   );
 };
 
-export default RouteDetailsTable;
+export default MasterRouteDetailsTable;

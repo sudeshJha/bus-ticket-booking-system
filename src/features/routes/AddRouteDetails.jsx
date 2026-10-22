@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import RouteDetailsTable from "./RouteDetailsTable";
 import BackButton from "../../components/util/BackButton";
-import RouteDetailsSummary from "./RouteDetailsSummary";
+import RouteDetailsSummary from "./MasterRouteDetailsSummary";
 import AddCityForm from "./AddCityForm";
 import SubmitButton from "../../components/util/SubmitButton";
 import useAddRoute from "./useAddRoute";
 import SpinnerMini from "../../components/ui/SpinnerMini";
+import MasterRouteDetailsTable from "./MasterRouteDetailsTable";
 
 const RouteDetails = ({ route, backToResult, setSelectedRoute }) => {
   const { routeCities, title } = route;
@@ -63,7 +63,7 @@ const RouteDetails = ({ route, backToResult, setSelectedRoute }) => {
 
       <div className="w-full grid grid-cols-[2fr_1fr] items-start gap-12">
         <div className="flex flex-col gap-8">
-          <RouteDetailsTable routeCities={routeCities} />
+          <MasterRouteDetailsTable routeCities={routeCities} />
           <AddCityForm
             haltCities={routeCities.slice(1, -1)}
             addedHaltCities={haltCities}

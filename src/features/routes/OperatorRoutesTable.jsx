@@ -3,7 +3,7 @@ import RouteRow from "./OperatorRoutesRow";
 import { useOperatorRoutes } from "./useOperatorRoutes";
 import Spinner from "../../components/ui/Spinner";
 
-const OperatorRouteTable = () => {
+const OperatorRoutesTable = () => {
   const { operatorRoutes, gettingOperatorRoutes } = useOperatorRoutes();
 
   if (gettingOperatorRoutes) {
@@ -51,4 +51,4 @@ const OperatorRouteTable = () => {
   );
 };
 
-export default OperatorRouteTable;
+export default OperatorRoutesTable;

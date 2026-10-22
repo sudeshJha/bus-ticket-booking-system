@@ -3,7 +3,7 @@ import { FiFileText } from "react-icons/fi";
 import Icon from "../../components/util/Icon";
 import { useSearchParams } from "react-router-dom";
 
-const RouteDetailsSummary = ({ route }) => {
+const MasterRouteDetailsSummary = ({ route }) => {
   const { title, routeCities: cities } = route;
   const [searchParams] = useSearchParams();
 
@@ -62,4 +62,4 @@ const RouteDetailsSummary = ({ route }) => {
   );
 };
 
-export default RouteDetailsSummary;
+export default MasterRouteDetailsSummary;

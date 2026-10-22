@@ -51,7 +51,7 @@ const Sidebar = ({ isSidebarOpen, closeSideBar }) => {
   };
   return (
     <div
-      className={`fixed left-0 top-0 bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[20vw]  ${isSidebarOpen ? "translate-x-0" : "-translate-x-150"}`}
+      className={`fixed left-0 top-0 bg-surface min-h-screen flex flex-col justify-start items-center gap-20 py-4 border-r border-border w-[20vw]  ${isSidebarOpen ? "translate-x-0" : "-translate-x-150"} z-10`}
     >
       <div className="absolute -right-7 top-1/2">
         <ButtonIcon
