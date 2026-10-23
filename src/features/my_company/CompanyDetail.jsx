@@ -5,7 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const CompanyDetail = () => {
   const {
-    user: { address, licenseUrl, userInfo },
+    user: { address, licenseUrl, verificationStatus, userInfo },
   } = useUser();
 
   return (
@@ -25,6 +25,11 @@ const CompanyDetail = () => {
 
         <span className="text-text-secondary">Address</span>
         <span className="text-text-primary">{address}</span>
+
+        <span className="text-text-secondary">Verification Status</span>
+        <span className="text-text-primary">
+          {verificationStatus ? "Verified" : "Not Veified"}
+        </span>
 
         <span className="text-text-secondary">License</span>
         <span className="text-text-primary">
