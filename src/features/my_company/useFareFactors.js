@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getFareFactorsApi } from "../../services/apiFareFactor";
 
-export const useFareFactor = () => {
+export const useFareFactors = () => {
   const {
     isPending: gettingFareFactors,
     data: fareFactors,
@@ -11,8 +11,6 @@ export const useFareFactor = () => {
     queryFn: getFareFactorsApi,
     retry: false,
   });
-
-  console.log(fareFactors);
 
   return { gettingFareFactors, fareFactors, error };
 };

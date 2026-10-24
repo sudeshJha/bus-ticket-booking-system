@@ -1,12 +1,15 @@
 import React from "react";
-import { useFareFactor } from "./useFareFactor";
+import { useFareFactors } from "./useFareFactors";
 import Spinner from "../../components/ui/Spinner";
 import Button from "../../components/util/Button";
+import { useOperatorFareFactors } from "./useOperatorFareFactors";
 
 const OperatorFareFactor = () => {
-  const { gettingFareFactors, fareFactors } = useFareFactor();
+  const { gettingFareFactors, fareFactors } = useFareFactors();
+  const { gettingOperatorFareFactors, operatorFareFactor } =
+    useOperatorFareFactors();
 
-  if (gettingFareFactors) return <Spinner />;
+  if (gettingFareFactors || gettingOperatorFareFactors) return <Spinner />;
 
   return (
     <section className="overflow-hidden rounded-xl border border-border bg-surface">
@@ -38,26 +41,34 @@ const OperatorFareFactor = () => {
           </Button>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-border bg-surface mt-16">
-          <table className="w-full border-collapse text-center">
-            <thead>
-              <tr className="bg-surface-dark text-text-secondary text-center text-2xl">
-                <th className="p-3 border-r border-b border-border text-center w-1/2">
-                  Feature
-                </th>
-                <th className="border-b border-border p-3 text-center w-1/2">
-                  Charge (₹ /km /person)
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border-b border-r border-border p-3">AC</td>
-                <td className="border-b border-border p-3">₹ 0.05</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {operatorFareFactor?.length ? (
+          <div className="overflow-hidden rounded-xl border border-border bg-surface mt-16">
+            <table className="w-full border-collapse text-center">
+              <thead>
+                <tr className="bg-surface-dark text-text-secondary text-center text-2xl">
+                  <th className="p-3 border-r border-b border-border text-center w-1/2">
+                    Feature
+                  </th>
+                  <th className="border-b border-border p-3 text-center w-1/2">
+                    Charge (₹ /km /person)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border-b border-r border-border p-3">AC</td>
+                  <td className="border-b border-border p-3">₹ 0.05</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="text-center my-8 py-16 rounded-2xl border border-border">
+            <h1 className="text-text-primary text-2xl">
+              No Fare Factor is added
+            </h1>
+          </div>
+        )}
       </div>
     </section>
   );
