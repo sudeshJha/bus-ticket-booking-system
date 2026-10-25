@@ -1,8 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { addOperatorFareFactorApi } from "../../services/apiFareFactor";
 
 export default function useAddOperatorFareFactor() {
+  const queryClient = useQueryClient();
+
   const {
     mutate: addOperatorFareFactor,
     isPending: addingOperatorFareFactor,
@@ -14,6 +16,7 @@ export default function useAddOperatorFareFactor() {
     onSuccess: (data) => {
       console.log(data);
       toast.success("Operator Fare Factor added successfully.");
+      queryClient.invalidateQueries({ queryKey: ["operatorFareFactors"] });
     },
 
     onError: (err) => {

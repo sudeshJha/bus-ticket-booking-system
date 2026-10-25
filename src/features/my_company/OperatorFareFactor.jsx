@@ -9,7 +9,7 @@ import useAddOperatorFareFactor from "./useAddOperatorFareFactor";
 
 const OperatorFareFactor = () => {
   const { gettingFareFactors, fareFactors } = useFareFactors();
-  const { gettingOperatorFareFactors, operatorFareFactor } =
+  const { gettingOperatorFareFactors, operatorFareFactors } =
     useOperatorFareFactors();
 
   const { addingOperatorFareFactor, addOperatorFareFactor } =
@@ -28,6 +28,14 @@ const OperatorFareFactor = () => {
 
   if (gettingFareFactors || gettingOperatorFareFactors) return <Spinner />;
 
+  const remainingFareFactors = fareFactors.filter(
+    (fareFactor) =>
+      !operatorFareFactors.find(
+        (operatorFareFactor) =>
+          operatorFareFactor.fareFactor.code === fareFactor.code,
+      ),
+  );
+
   return (
     <section className="overflow-hidden rounded-xl border border-border bg-surface">
       <h2 className="bg-surface-dark px-5 py-3 text-2xl text-center text-text-primary/90 font-semibold">
@@ -44,7 +52,7 @@ const OperatorFareFactor = () => {
             <option className="bg-surface-dark text-text-secondary">
               Select a Fare Factor
             </option>
-            {fareFactors.map((fareFactor) => (
+            {remainingFareFactors.map((fareFactor) => (
               <option
                 key={fareFactor.code}
                 className="bg-surface text-text-secondary"
@@ -70,7 +78,7 @@ const OperatorFareFactor = () => {
           </Button>
         </div>
 
-        {operatorFareFactor?.length ? (
+        {operatorFareFactors?.length ? (
           <div className="overflow-hidden rounded-xl border border-border bg-surface mt-16">
             <table className="w-full border-collapse text-center">
               <thead>
