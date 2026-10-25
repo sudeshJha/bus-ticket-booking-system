@@ -23,7 +23,15 @@ const OperatorFareFactor = () => {
       toast.error("Fare factor and price are required.");
     }
 
-    addOperatorFareFactor({ fareFactorCode: fareFactor, price: Number(price) });
+    addOperatorFareFactor(
+      { fareFactorCode: fareFactor, price: Number(price) },
+      {
+        onSuccess: () => {
+          setPrice("");
+          setFareFactor("");
+        },
+      },
+    );
   };
 
   if (gettingFareFactors || gettingOperatorFareFactors) return <Spinner />;
