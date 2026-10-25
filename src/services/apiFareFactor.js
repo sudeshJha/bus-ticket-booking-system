@@ -35,10 +35,43 @@ export const getOperatorFareFactorsApi = async () => {
 
   const data = await response.json();
 
-  console.log(data);
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong!");
   }
 
   return data.response;
+};
+
+export const addOperatorFareFactorApi = async (fareFactorCode, price) => {
+  const bearerToken = getLocalStorage("authToken");
+
+  const operatorFareFactor = {
+    fareFactor: {
+      code: fareFactorCode,
+    },
+    price,
+  };
+
+  console.log(operatorFareFactor);
+
+  const response = await fetch(`${API_BASE_URL}/add_operator_fare_factor`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: bearerToken,
+    },
+    body: JSON.stringify(operatorFareFactor),
+  });
+
+  const data = await response.json();
+  console.log(data);
+
+  if (!response.ok) {
+    console.log(data.message);
+    throw new Error(data.message || "Something went wrong!");
+  }
+
+  console.log(data);
+
+  return data;
 };
