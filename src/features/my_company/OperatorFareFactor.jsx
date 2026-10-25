@@ -100,10 +100,19 @@ const OperatorFareFactor = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="border-b border-r border-border p-3">AC</td>
-                  <td className="border-b border-border p-3">₹ 0.05</td>
-                </tr>
+                {operatorFareFactors.map((operatorFareFactor) => (
+                  <tr
+                    key={operatorFareFactor.operatorFareFactorId}
+                    className="text-2xl"
+                  >
+                    <td className="border-b border-r border-border p-3 tracking-wide ">
+                      {operatorFareFactor.fareFactor.label}
+                    </td>
+                    <td className="border-b border-border p-3">
+                      ₹ {operatorFareFactor.price}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
