@@ -45,14 +45,11 @@ export const addOperatorRouteApi = async (operatorRoute) => {
   });
 
   const data = await response.json();
-  console.log(data);
 
   if (!response.ok) {
     console.log(data.message);
     throw new Error(data.message || "Something went wrong!");
   }
-
-  console.log(data);
 
   return data;
 };

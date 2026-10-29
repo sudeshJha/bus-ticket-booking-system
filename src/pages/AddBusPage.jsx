@@ -1,7 +1,8 @@
 import React from "react";
+import AddBusLayout from "../features/bus-layout/AddBusLayout";
 
 const AddBusPage = () => {
-  return <div>AddBusPage</div>;
+  return <AddBusLayout />;
 };
 
 export default AddBusPage;

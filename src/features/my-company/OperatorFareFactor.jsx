@@ -21,6 +21,7 @@ const OperatorFareFactor = () => {
   const handleAddFareFactor = () => {
     if (!fareFactor || !price) {
       toast.error("Fare factor and price are required.");
+      return;
     }
 
     addOperatorFareFactor(
@@ -50,41 +51,45 @@ const OperatorFareFactor = () => {
         Fare Factors
       </h2>
 
-      <div className="min-h-screen bg-surface p-6 text-text-primary">
-        <div className="my-6 grid grid-cols-[5fr_2fr_1.25fr] items-center gap-8">
-          <select
-            className={`min-w-0 flex-1 rounded-xl border border-border bg-surface-dark px-4 text-2xl py-3  ${fareFactor ? "text-text-primary" : "text-text-secondary"} outline-none`}
-            onChange={(e) => setFareFactor(e.target.value)}
-            value={fareFactor}
-          >
-            <option className="bg-surface-dark text-text-secondary">
-              Select a Fare Factor
-            </option>
-            {remainingFareFactors.map((fareFactor) => (
-              <option
-                key={fareFactor.code}
-                className="bg-surface text-text-secondary"
-                value={fareFactor.code}
-              >
-                {fareFactor.label}
+      <div className="bg-surface p-8 text-text-primary">
+        {remainingFareFactors?.length ? (
+          <div className="my-6 grid grid-cols-[5fr_2fr_1.25fr] items-center gap-8">
+            <select
+              className={`min-w-0 flex-1 rounded-xl border border-border bg-surface-dark px-4 text-2xl py-3  ${fareFactor ? "text-text-primary" : "text-text-secondary"} outline-none`}
+              onChange={(e) => setFareFactor(e.target.value)}
+              value={fareFactor}
+            >
+              <option className="bg-surface-dark text-text-secondary">
+                Select a Fare Factor
               </option>
-            ))}
-          </select>
+              {remainingFareFactors.map((fareFactor) => (
+                <option
+                  key={fareFactor.code}
+                  className="bg-surface text-text-secondary"
+                  value={fareFactor.code}
+                >
+                  {fareFactor.label}
+                </option>
+              ))}
+            </select>
 
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            placeholder="Price per km per person"
-            onChange={(e) => setPrice(e.target.value)}
-            value={price}
-            className="text-2xl py-3  rounded-2xl border border-border bg-surface-dark px-4 text-gray-200 outline-none"
-          />
+            <input
+              type="number"
+              step="0.1"
+              min="0"
+              placeholder="Price per km per person"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+              className="text-2xl py-3  rounded-2xl border border-border bg-surface-dark px-4 text-gray-200 outline-none"
+            />
 
-          <Button type="primary" size="small" onClick={handleAddFareFactor}>
-            {addingOperatorFareFactor ? <SpinnerMini /> : "+ Add Fare Factor"}
-          </Button>
-        </div>
+            <Button type="primary" size="small" onClick={handleAddFareFactor}>
+              {addingOperatorFareFactor ? <SpinnerMini /> : "+ Add Fare Factor"}
+            </Button>
+          </div>
+        ) : (
+          <div>No fare Factors to add</div>
+        )}
 
         {operatorFareFactors?.length ? (
           <div className="overflow-hidden rounded-xl border border-border bg-surface mt-16">
