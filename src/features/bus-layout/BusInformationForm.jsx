@@ -1,7 +1,7 @@
 import React from "react";
 
 const BusInformationForm = () => {
-  return <div>BusInformationForm</div>;
+  return <div></div>;
 };
 
 export default BusInformationForm;

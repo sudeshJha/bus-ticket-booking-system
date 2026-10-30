@@ -11,6 +11,45 @@ const BusLayoutForm = () => {
   const [deckType, setDeckType] = useState("");
   const [seaterRows, setSeaterRows] = useState("");
   const [sleeperRows, setSleeperRows] = useState("");
+  const [backRowSeats, setBackRowSeats] = useState("");
+
+  const selectSeatLayout = (seatLayout) => {
+    setSeatLayoutType(seatLayout);
+    setBackRowSeats("");
+    setSleeperRows("");
+    setSeaterRows("");
+  };
+
+  const selectSeaterRows = (seats) => {
+    setSeaterRows(seats);
+    if (!seats) {
+      setSleeperRows("");
+      return;
+    }
+
+    if (
+      seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
+      seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
+      deckType === "UPPER_DECK"
+    ) {
+      setSleeperRows(Math.floor(seats / 2));
+    }
+  };
+
+  const selectSleeperRows = (seats) => {
+    if (
+      seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
+      seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
+      deckType === "UPPER_DECK"
+    ) {
+      setSleeperRows(seats);
+      if (!seats) {
+        setSeaterRows("");
+        return;
+      }
+      setSeaterRows(Math.floor(seats * 2));
+    }
+  };
 
   if (gettingSeatLayoutTypes || gettingDeckTypes) return <Spinner />;
 
@@ -21,16 +60,19 @@ const BusLayoutForm = () => {
           Bus Layout
         </h1>
       </div>
-      <div className="flex flex-col gap-8 px-8 py-8">
-        <div className=" flex items-center justify-center">
+      <div className="flex flex-col gap-12 px-8 py-20">
+        <div className="flex items-center justify-center gap-20">
           <select
-            className={`${deckType ? "text-text-primary" : "text-text-secondary"} px-4 py-3 border border-border rounded-md outline-none`}
+            className={`${deckType ? "text-text-primary" : "text-text-secondary"} px-4 py-3 border border-border rounded-lg outline-none w-full`}
+            value={deckType}
+            onChange={(e) => setDeckType(e.target.value)}
           >
             <option className="bg-surface-dark">Select Deck Type</option>
             {deckTypes.map((deckType) => (
               <option
                 className={`bg-surface text-text-primary`}
                 key={deckType.code}
+                value={deckType.code}
               >
                 {deckType.label}
               </option>
@@ -38,13 +80,16 @@ const BusLayoutForm = () => {
           </select>
 
           <select
-            className={`${seatLayoutType ? "text-text-primary" : "text-text-secondary"}  px-4 py-3 border border-border rounded-md outline-none`}
+            className={`${seatLayoutType ? "text-text-primary" : "text-text-secondary"}  px-4 py-3 border border-border rounded-lg outline-none w-full`}
+            value={seatLayoutType}
+            onChange={(e) => selectSeatLayout(e.target.value)}
           >
             <option className="bg-surface-dark">Select Seat Layout</option>
             {seatLayoutTypes.map((seatLayout) => (
               <option
                 className="bg-surface text-text-primary"
                 key={seatLayout.code}
+                value={seatLayout.code}
               >
                 {seatLayout.label}
               </option>
@@ -54,52 +99,51 @@ const BusLayoutForm = () => {
 
         <div className="flex flex-col gap-2">
           <label className="text-text-secondary text-xl ml-1">
-            Lower Decker Row Seats
+            Back Row Seats
           </label>
           <input
             type="number"
             min={1}
-            max={25}
-            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-xl ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-            placeholder="Lower Decker Seater Rows"
+            max={6}
+            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
+            placeholder="No. of Back Row Seats"
+            value={backRowSeats}
+            onChange={(e) => setBackRowSeats(e.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-text-secondary text-xl ml-1">
-            Lower Decker Row Seats
+            Seater Row Seats
           </label>
           <input
             type="number"
             min={1}
             max={25}
-            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-xl ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-            placeholder="Lower Decker Seater Rows"
+            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
+            placeholder="Seater Rows"
+            value={seaterRows}
+            onChange={(e) => selectSeaterRows(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">
-            Lower Decker Row Seats
-          </label>
-          <input
-            type="number"
-            min={1}
-            max={25}
-            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-xl ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-            placeholder="Lower Decker Seater Rows"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">
-            Lower Decker Row Seats
-          </label>
-          <input
-            type="number"
-            min={1}
-            max={25}
-            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-xl ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-            placeholder="Lower Decker Seater Rows"
-          />
-        </div>
+
+        {(seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
+          seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
+          deckType === "UPPER_DECK") && (
+          <div className="flex flex-col gap-2">
+            <label className="text-text-secondary text-xl ml-1">
+              Sleeper Row Seats
+            </label>
+            <input
+              type="number"
+              min={1}
+              max={25}
+              className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
+              placeholder="Sleeper Rows"
+              value={sleeperRows}
+              onChange={(e) => selectSleeperRows(e.target.value)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
