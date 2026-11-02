@@ -1,6 +1,8 @@
 import React from "react";
+import FormRow from "../auth/FormRow";
+import InputWrapper from "../auth/InputWrapper";
 
-const BusInformationForm = () => {
+const BusInformationForm = ({ register, errors }) => {
   const flag = false;
   return (
     <div className="bg-surface border-2 border-border rounded-lg overflow-hidden">
@@ -12,13 +14,25 @@ const BusInformationForm = () => {
 
       <div className="flex flex-col gap-12 px-8 py-20">
         <div className="flex flex-col gap-2">
+          <FormRow label="Register as" error={errors?.userType?.message}>
+            <InputWrapper>
+              <input
+                className="cursor-not-allowed"
+                type="number"
+                maxLength={17}
+                minLength={17}
+                value="VIN"
+                id="userType"
+                {...register("userType", {
+                  required: "This field is required",
+                })}
+              />
+            </InputWrapper>
+          </FormRow>
           <label className="text-text-secondary text-xl ml-1">
             Vehicle Identification Number
           </label>
           <input
-            type="text"
-            maxLength={17}
-            minLength={17}
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="VIN Number"
           />
