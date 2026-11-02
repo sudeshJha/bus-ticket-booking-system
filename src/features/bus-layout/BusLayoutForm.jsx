@@ -3,7 +3,7 @@ import { useSeatLayoutTypes } from "./useSeatLayoutType";
 import { useDeckTypes } from "./useDeckTypes";
 import Spinner from "../../components/ui/Spinner";
 
-const BusLayoutForm = () => {
+const BusLayoutForm = ({ register }) => {
   const { gettingSeatLayoutTypes, seatLayoutTypes } = useSeatLayoutTypes();
   const { gettingDeckTypes, deckTypes } = useDeckTypes();
 
@@ -66,6 +66,9 @@ const BusLayoutForm = () => {
             className={`${deckType ? "text-text-primary" : "text-text-secondary"} px-4 py-3 border border-border rounded-lg outline-none w-full`}
             value={deckType}
             onChange={(e) => setDeckType(e.target.value)}
+            {...register("deckType", {
+              required: "This field is required",
+            })}
           >
             <option className="bg-surface-dark">Select Deck Type</option>
             {deckTypes.map((deckType) => (
@@ -83,6 +86,9 @@ const BusLayoutForm = () => {
             className={`${seatLayoutType ? "text-text-primary" : "text-text-secondary"}  px-4 py-3 border border-border rounded-lg outline-none w-full`}
             value={seatLayoutType}
             onChange={(e) => selectSeatLayout(e.target.value)}
+            {...register("seatLayoutType", {
+              required: "This field is required",
+            })}
           >
             <option className="bg-surface-dark">Select Seat Layout</option>
             {seatLayoutTypes.map((seatLayout) => (
@@ -109,6 +115,9 @@ const BusLayoutForm = () => {
             placeholder="No. of Back Row Seats"
             value={backRowSeats}
             onChange={(e) => setBackRowSeats(e.target.value)}
+            {...register("backRowSeats", {
+              required: "This field is required",
+            })}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -123,6 +132,9 @@ const BusLayoutForm = () => {
             placeholder="Seater Rows"
             value={seaterRows}
             onChange={(e) => selectSeaterRows(e.target.value)}
+            {...register("seaterRow", {
+              required: "This field is required",
+            })}
           />
         </div>
 
@@ -141,6 +153,9 @@ const BusLayoutForm = () => {
               placeholder="Sleeper Rows"
               value={sleeperRows}
               onChange={(e) => selectSleeperRows(e.target.value)}
+              {...register("sleeperRow", {
+                required: "This field is required",
+              })}
             />
           </div>
         )}

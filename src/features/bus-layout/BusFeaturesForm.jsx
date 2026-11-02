@@ -18,7 +18,7 @@ const BusFeaturesForm = ({ register, errors }) => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-4 items-center justify-center gap-y-8 px-16 py-12">
+      <div className="grid grid-cols-3 items-center justify-center gap-y-8 px-16 py-12">
         {operatorFareFactors.map((operatorFareFactor, i) => (
           <label
             className="flex items-center gap-2 text-text-secondary"
@@ -28,7 +28,9 @@ const BusFeaturesForm = ({ register, errors }) => {
               className="mr-4"
               type="checkbox"
               value={operatorFareFactor.fareFactor.code}
-              {...register("busFeatures")}
+              {...register("busFeatures", {
+                required: "This field is required",
+              })}
             />
             {operatorFareFactor.fareFactor.label}
           </label>

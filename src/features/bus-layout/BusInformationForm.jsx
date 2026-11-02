@@ -14,27 +14,15 @@ const BusInformationForm = ({ register, errors }) => {
 
       <div className="flex flex-col gap-12 px-8 py-20">
         <div className="flex flex-col gap-2">
-          <FormRow label="Register as" error={errors?.userType?.message}>
-            <InputWrapper>
-              <input
-                className="cursor-not-allowed"
-                type="number"
-                maxLength={17}
-                minLength={17}
-                value="VIN"
-                id="userType"
-                {...register("userType", {
-                  required: "This field is required",
-                })}
-              />
-            </InputWrapper>
-          </FormRow>
           <label className="text-text-secondary text-xl ml-1">
             Vehicle Identification Number
           </label>
           <input
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="VIN Number"
+            {...register("vin", {
+              required: "This field is required",
+            })}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -43,6 +31,9 @@ const BusInformationForm = ({ register, errors }) => {
             type="text"
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="RTO Number"
+            {...register("rto_number", {
+              required: "This field is required",
+            })}
           />
         </div>
 
@@ -54,6 +45,9 @@ const BusInformationForm = ({ register, errors }) => {
             type="text"
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="Manufacturing company name"
+            {...register("manufacturer", {
+              required: "This field is required",
+            })}
           />
         </div>
 
@@ -66,6 +60,9 @@ const BusInformationForm = ({ register, errors }) => {
             multiple
             className={`file:bg-surface file:mr-8 border border-border bg-surface-dark outline-none file:px-4 file:py-2 w-fit rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="Manufacturing company name"
+            {...register("busImages", {
+              required: "This field is required",
+            })}
           />
         </div>
       </div>
