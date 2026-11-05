@@ -53,7 +53,7 @@ export const addBusApi = async (busData) => {
   formData.append("VIN", busData.VIN);
   formData.append("userInfo.password", busData);
 
-  console.log(formData);
+  console.log(formData.values);
 
   // const response = await fetch(`${API_BASE_URL}/add_bus`, {
   //   method: "POST",

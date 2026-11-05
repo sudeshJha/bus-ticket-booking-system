@@ -2,10 +2,10 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { addBusApi } from "../../services/apiBusLayout";
 
-export default function useSignup() {
+export default function useAddBus() {
   const {
-    mutate: signup,
-    isPending: signingUp,
+    mutate: addBus,
+    isPending: addingBus,
     error,
   } = useMutation({
     mutationFn: (busData) => addBusApi(busData),
@@ -19,5 +19,5 @@ export default function useSignup() {
     },
   });
 
-  return { signup, signingUp, error };
+  return { addBus, addingBus, error };
 }

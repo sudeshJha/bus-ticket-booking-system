@@ -51,10 +51,25 @@ const BusInformationForm = ({ register, errors }) => {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">
-            Manufacturer Company
+        <div className="flex items-center gap-3 mb-6">
+          <input
+            type="checkbox"
+            id="busStatus"
+            {...register("isActive", {
+              required: "This field is required",
+            })}
+            className="w-6 h-6 cursor-pointer accent-secondary"
+          />
+          <label
+            htmlFor="busStatus"
+            className="text-text-primary cursor-pointer text-2xl"
+          >
+            Bus is currently active and ready for bookings
           </label>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-text-secondary text-xl ml-1">Bus Images</label>
           <input
             type="file"
             multiple

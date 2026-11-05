@@ -5,14 +5,19 @@ import BusInformationForm from "./BusInformationForm";
 import BusFeaturesForm from "./BusFeaturesForm";
 import { useForm } from "react-hook-form";
 import SubmitButton from "../../components/util/SubmitButton";
+import useAddBus from "./useAddBus";
+import Spinner from "../../components/ui/Spinner";
 
 const AddBusFormLayout = () => {
+  const { addBus, addingBus } = useAddBus();
+
   const { register, handleSubmit, formState } = useForm({
     defaultValues: {},
   });
   const { errors } = formState;
 
   const onSubmit = (data) => {
+    addBus(data);
     console.log(data);
   };
 
@@ -29,7 +34,9 @@ const AddBusFormLayout = () => {
         <BusInformationForm errors={errors} register={register} />
         <BusLayoutForm errors={errors} register={register} />
         <BusFeaturesForm errors={errors} register={register} />
-        <SubmitButton size="l">Add Bus</SubmitButton>
+        <SubmitButton size="l">
+          {addingBus ? <Spinner /> : "Add Bus"}
+        </SubmitButton>
       </form>
     </div>
   );
