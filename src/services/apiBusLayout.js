@@ -43,3 +43,24 @@ export const getSeatLayoutTypes = async () => {
 
   return data.response;
 };
+
+export const addBusApi = async (busData) => {
+  const formData = new FormData();
+  const bearerToken = getLocalStorage("authToken");
+
+  formData.append("rtoNumber", busData.rtoNumber);
+  formData.append("manufacturer", busData.manufacturer);
+  formData.append("VIN", busData.VIN);
+  formData.append("userInfo.password", busData);
+
+  console.log(formData);
+
+  // const response = await fetch(`${API_BASE_URL}/add_bus`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: bearerToken,
+  //   },
+  //   body: formData,
+  // });
+};

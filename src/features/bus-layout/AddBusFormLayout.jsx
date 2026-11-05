@@ -4,6 +4,7 @@ import BusLayoutForm from "./BusLayoutForm";
 import BusInformationForm from "./BusInformationForm";
 import BusFeaturesForm from "./BusFeaturesForm";
 import { useForm } from "react-hook-form";
+import SubmitButton from "../../components/util/SubmitButton";
 
 const AddBusFormLayout = () => {
   const { register, handleSubmit, formState } = useForm({
@@ -11,12 +12,24 @@ const AddBusFormLayout = () => {
   });
   const { errors } = formState;
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  const onError = (error) => {
+    console.log(error);
+  };
+
   return (
     <div className="p-8 ">
-      <form className="flex flex-col gap-16">
+      <form
+        className="flex flex-col gap-16"
+        onSubmit={handleSubmit(onSubmit, onError)}
+      >
         <BusInformationForm errors={errors} register={register} />
         <BusLayoutForm errors={errors} register={register} />
         <BusFeaturesForm errors={errors} register={register} />
+        <SubmitButton size="l">Add Bus</SubmitButton>
       </form>
     </div>
   );
