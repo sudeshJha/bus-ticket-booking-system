@@ -18,6 +18,7 @@ const Button = ({ size, type, disabled, custom, onClick, children, style }) => {
       <button
         disabled={disabled}
         onClick={onClick}
+        type={type}
         className={`${custom} cursor-pointer`}
       >
         {children}

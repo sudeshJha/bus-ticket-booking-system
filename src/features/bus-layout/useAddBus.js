@@ -9,7 +9,6 @@ export default function useAddBus() {
     error,
   } = useMutation({
     mutationFn: (busData) => addBusApi(busData),
-
     onSuccess: () => {
       toast.success("Successfully, added bus.");
     },

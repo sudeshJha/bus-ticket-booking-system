@@ -11,7 +11,7 @@ import Spinner from "../../components/ui/Spinner";
 const AddBusFormLayout = () => {
   const { addBus, addingBus } = useAddBus();
 
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, setValue } = useForm({
     defaultValues: {},
   });
   const { errors } = formState;
@@ -32,7 +32,11 @@ const AddBusFormLayout = () => {
         onSubmit={handleSubmit(onSubmit, onError)}
       >
         <BusInformationForm errors={errors} register={register} />
-        <BusLayoutForm errors={errors} register={register} />
+        <BusLayoutForm
+          errors={errors}
+          register={register}
+          setValue={setValue}
+        />
         <BusFeaturesForm errors={errors} register={register} />
         <SubmitButton size="l">
           {addingBus ? <Spinner /> : "Add Bus"}

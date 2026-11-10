@@ -10,6 +10,7 @@ const sizes = {
 const SubmitButton = ({ onClick, children, size }) => {
   return (
     <Button
+      type="submit"
       custom={`${sizes[size]} mx-auto text-primary-anti bg-primary w-full rounded-xl tracking-wide hover:bg-primary-hover hover:-translate-y-1`}
       onClick={onClick}
     >

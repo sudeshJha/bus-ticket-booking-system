@@ -3,6 +3,8 @@ import FormRow from "../auth/FormRow";
 import InputWrapper from "../auth/InputWrapper";
 
 const BusInformationForm = ({ register, errors }) => {
+  console.log(errors);
+
   const flag = false;
   return (
     <div className="bg-surface border-2 border-border rounded-lg overflow-hidden">
@@ -14,9 +16,14 @@ const BusInformationForm = ({ register, errors }) => {
 
       <div className="flex flex-col gap-12 px-8 py-20">
         <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">
-            Vehicle Identification Number
-          </label>
+          <div className="flex justify-between">
+            <label className="text-text-secondary text-xl ml-1">
+              Vehicle Identification Number
+            </label>
+            <p className="text-error/80 text-xl">
+              {errors?.vin?.message ? `* ${errors.vin.message}` : ""}
+            </p>
+          </div>
           <input
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="VIN Number"
@@ -26,21 +33,38 @@ const BusInformationForm = ({ register, errors }) => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">RTO Number</label>
+          <div className="flex justify-between">
+            <label className="text-text-secondary text-xl ml-1">
+              RTO Number
+            </label>
+            <p className="text-error/80 text-xl">
+              {errors?.rtoNumber?.message
+                ? `* ${errors.rtoNumber.message}`
+                : ""}
+            </p>
+          </div>
           <input
             type="text"
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="RTO Number"
-            {...register("rto_number", {
+            {...register("rtoNumber", {
               required: "This field is required",
             })}
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">
-            Manufacturer Company
-          </label>
+          <div className="flex justify-between">
+            <label className="text-text-secondary text-xl ml-1">
+              Manufacturer Company
+            </label>
+            <p className="text-error/80 text-xl">
+              {errors?.manufacturer?.message
+                ? `* ${errors.manufacturer.message}`
+                : ""}
+            </p>
+          </div>
+
           <input
             type="text"
             className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
@@ -51,7 +75,7 @@ const BusInformationForm = ({ register, errors }) => {
           />
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-6 mt-4">
           <input
             type="checkbox"
             id="busStatus"
@@ -62,14 +86,23 @@ const BusInformationForm = ({ register, errors }) => {
           />
           <label
             htmlFor="busStatus"
-            className="text-text-primary cursor-pointer text-2xl"
+            className="text-text-primary/80 cursor-pointer text-2xl"
           >
             Bus is currently active and ready for bookings
           </label>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <label className="text-text-secondary text-xl ml-1">Bus Images</label>
+        <div className="flex flex-col gap-2 w-fit">
+          <div className="flex justify-between">
+            <label className="text-text-secondary text-xl ml-1">
+              Bus Images
+            </label>
+            <p className="text-error/80 text-xl">
+              {errors?.manufacturer?.message
+                ? `* ${errors.manufacturer.message}`
+                : ""}
+            </p>
+          </div>
           <input
             type="file"
             multiple
