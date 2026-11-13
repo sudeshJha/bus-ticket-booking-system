@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import BookingLegend from "./BookingLegend";
 import DeckSelection from "./DeckSelection";
 import BusLayout from "../bus-layout/BusLayout";
+import { useUser } from "../auth/useUser";
+import Spinner from "../../components/ui/Spinner";
 
 const data = {
   layout: "2X1",
@@ -25,24 +27,34 @@ const data = {
   isUpperDeck: true,
 };
 
-const BusLayoutSection = () => {
-  const [deck, setDeck] = useState(0);
+const BusLayoutSection = ({ layoutData }) => {
+  const [currentDeckType, setCurrentDeckType] = useState(0);
 
-  const handleDeck = (d) => {
-    if (d === 1 && !data.isUpperDeck) return;
-    if (deck === d) return;
-    setDeck(1 - deck);
+  const { user, gettingUser } = useUser();
+
+  const handleCurrentDeckType = (currentDeck) => {
+    if (currentDeck === 1 && !layoutData.isUpperDeck) return;
+    if (currentDeck === currentDeckType) return;
+
+    if (currentDeck === "UPPER_DECK" && deckType === "LOWER_DECK") {
+      setCurrentDeckType("LOWER_DECK");
+    }
+
+    setCurrentDeckType(currentDeck);
   };
+
+  if (gettingUser) return <Spinner />;
 
   return (
     <div className="flex flex-col gap-15 py-10">
       <DeckSelection
-        deck={deck}
-        handleDeck={handleDeck}
-        isUpperDeck={data.isUpperDeck}
+        currentDeckType={currentDeckType}
+        handleCurrentDeckType={handleCurrentDeckType}
+        isUpperDeck={layoutData.deckType === "UPPER_DECK"}
       />
-      <BusLayout deck={deck} data={data} />
-      <BookingLegend />
+      <BusLayout deck={deck} layoutData={layoutData} />
+
+      {user?.userInfo?.userType === "OPERATOR" ? <BookingLegend /> : ""}
     </div>
   );
 };

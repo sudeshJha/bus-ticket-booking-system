@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useSeatLayoutTypes } from "./useSeatLayoutType";
 import { useDeckTypes } from "./useDeckTypes";
 import Spinner from "../../components/ui/Spinner";
+import BusLayout from "./BusLayout";
+import DeckSelection from "../bus-booking/DeckSelection";
+import BusLayoutSection from "../bus-booking/BusLayoutSection";
 
 const BusLayoutForm = ({ register, setValue, errors }) => {
   const { gettingSeatLayoutTypes, seatLayoutTypes } = useSeatLayoutTypes();
@@ -13,7 +16,27 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
   const [sleeperRows, setSleeperRows] = useState("");
   const [backRowSeats, setBackRowSeats] = useState("");
 
-  console.log(errors);
+  const [currentDeckType, setCurrentDeckType] = useState("LOWER_DECK");
+
+  const layoutData = {
+    seatLayoutType,
+    deckType,
+    seaterRows,
+    sleeperRows,
+    backRowSeats,
+    isUpperDeck: deckType === "UPPER_DECK",
+  };
+
+  const handleCurrentDeckType = (currentDeck) => {
+    if (currentDeck === 1 && !layoutData.isUpperDeck) return;
+    if (currentDeck === currentDeckType) return;
+
+    if (currentDeck === "UPPER_DECK" && deckType === "LOWER_DECK") {
+      setCurrentDeckType("LOWER_DECK");
+    }
+
+    setCurrentDeckType(currentDeck);
+  };
 
   const selectSeatLayout = (seatLayout) => {
     setSeatLayoutType(seatLayout);
@@ -60,144 +83,117 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
   if (gettingSeatLayoutTypes || gettingDeckTypes) return <Spinner />;
 
   return (
-    <div className="bg-surface border-2 border-border rounded-lg overflow-hidden">
-      <div className="flex items-center justify-center text-center bg-background">
-        <h1 className="text-text-secondary font-semibold text-2xl pt-5 pb-3">
-          Bus Layout
-        </h1>
-      </div>
-      <div className="flex flex-col gap-12 px-8 py-20">
-        <div className="flex items-center justify-center gap-20">
-          <div className="w-full">
-            <div className="flex justify-between mb-2.5">
-              <label className="text-text-secondary text-xl ml-1">
-                Deck Type
-              </label>
-              <p className="text-error/80 text-xl">
-                {errors?.deckType?.message
-                  ? `* ${errors.deckType.message}`
-                  : ""}
-              </p>
-            </div>
-            <select
-              className={`${deckType ? "text-text-primary" : "text-text-secondary"} px-4 py-3 border border-border rounded-lg outline-none w-full`}
-              value={deckType}
-              {...register("deckType", {
-                required: "This field is required",
-                onChange: (e) => setDeckType(e.target.value),
-              })}
-            >
-              <option className="bg-surface-dark" value="">
-                Select Deck Type
-              </option>
-              {deckTypes.map((deckType) => (
-                <option
-                  className={`bg-surface text-text-primary`}
-                  key={deckType.code}
-                  value={deckType.code}
-                >
-                  {deckType.label}
+    <div className="flex">
+      <div className="bg-surface border-2 border-border rounded-lg overflow-hidden">
+        <div className="flex items-center justify-center text-center bg-background">
+          <h1 className="text-text-secondary font-semibold text-2xl pt-5 pb-3">
+            Bus Layout
+          </h1>
+        </div>
+        <div className="flex flex-col gap-12 px-8 py-20">
+          <div className="flex items-center justify-center gap-20">
+            <div className="w-full">
+              <div className="flex justify-between mb-2.5">
+                <label className="text-text-secondary text-xl ml-1">
+                  Deck Type
+                </label>
+                <p className="text-error text-xl">
+                  {errors?.deckType?.message
+                    ? `* ${errors.deckType.message}`
+                    : ""}
+                </p>
+              </div>
+              <select
+                className={`${deckType ? "text-text-primary" : "text-text-secondary"} px-4 py-3 border border-border rounded-lg outline-none w-full`}
+                value={deckType}
+                {...register("deckType", {
+                  required: "This field is required",
+                  onChange: (e) => setDeckType(e.target.value),
+                })}
+              >
+                <option className="bg-surface-dark" value="">
+                  Select Deck Type
                 </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="w-full">
-            <div className="flex justify-between mb-2.5">
-              <label className="text-text-secondary text-xl ml-1">
-                Seat Layout
-              </label>
-
-              <p className="text-error/80 text-xl">
-                {errors?.seatLayoutType?.message
-                  ? `* ${errors.seatLayoutType.message}`
-                  : ""}
-              </p>
+                {deckTypes.map((deckType) => (
+                  <option
+                    className={`bg-surface text-text-primary`}
+                    key={deckType.code}
+                    value={deckType.code}
+                  >
+                    {deckType.label}
+                  </option>
+                ))}
+              </select>
             </div>
-            <select
-              className={`${seatLayoutType ? "text-text-primary" : "text-text-secondary"}  px-4 py-3 border border-border rounded-lg outline-none w-full`}
-              value={seatLayoutType}
-              {...register("seatLayoutType", {
-                required: "This field is required",
-                onChange: (e) => selectSeatLayout(e.target.value),
-              })}
-            >
-              <option className="bg-surface-dark" value="">
-                Select Seat Layout
-              </option>
-              {seatLayoutTypes.map((seatLayout) => (
-                <option
-                  className="bg-surface text-text-primary"
-                  key={seatLayout.code}
-                  value={seatLayout.code}
-                >
-                  {seatLayout.label}
+
+            <div className="w-full">
+              <div className="flex justify-between mb-2.5">
+                <label className="text-text-secondary text-xl ml-1">
+                  Seat Layout
+                </label>
+
+                <p className="text-error text-xl">
+                  {errors?.seatLayoutType?.message
+                    ? `* ${errors.seatLayoutType.message}`
+                    : ""}
+                </p>
+              </div>
+              <select
+                className={`${seatLayoutType ? "text-text-primary" : "text-text-secondary"}  px-4 py-3 border border-border rounded-lg outline-none w-full`}
+                value={seatLayoutType}
+                {...register("seatLayoutType", {
+                  required: "This field is required",
+                  onChange: (e) => selectSeatLayout(e.target.value),
+                })}
+              >
+                <option className="bg-surface-dark" value="">
+                  Select Seat Layout
                 </option>
-              ))}
-            </select>
+                {seatLayoutTypes.map((seatLayout) => (
+                  <option
+                    className="bg-surface text-text-primary"
+                    key={seatLayout.code}
+                    value={seatLayout.code}
+                  >
+                    {seatLayout.label}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-2">
-          <div className="flex justify-between">
-            <label className="text-text-secondary text-xl ml-1">
-              Back Row Seats
-            </label>
-            <p className="text-error/80 text-xl">
-              {errors?.backRowSeats?.message
-                ? `* ${errors.backRowSeats.message}`
-                : ""}
-            </p>
-          </div>
-          <input
-            type="number"
-            min={1}
-            max={6}
-            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-            placeholder="No. of Back Row Seats"
-            value={backRowSeats}
-            {...register("backRowSeats", {
-              required: "This field is required",
-              onChange: (e) => setBackRowSeats(e.target.value),
-            })}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="flex justify-between">
-            <label className="text-text-secondary text-xl ml-1">
-              Seater Row Seats
-            </label>
-            <p className="text-error/80 text-xl">
-              {errors?.seaterRow?.message
-                ? `* ${errors.seaterRow.message}`
-                : ""}
-            </p>
-          </div>
-          <input
-            type="number"
-            min={1}
-            max={25}
-            className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-            placeholder="Seater Rows"
-            value={seaterRows}
-            {...register("seaterRow", {
-              required: "This field is required",
-              onChange: (e) => selectSeaterRows(e.target.value),
-            })}
-          />
-        </div>
-
-        {(seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
-          seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
-          deckType === "UPPER_DECK") && (
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
               <label className="text-text-secondary text-xl ml-1">
-                Sleeper Row Seats
+                Back Row Seats
               </label>
-              <p className="text-error/80 text-xl">
-                {errors?.sleeperRow?.message
-                  ? `* ${errors.sleeperRow.message}`
+              <p className="text-error text-xl">
+                {errors?.backRowSeats?.message
+                  ? `* ${errors.backRowSeats.message}`
+                  : ""}
+              </p>
+            </div>
+            <input
+              type="number"
+              min={1}
+              max={6}
+              className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
+              placeholder="No. of Back Row Seats"
+              value={backRowSeats}
+              {...register("backRowSeats", {
+                required: "This field is required",
+                onChange: (e) => setBackRowSeats(e.target.value),
+              })}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="flex justify-between">
+              <label className="text-text-secondary text-xl ml-1">
+                Seater Row Seats
+              </label>
+              <p className="text-error text-xl">
+                {errors?.seaterRow?.message
+                  ? `* ${errors.seaterRow.message}`
                   : ""}
               </p>
             </div>
@@ -206,15 +202,47 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
               min={1}
               max={25}
               className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
-              placeholder="Sleeper Rows"
-              value={sleeperRows}
-              {...register("sleeperRow", {
+              placeholder="Seater Rows"
+              value={seaterRows}
+              {...register("seaterRow", {
                 required: "This field is required",
-                onChange: (e) => selectSleeperRows(e.target.value),
+                onChange: (e) => selectSeaterRows(e.target.value),
               })}
             />
           </div>
-        )}
+
+          {(seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
+            seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
+            deckType === "UPPER_DECK") && (
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between">
+                <label className="text-text-secondary text-xl ml-1">
+                  Sleeper Row Seats
+                </label>
+                <p className="text-error text-xl">
+                  {errors?.sleeperRow?.message
+                    ? `* ${errors.sleeperRow.message}`
+                    : ""}
+                </p>
+              </div>
+              <input
+                type="number"
+                min={1}
+                max={25}
+                className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
+                placeholder="Sleeper Rows"
+                value={sleeperRows}
+                {...register("sleeperRow", {
+                  required: "This field is required",
+                  onChange: (e) => selectSleeperRows(e.target.value),
+                })}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="w-full">
+        <BusLayoutSection layoutData={layoutData} />
       </div>
     </div>
   );

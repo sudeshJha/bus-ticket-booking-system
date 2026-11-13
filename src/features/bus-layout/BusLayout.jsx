@@ -64,11 +64,4 @@ const BusLayout = ({ data, deck }) => {
   );
 };
 
-// layout,
-//     type,
-//     bookedSeats,
-//     backrowSeat,
-//     seaterRow,
-//     sleeperRow,
-//     isUpperDeck,
 export default BusLayout;

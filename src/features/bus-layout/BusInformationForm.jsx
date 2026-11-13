@@ -7,7 +7,7 @@ const BusInformationForm = ({ register, errors }) => {
 
   const flag = false;
   return (
-    <div className="bg-surface border-2 border-border rounded-lg overflow-hidden">
+    <div className="bg-surface border-2 border-border rounded-lg overflow-hidden w-full">
       <div className="flex items-center justify-center text-center bg-background">
         <h1 className="text-text-secondary font-semibold text-2xl pt-5 pb-3">
           Bus Information
@@ -20,7 +20,7 @@ const BusInformationForm = ({ register, errors }) => {
             <label className="text-text-secondary text-xl ml-1">
               Vehicle Identification Number
             </label>
-            <p className="text-error/80 text-xl">
+            <p className="text-error text-xl">
               {errors?.vin?.message ? `* ${errors.vin.message}` : ""}
             </p>
           </div>
@@ -29,6 +29,11 @@ const BusInformationForm = ({ register, errors }) => {
             placeholder="VIN Number"
             {...register("vin", {
               required: "This field is required",
+              pattern: {
+                value: /^[A-HJ-NPR-Z0-9]{17}$/,
+                message:
+                  "Invalid VIN. Must be 17 character, uppercase with no I, O, or Q.",
+              },
             })}
           />
         </div>
@@ -37,7 +42,7 @@ const BusInformationForm = ({ register, errors }) => {
             <label className="text-text-secondary text-xl ml-1">
               RTO Number
             </label>
-            <p className="text-error/80 text-xl">
+            <p className="text-error text-xl">
               {errors?.rtoNumber?.message
                 ? `* ${errors.rtoNumber.message}`
                 : ""}
@@ -49,6 +54,10 @@ const BusInformationForm = ({ register, errors }) => {
             placeholder="RTO Number"
             {...register("rtoNumber", {
               required: "This field is required",
+              pattern: {
+                value: /^[A-Z]{2}[0-9]{2}[A-Z]{1,3}[0-9]{4}$/,
+                message: "Invalid RTO number.",
+              },
             })}
           />
         </div>
@@ -58,7 +67,7 @@ const BusInformationForm = ({ register, errors }) => {
             <label className="text-text-secondary text-xl ml-1">
               Manufacturer Company
             </label>
-            <p className="text-error/80 text-xl">
+            <p className="text-error text-xl">
               {errors?.manufacturer?.message
                 ? `* ${errors.manufacturer.message}`
                 : ""}
@@ -78,14 +87,14 @@ const BusInformationForm = ({ register, errors }) => {
         <div className="flex items-center gap-3 mb-6 mt-4">
           <input
             type="checkbox"
-            id="busStatus"
+            id="isActive"
             {...register("isActive", {
               required: "This field is required",
             })}
             className="w-6 h-6 cursor-pointer accent-secondary"
           />
           <label
-            htmlFor="busStatus"
+            htmlFor="isActive"
             className="text-text-primary/80 cursor-pointer text-2xl"
           >
             Bus is currently active and ready for bookings
@@ -97,7 +106,7 @@ const BusInformationForm = ({ register, errors }) => {
             <label className="text-text-secondary text-xl ml-1">
               Bus Images
             </label>
-            <p className="text-error/80 text-xl">
+            <p className="text-error text-xl">
               {errors?.manufacturer?.message
                 ? `* ${errors.manufacturer.message}`
                 : ""}
