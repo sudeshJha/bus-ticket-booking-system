@@ -17,14 +17,21 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
   const [backRowSeats, setBackRowSeats] = useState("");
 
   const [currentDeckType, setCurrentDeckType] = useState("LOWER_DECK");
+  const isSleeper =
+    deckType === "UPPER_DECK" ||
+    seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
+    seatLayoutType === "TWO_BY_ONE_SLEEPER";
 
   const layoutData = {
     seatLayoutType,
     deckType,
+    isSleeper,
     seaterRows,
     sleeperRows,
     backRowSeats,
+    currentDeckType,
     isUpperDeck: deckType === "UPPER_DECK",
+    bookedSeats: null,
   };
 
   const handleCurrentDeckType = (currentDeck) => {
@@ -53,22 +60,14 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
       return;
     }
 
-    if (
-      seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
-      seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
-      deckType === "UPPER_DECK"
-    ) {
+    if (isSleeper) {
       setSleeperRows(Math.floor(seats / 2));
       setValue("sleeperRow", Math.floor(seats / 2));
     }
   };
 
   const selectSleeperRows = (seats) => {
-    if (
-      seatLayoutType === "TWO_BY_ONE_SLEEPER" ||
-      seatLayoutType === "ONE_BY_ONE_SLEEPER" ||
-      deckType === "UPPER_DECK"
-    ) {
+    if (isSleeper) {
       setSleeperRows(seats);
       if (!seats) {
         setSeaterRows("");
@@ -80,16 +79,22 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
     }
   };
 
+  const showBusLayout =
+    (seatLayoutType && deckType && seaterRows) ||
+    (isSleeper && sleeperRows && seatLayoutType && deckType && seaterRows);
+
+  console.log("----------- " + showBusLayout);
+
   if (gettingSeatLayoutTypes || gettingDeckTypes) return <Spinner />;
 
   return (
-    <div className="flex">
-      <div className="bg-surface border-2 border-border rounded-lg overflow-hidden">
-        <div className="flex items-center justify-center text-center bg-background">
-          <h1 className="text-text-secondary font-semibold text-2xl pt-5 pb-3">
-            Bus Layout
-          </h1>
-        </div>
+    <div className="w-full bg-surface border-2 border-border rounded-lg overflow-hidden">
+      <div className="flex items-center justify-center text-center bg-background">
+        <h1 className="text-text-secondary font-semibold text-2xl pt-5 pb-3">
+          Bus Layout
+        </h1>
+      </div>
+      <div className="grid grid-cols-2 gap-10">
         <div className="flex flex-col gap-12 px-8 py-20">
           <div className="flex items-center justify-center gap-20">
             <div className="w-full">
@@ -240,9 +245,11 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
             </div>
           )}
         </div>
-      </div>
-      <div className="w-full">
-        <BusLayoutSection layoutData={layoutData} />
+        {showBusLayout && (
+          <div className="w-full">
+            <BusLayoutSection layoutData={layoutData} />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 import React from "react";
 import Seat from "./Seat";
 
-const SeatRow = ({ seats }) => {
+const SeatRow = ({ seats, backRowSeats }) => {
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div
+      className={`flex items-center ${backRowSeats ? "justify-between" : "justify-center"}  gap-4`}
+    >
       {seats.map((seat, i) => (
         <Seat key={i} seat={seat} />
       ))}

@@ -52,9 +52,9 @@ const BusLayoutSection = ({ layoutData }) => {
         handleCurrentDeckType={handleCurrentDeckType}
         isUpperDeck={layoutData.deckType === "UPPER_DECK"}
       />
-      <BusLayout deck={deck} layoutData={layoutData} />
+      <BusLayout layoutData={layoutData} />
 
-      {user?.userInfo?.userType === "OPERATOR" ? <BookingLegend /> : ""}
+      {user?.userInfo?.userType === "PASSENGER" ? <BookingLegend /> : ""}
     </div>
   );
 };

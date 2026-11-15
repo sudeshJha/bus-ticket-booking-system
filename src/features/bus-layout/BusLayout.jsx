@@ -8,28 +8,22 @@ import SleeperLayout from "./SleeperLayout";
 import { useSeatSelection } from "../../context/SeatSelectionContext";
 import { useBusBooking } from "../../context/BusBookingContext";
 
-const BusLayout = ({ data, deck }) => {
+const BusLayout = ({ layoutData }) => {
   const {
-    layout,
-    type,
+    seatLayoutType,
+    deckType,
     bookedSeats,
-    backrowSeat,
-    seaterRow,
-    sleeperRow,
+    backrowSeats,
+    seaterRows,
+    sleeperRows,
     isUpperDeck,
-  } = data;
-
-  const { selectedSeats } = useBusBooking();
-  const seats = getSeats({
-    layout,
-    type,
-    isUpperDeck,
-    seaterRow,
-    sleeperRow,
-    backrowSeat,
-    bookedSeats,
     selectedSeats,
-  });
+    isSleeper,
+  } = layoutData;
+
+  const seats = getSeats(layoutData);
+
+  console.log(seats);
 
   return (
     <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-120">
@@ -43,21 +37,15 @@ const BusLayout = ({ data, deck }) => {
       </div>
 
       <div className="pt-10 px-2 py-2 w-full">
-        {deck === 1 && (
+        {layoutData.currentDeckType === "UPPER_DECK" && (
           <SleeperLayout
-            layout={"1X1"}
+            seatLayoutType={"ONE_BY_ONE_SLEEPER"}
             seats={seats.upper}
-            sleeperRow={sleeperRow}
+            sleeperRows={sleeperRows}
           />
         )}
-        {deck === 0 && (
-          <SeaterLayout
-            layout={layout}
-            type={type}
-            seats={seats}
-            seaterRow={seaterRow}
-            sleeperRow={sleeperRow}
-          />
+        {layoutData.currentDeckType === "LOWER_DECK" && (
+          <SeaterLayout layoutData={layoutData} seats={seats} />
         )}
       </div>
     </div>

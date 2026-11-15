@@ -4,37 +4,65 @@ import Sleeper_2X1_Layout from "./SemiSleeperLayout";
 
 import SeatRow from "./SeatRow";
 
-const SeaterLayout = ({ layout, type, seats, seaterRow, sleeperRow }) => {
-  const leftCol = Number(layout[0]);
-  const rightCol = Number(layout[2]);
+const layout = {
+  ONE_BY_ONE_SLEEPER: {
+    leftCol: 1,
+    rightCol: 1,
+  },
+  TWO_BY_ONE_SLEEPER: {
+    leftCol: 2,
+    rightCol: 1,
+  },
+  THREE_BY_THREE_SEATER: {
+    leftCol: 3,
+    rightCol: 3,
+  },
+  TWO_BY_THREE_SEATER: {
+    leftCol: 2,
+    rightCol: 3,
+  },
+  TWO_BY_ONE_SEATER: {
+    leftCol: 2,
+    rightCol: 1,
+  },
+  TWO_BY_TWO_SEATER: {
+    leftCol: 2,
+    rightCol: 2,
+  },
+};
 
-  if (leftCol != rightCol && type === "sleeper")
+const SeaterLayout = ({ layoutData, seats }) => {
+  const { seatLayoutType, isSleeper, seaterRows, sleeperRows, backRowSeats } =
+    layoutData;
+
+  const leftCol = layout[seatLayoutType].leftCol;
+  const rightCol = layout[seatLayoutType].rightCol;
+
+  if (leftCol != rightCol && isSleeper)
     return (
       <Sleeper_2X1_Layout
-        layout={layout}
+        seatLayoutType={seatLayoutType}
         seats={seats.lower}
-        sleeperRow={sleeperRow}
+        sleeperRows={sleeperRows}
       />
     );
 
-  if (type === "sleeper")
+  if (isSleeper)
     return (
       <SleeperLayout
         seats={seats.lower}
-        layout={layout}
-        sleeperRow={sleeperRow}
+        seatLayoutType={seatLayoutType}
+        sleeperRows={sleeperRows}
       />
     );
 
   return (
     <div className="flex flex-col gap-y-8">
-      {Array.from({ length: seaterRow }).map((_, i) => {
+      {Array.from({ length: seaterRows }).map((_, i) => {
         const L_Start = i * (leftCol + rightCol);
         const L_End = L_Start + leftCol;
         const R_Start = L_End;
         const R_End = R_Start + rightCol;
-
-        // console.log(L_Start, L_End, R_Start, R_End);
 
         return (
           <div className="flex items-center justify-between" key={i}>
@@ -43,6 +71,13 @@ const SeaterLayout = ({ layout, type, seats, seaterRow, sleeperRow }) => {
           </div>
         );
       })}
+
+      {backRowSeats && (
+        <SeatRow
+          backRowSeats={backRowSeats}
+          seats={seats.lower.slice(-1 * backRowSeats - 1, -1)}
+        />
+      )}
     </div>
   );
 };

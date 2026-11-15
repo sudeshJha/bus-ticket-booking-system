@@ -1,38 +1,68 @@
-export const getSeats = ({
-  layout,
-  type,
-  isUpperDeck,
-  seaterRow,
-  sleeperRow,
-  backrowSeat,
-  bookedSeats,
-  selectedSeats,
-}) => {
-  const leftCol = Number(layout[0]);
-  const rightCol = Number(layout[2]);
+const layout = {
+  ONE_BY_ONE_SLEEPER: {
+    leftCol: 1,
+    rightCol: 1,
+  },
+  TWO_BY_ONE_SLEEPER: {
+    leftCol: 2,
+    rightCol: 1,
+  },
+  THREE_BY_THREE_SEATER: {
+    leftCol: 3,
+    rightCol: 3,
+  },
+  TWO_BY_THREE_SEATER: {
+    leftCol: 2,
+    rightCol: 3,
+  },
+  TWO_BY_ONE_SEATER: {
+    leftCol: 2,
+    rightCol: 1,
+  },
+  TWO_BY_TWO_SEATER: {
+    leftCol: 2,
+    rightCol: 2,
+  },
+};
+
+export const getSeats = (layoutData) => {
+  const {
+    seatLayoutType,
+    deckType,
+    bookedSeats,
+    backrowSeats,
+    seaterRows,
+    sleeperRows,
+    isUpperDeck,
+    selectedSeats,
+    isSleeper,
+  } = layoutData;
+
+  const leftCol = layout[seatLayoutType].leftCol;
+  const rightCol = layout[seatLayoutType].rightCol;
 
   const col = leftCol + rightCol;
 
   let lower;
 
-  if (leftCol === 2 && rightCol === 1 && type === "sleeper") {
-    lower = getSemiSleeperSeats(selectedSeats, bookedSeats, sleeperRow);
-  } else if (type === "sleeper") {
-    lower = getSleeperSeats(selectedSeats, bookedSeats, sleeperRow, "L");
+  if (leftCol === 2 && rightCol === 1 && isSleeper) {
+    lower = getSemiSleeperSeats(selectedSeats, bookedSeats, sleeperRows);
+  } else if (deckType === "sleeper") {
+    lower = getSleeperSeats(selectedSeats, bookedSeats, sleeperRows, "L");
   } else {
     lower = getSeaterSeats(
       selectedSeats,
       bookedSeats,
       col,
-      seaterRow,
-      backrowSeat,
+      seaterRows,
+      backrowSeats,
     );
   }
 
   return {
     lower,
     upper: isUpperDeck
-      ? getSleeperSeats(selectedSeats, bookedSeats, sleeperRow, "U")
+      ? getSleeperSeats(selectedSeats, bookedSeats, sleeperRows, "U")
       : [],
   };
 };
@@ -73,6 +103,8 @@ const getSemiSleeperSeats = (selectedSeats, bookedSeats, row) => {
 };
 
 const checkStatus = (selectedSeats, bookedSeats, seatNo) => {
+  if (!bookedSeats) return "available";
+
   const isBooked = bookedSeats.filter((seat) => seat === seatNo).length === 1;
   if (isBooked) return "booked";
 

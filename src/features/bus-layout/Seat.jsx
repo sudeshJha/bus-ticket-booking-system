@@ -22,12 +22,12 @@ const legends = [
   },
 ];
 
-const Seat = ({ seat, deck = 0 }) => {
+const Seat = ({ seat }) => {
   const { seatNo, status, type } = seat;
 
   const { user } = useUser();
 
-  const { addSeat, removeSelectedSeat } = useBusBooking();
+  // const { addSeat, removeSelectedSeat } = useBusBooking();
 
   const handleClick = () => {
     switch (status) {
