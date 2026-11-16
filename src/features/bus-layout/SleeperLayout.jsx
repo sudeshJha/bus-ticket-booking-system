@@ -33,6 +33,7 @@ const SleeperLayout = ({
   seats,
   sleeperRows,
   backRowSeats,
+  currentDeckType,
 }) => {
   const leftCol = layout[seatLayoutType].leftCol;
   const rightCol = layout[seatLayoutType].rightCol;
@@ -47,7 +48,7 @@ const SleeperLayout = ({
           </div>
         );
       })}
-      {backRowSeats && (
+      {backRowSeats && currentDeckType === "LOWER_DECK" && (
         <SeatRow
           backRowSeats={backRowSeats}
           seats={seats.slice(-1 * backRowSeats)}

@@ -28,16 +28,20 @@ const data = {
 };
 
 const BusLayoutSection = ({ layoutData }) => {
-  const [currentDeckType, setCurrentDeckType] = useState(0);
+  const [currentDeckType, setCurrentDeckType] = useState("LOWER_DECK");
 
   const { user, gettingUser } = useUser();
 
   const handleCurrentDeckType = (currentDeck) => {
-    if (currentDeck === 1 && !layoutData.isUpperDeck) return;
     if (currentDeck === currentDeckType) return;
 
-    if (currentDeck === "UPPER_DECK" && deckType === "LOWER_DECK") {
+    if (currentDeck === "UPPER_DECK" && !layoutData.isUpperDeck) {
+      return;
+    }
+
+    if (currentDeck === "UPPER_DECK" && layoutData.deckType === "LOWER_DECK") {
       setCurrentDeckType("LOWER_DECK");
+      return;
     }
 
     setCurrentDeckType(currentDeck);

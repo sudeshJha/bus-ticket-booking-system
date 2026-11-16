@@ -45,7 +45,7 @@ const BusLayout = ({ layoutData }) => {
           />
         )}
         {layoutData.currentDeckType === "LOWER_DECK" && (
-          <SeaterLayout layoutData={layoutData} seats={seats} />
+          <SeaterLayout layoutData={layoutData} seats={seats.lower} />
         )}
       </div>
     </div>

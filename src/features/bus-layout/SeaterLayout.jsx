@@ -33,8 +33,14 @@ const layout = {
 };
 
 const SeaterLayout = ({ layoutData, seats }) => {
-  const { seatLayoutType, isSleeper, seaterRows, sleeperRows, backRowSeats } =
-    layoutData;
+  const {
+    seatLayoutType,
+    isSleeper,
+    seaterRows,
+    sleeperRows,
+    backRowSeats,
+    currentDeckType,
+  } = layoutData;
 
   const leftCol = layout[seatLayoutType].leftCol;
   const rightCol = layout[seatLayoutType].rightCol;
@@ -44,7 +50,7 @@ const SeaterLayout = ({ layoutData, seats }) => {
       <SemiSleeperLayout
         backRowSeats={backRowSeats}
         seatLayoutType={seatLayoutType}
-        seats={seats.lower}
+        seats={seats}
         sleeperRows={sleeperRows}
       />
     );
@@ -52,10 +58,11 @@ const SeaterLayout = ({ layoutData, seats }) => {
   if (isSleeper)
     return (
       <SleeperLayout
-        seats={seats.lower}
+        seats={seats}
         seatLayoutType={seatLayoutType}
         sleeperRows={sleeperRows}
         backRowSeats={backRowSeats}
+        currentDeckType={currentDeckType}
       />
     );
 
@@ -69,8 +76,8 @@ const SeaterLayout = ({ layoutData, seats }) => {
 
         return (
           <div className="flex items-center justify-between" key={i}>
-            <SeatRow seats={seats.lower.slice(L_Start, L_End)} />
-            <SeatRow seats={seats.lower.slice(R_Start, R_End)} />
+            <SeatRow seats={seats.slice(L_Start, L_End)} />
+            <SeatRow seats={seats.slice(R_Start, R_End)} />
           </div>
         );
       })}
