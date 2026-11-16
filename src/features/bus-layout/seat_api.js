@@ -47,20 +47,7 @@ export const getSeats = (layoutData) => {
 
   if (leftCol === 2 && rightCol === 1 && isSleeper) {
     lower = getSemiSleeperSeats(selectedSeats, bookedSeats, sleeperRows);
-    if (backRowSeats) {
-      lower = [
-        ...lower,
-        ...Array.from({ length: backRowSeats }).map((_, i) => {
-          const seatNo = `L-${i + lower.length + 1}`;
-          return {
-            seatNo: seatNo,
-            status: checkStatus(selectedSeats, bookedSeats, seatNo),
-            type: "seater",
-          };
-        }),
-      ];
-    }
-  } else if (deckType === "sleeper") {
+  } else if (deckType === "LOWER_DECK" && isSleeper) {
     lower = getSleeperSeats(selectedSeats, bookedSeats, sleeperRows, "L");
   } else {
     lower = getSeaterSeats(
@@ -72,6 +59,21 @@ export const getSeats = (layoutData) => {
     );
   }
 
+  if (backRowSeats) {
+    console.log("---!!!!!!!!!!!!!!");
+    lower = [
+      ...lower,
+      ...Array.from({ length: backRowSeats }).map((_, i) => {
+        const seatNo = `L-${i + lower.length + 1}`;
+        return {
+          seatNo: seatNo,
+          status: checkStatus(selectedSeats, bookedSeats, seatNo),
+          type: "seater",
+        };
+      }),
+    ];
+  }
+
   return {
     lower,
     upper: isUpperDeck
@@ -80,10 +82,8 @@ export const getSeats = (layoutData) => {
   };
 };
 
-const getSeaterSeats = (selectedSeats, bookedSeats, col, row, backRowSeat) => {
-  const backSeats = backRowSeat ? col + 1 : 0;
-
-  return Array.from({ length: row * col + backSeats }).map((_, i) => {
+const getSeaterSeats = (selectedSeats, bookedSeats, col, row) => {
+  return Array.from({ length: row * col }).map((_, i) => {
     const seatNo = `L-${i + 1}`;
     return {
       seatNo: seatNo,

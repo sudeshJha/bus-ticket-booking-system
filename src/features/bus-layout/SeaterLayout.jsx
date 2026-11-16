@@ -55,6 +55,7 @@ const SeaterLayout = ({ layoutData, seats }) => {
         seats={seats.lower}
         seatLayoutType={seatLayoutType}
         sleeperRows={sleeperRows}
+        backRowSeats={backRowSeats}
       />
     );
 
