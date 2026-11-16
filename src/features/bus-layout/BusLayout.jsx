@@ -19,6 +19,7 @@ const BusLayout = ({ layoutData }) => {
     isUpperDeck,
     selectedSeats,
     isSleeper,
+    currentDeckType,
   } = layoutData;
 
   const seats = getSeats(layoutData);
@@ -37,14 +38,14 @@ const BusLayout = ({ layoutData }) => {
       </div>
 
       <div className="pt-10 px-2 py-2 w-full">
-        {layoutData.currentDeckType === "UPPER_DECK" && (
+        {currentDeckType === "UPPER_DECK" && (
           <SleeperLayout
             seatLayoutType={"ONE_BY_ONE_SLEEPER"}
             seats={seats.upper}
             sleeperRows={sleeperRows}
           />
         )}
-        {layoutData.currentDeckType === "LOWER_DECK" && (
+        {currentDeckType === "LOWER_DECK" && (
           <SeaterLayout layoutData={layoutData} seats={seats.lower} />
         )}
       </div>

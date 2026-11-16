@@ -83,8 +83,6 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
     (seatLayoutType && deckType && seaterRows) ||
     (isSleeper && sleeperRows && seatLayoutType && deckType && seaterRows);
 
-  console.log("----------- " + showBusLayout);
-
   if (gettingSeatLayoutTypes || gettingDeckTypes) return <Spinner />;
 
   return (

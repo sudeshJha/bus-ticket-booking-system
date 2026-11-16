@@ -47,6 +47,8 @@ const BusLayoutSection = ({ layoutData }) => {
     setCurrentDeckType(currentDeck);
   };
 
+  layoutData.currentDeckType = currentDeckType;
+
   if (gettingUser) return <Spinner />;
 
   return (

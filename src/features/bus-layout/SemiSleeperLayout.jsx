@@ -42,6 +42,8 @@ const SemiSleeperLayout = ({
       {Array.from({ length: sleeperRows }).map((_, i) => {
         const s = 5 * i;
 
+        console.log("ROWs-----------");
+
         return (
           <div className="flex items-center justify-between" key={i}>
             <div className="flex flex-col gap-10">

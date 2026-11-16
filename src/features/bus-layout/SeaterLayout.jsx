@@ -45,7 +45,7 @@ const SeaterLayout = ({ layoutData, seats }) => {
   const leftCol = layout[seatLayoutType].leftCol;
   const rightCol = layout[seatLayoutType].rightCol;
 
-  if (leftCol != rightCol && isSleeper)
+  if (seatLayoutType === "TWO_BY_ONE_SLEEPER")
     return (
       <SemiSleeperLayout
         backRowSeats={backRowSeats}
@@ -55,7 +55,7 @@ const SeaterLayout = ({ layoutData, seats }) => {
       />
     );
 
-  if (isSleeper)
+  if (seatLayoutType === "ONE_BY_ONE_SLEEPER")
     return (
       <SleeperLayout
         seats={seats}
@@ -85,7 +85,7 @@ const SeaterLayout = ({ layoutData, seats }) => {
       {backRowSeats && (
         <SeatRow
           backRowSeats={backRowSeats}
-          seats={seats.lower.slice(-1 * backRowSeats)}
+          seats={seats.slice(-1 * backRowSeats)}
         />
       )}
     </div>

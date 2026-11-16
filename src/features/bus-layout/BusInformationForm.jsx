@@ -3,8 +3,6 @@ import FormRow from "../auth/FormRow";
 import InputWrapper from "../auth/InputWrapper";
 
 const BusInformationForm = ({ register, errors }) => {
-  console.log(errors);
-
   const flag = false;
   return (
     <div className="bg-surface border-2 border-border rounded-lg overflow-hidden w-full">

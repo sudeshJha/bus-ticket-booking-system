@@ -11,7 +11,5 @@ export const useDeckTypes = () => {
     queryFn: getBusDeckTypes,
   });
 
-  console.log(deckTypes);
-
   return { gettingDeckTypes, deckTypes, error };
 };

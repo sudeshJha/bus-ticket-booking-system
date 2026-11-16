@@ -47,7 +47,7 @@ export const getSeats = (layoutData) => {
 
   if (leftCol === 2 && rightCol === 1 && isSleeper) {
     lower = getSemiSleeperSeats(selectedSeats, bookedSeats, sleeperRows);
-  } else if (deckType === "LOWER_DECK" && isSleeper) {
+  } else if (seatLayoutType === "ONE_BY_ONE_SLEEPER") {
     lower = getSleeperSeats(selectedSeats, bookedSeats, sleeperRows, "L");
   } else {
     lower = getSeaterSeats(
@@ -60,7 +60,6 @@ export const getSeats = (layoutData) => {
   }
 
   if (backRowSeats) {
-    console.log("---!!!!!!!!!!!!!!");
     lower = [
       ...lower,
       ...Array.from({ length: backRowSeats }).map((_, i) => {
