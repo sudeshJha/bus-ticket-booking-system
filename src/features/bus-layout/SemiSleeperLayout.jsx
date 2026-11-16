@@ -28,7 +28,12 @@ const layout = {
   },
 };
 
-const SemiSleeperLayout = ({ seatLayoutType, seats, sleeperRows }) => {
+const SemiSleeperLayout = ({
+  backRowSeats,
+  seatLayoutType,
+  seats,
+  sleeperRows,
+}) => {
   const leftCol = layout[seatLayoutType].leftCol;
   const rightCol = layout[seatLayoutType].rightCol;
 
@@ -48,6 +53,13 @@ const SemiSleeperLayout = ({ seatLayoutType, seats, sleeperRows }) => {
           </div>
         );
       })}
+
+      {backRowSeats && (
+        <SeatRow
+          backRowSeats={backRowSeats}
+          seats={seats.slice(-1 * backRowSeats)}
+        />
+      )}
     </div>
   );
 };

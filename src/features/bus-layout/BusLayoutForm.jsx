@@ -245,9 +245,15 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
             </div>
           )}
         </div>
-        {showBusLayout && (
+        {showBusLayout ? (
           <div className="w-full">
             <BusLayoutSection layoutData={layoutData} />
+          </div>
+        ) : (
+          <div className="w-full flex items-center justify-center">
+            <h1 className="text-4xl text-text-secondary/80">
+              Fill details to view layout
+            </h1>
           </div>
         )}
       </div>

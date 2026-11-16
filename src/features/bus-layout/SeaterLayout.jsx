@@ -3,6 +3,7 @@ import SleeperLayout from "./SleeperLayout";
 import Sleeper_2X1_Layout from "./SemiSleeperLayout";
 
 import SeatRow from "./SeatRow";
+import SemiSleeperLayout from "./SemiSleeperLayout";
 
 const layout = {
   ONE_BY_ONE_SLEEPER: {
@@ -40,7 +41,8 @@ const SeaterLayout = ({ layoutData, seats }) => {
 
   if (leftCol != rightCol && isSleeper)
     return (
-      <Sleeper_2X1_Layout
+      <SemiSleeperLayout
+        backRowSeats={backRowSeats}
         seatLayoutType={seatLayoutType}
         seats={seats.lower}
         sleeperRows={sleeperRows}
@@ -75,7 +77,7 @@ const SeaterLayout = ({ layoutData, seats }) => {
       {backRowSeats && (
         <SeatRow
           backRowSeats={backRowSeats}
-          seats={seats.lower.slice(-1 * backRowSeats - 1, -1)}
+          seats={seats.lower.slice(-1 * backRowSeats)}
         />
       )}
     </div>
