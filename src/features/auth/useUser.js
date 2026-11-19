@@ -12,7 +12,5 @@ export const useUser = () => {
     retry: false,
   });
 
-  console.log(user);
-
   return { gettingUser, user, error };
 };

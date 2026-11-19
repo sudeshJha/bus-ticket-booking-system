@@ -24,8 +24,6 @@ const BusLayout = ({ layoutData }) => {
 
   const seats = getSeats(layoutData);
 
-  console.log(seats);
-
   return (
     <div className="rounded-2xl border-2 border-text-secondary py-4 px-4 mx-auto w-120">
       <div className="mx-5 flex items-center justify-between border-b-2 border-border pb-2">

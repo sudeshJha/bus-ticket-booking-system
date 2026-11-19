@@ -195,8 +195,8 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
                 Seater Row Seats
               </label>
               <p className="text-error text-xl">
-                {errors?.seaterRow?.message
-                  ? `* ${errors.seaterRow.message}`
+                {errors?.seaterRows?.message
+                  ? `* ${errors.seaterRows.message}`
                   : ""}
               </p>
             </div>
@@ -207,7 +207,7 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
               className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
               placeholder="Seater Rows"
               value={seaterRows}
-              {...register("seaterRow", {
+              {...register("seaterRows", {
                 required: "This field is required",
                 onChange: (e) => selectSeaterRows(e.target.value),
               })}
@@ -223,8 +223,8 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
                   Sleeper Row Seats
                 </label>
                 <p className="text-error text-xl">
-                  {errors?.sleeperRow?.message
-                    ? `* ${errors.sleeperRow.message}`
+                  {errors?.sleeperRows?.message
+                    ? `* ${errors.sleeperRows.message}`
                     : ""}
                 </p>
               </div>
@@ -235,7 +235,7 @@ const BusLayoutForm = ({ register, setValue, errors }) => {
                 className={`bg-surface-dark outline-none border border-border px-4 py-2 rounded-lg ${seaterRows ? "text-text-primary" : "text-text-secondary"}`}
                 placeholder="Sleeper Rows"
                 value={sleeperRows}
-                {...register("sleeperRow", {
+                {...register("sleeperRows", {
                   required: "This field is required",
                   onChange: (e) => selectSleeperRows(e.target.value),
                 })}
