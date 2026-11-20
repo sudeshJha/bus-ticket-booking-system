@@ -48,13 +48,13 @@ export const addBusApi = async (busData) => {
   formData.append("manufacturer", busData.manufacturer);
   formData.append("vin", busData.vin);
   formData.append("isActive", busData.isActive);
-  for (const image of busData.busImages) {
-    formData.append("busImages", image);
+  for (const image of busData.images) {
+    formData.append("images", image);
   }
 
   formData.append("busLayout.seaterRows", busData.seaterRows);
-  formData.append("busLayout.deckType", busData.deckType);
-  formData.append("busLayout.seatLayoutType", busData.seatLayoutType);
+  formData.append("busLayout.deckType.code", busData.deckType);
+  formData.append("busLayout.seatLayoutType.code", busData.seatLayoutType);
   formData.append(
     "busLayout.sleeperRows",
     busData.sleeperRows ? busData.sleeperRows : 0,

@@ -45,7 +45,7 @@ export const getSeats = (layoutData) => {
 
   let lower;
 
-  if (leftCol === 2 && rightCol === 1 && isSleeper) {
+  if (seatLayoutType === "TWO_BY_ONE_SLEEPER") {
     lower = getSemiSleeperSeats(selectedSeats, bookedSeats, sleeperRows);
   } else if (seatLayoutType === "ONE_BY_ONE_SLEEPER") {
     lower = getSleeperSeats(selectedSeats, bookedSeats, sleeperRows, "L");

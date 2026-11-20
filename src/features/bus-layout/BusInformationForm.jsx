@@ -115,7 +115,7 @@ const BusInformationForm = ({ register, errors }) => {
             multiple
             className={`file:bg-surface file:mr-8 border border-border bg-surface-dark outline-none file:px-4 file:py-2 w-fit rounded-lg ${flag ? "text-text-primary" : "text-text-secondary"}`}
             placeholder="Manufacturing company name"
-            {...register("busImages", {
+            {...register("images", {
               required: "This field is required",
             })}
           />
